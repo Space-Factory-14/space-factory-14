@@ -1,12 +1,26 @@
-﻿"Changes: Sprites":
-- '**/*.rsi/*.png'
+﻿"Map":
+ - "Resources/Maps/**/*.yml" # All .yml files in the Resources/Maps directory, recursive.
 
-"Changes: Map":
-- 'Resources/Maps/*.yml'
-- 'Resources/Prototypes/Maps/*.yml'
+"Sprites":
+ - "**/*.rsi/*.png"
+ - "**/*.rsi/*.json"
 
-"Changes: UI":
-- '**/*.xaml*'
+"UI":
+ - "**/*.xaml*"
+
+"C#":
+  - "**/*.cs"
 
 "No C#":
-- all: ["!**/*.cs"]
+ - all: ["!**/*.cs"]
+
+"Docs":
+  - "**/*.xml"
+  - "**/*.md"
+
+"FTL":
+ - "Resources/Locale/**/*.ftl"
+
+"YML":
+  - any: ["**/*.yml"]
+    all: ["!Resources/Maps/_NF/**/*.yml", "!Resources/Prototypes/Maps/_NF/**/*.yml"]

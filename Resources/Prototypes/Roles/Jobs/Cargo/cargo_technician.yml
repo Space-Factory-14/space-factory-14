@@ -11,6 +11,7 @@
   - Maintenance
   extendedAccess:
   - Salvage
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: CargoTechGear

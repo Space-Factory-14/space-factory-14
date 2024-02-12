@@ -7,15 +7,15 @@
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 36000 # 10 hours
-    - !type:DepartmentTimeRequirement
-      department: Medical
-      time: 36000 # 10 hours
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 36000 # 10 hrs
-    - !type:DepartmentTimeRequirement
-      department: Command
-      time: 36000 # 10 hours
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Medical # SpaceFactory
+#      time: 36000 # 10 hours # SpaceFactory
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Security # SpaceFactory
+#      time: 36000 # 10 hrs # SpaceFactory
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Command # SpaceFactory
+#      time: 36000 # 10 hours # SpaceFactory
   weight: 20
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
@@ -54,6 +54,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: HoPGear

@@ -25,6 +25,7 @@
       chance: 1.0
   - !type:AddImplantSpecial
     implants: [ SadTromboneImplant ]
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: ClownGear

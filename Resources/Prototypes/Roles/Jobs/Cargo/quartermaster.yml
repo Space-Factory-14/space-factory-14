@@ -10,9 +10,9 @@
     - !type:RoleTimeRequirement
       role: JobSalvageSpecialist
       time: 10800 #3 hrs
-    - !type:DepartmentTimeRequirement
-      department: Cargo
-      time: 36000 #10 hours
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Cargo # SpaceFactory
+#      time: 36000 #10 hours # SpaceFactory
     - !type:OverallPlaytimeRequirement
       time: 144000 #40 hrs
   weight: 10
@@ -33,6 +33,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: QuartermasterGear

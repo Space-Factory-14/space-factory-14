@@ -16,6 +16,7 @@
   - !type:AddComponentSpecial
     components:
     - type: MimePowers
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: MimeGear

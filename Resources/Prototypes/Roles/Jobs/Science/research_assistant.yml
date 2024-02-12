@@ -3,11 +3,11 @@
   name: job-name-research-assistant
   description: job-description-research-assistant
   playTimeTracker: JobResearchAssistant
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Science
-      time: 54000 #15 hrs
-      inverted: true # stop playing intern if you're good at science!
+#  requirements: # SpaceFactory
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Science # SpaceFactory
+#      time: 54000 #15 hrs # SpaceFactory
+#      inverted: true # stop playing intern if you're good at science! # SpaceFactory
   startingGear: ResearchAssistantGear
   icon: "JobIconResearchAssistant"
   supervisors: job-supervisors-science
@@ -15,6 +15,7 @@
   access:
   - Research
   - Maintenance
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: ResearchAssistantGear

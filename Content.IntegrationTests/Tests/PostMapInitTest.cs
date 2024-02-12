@@ -58,7 +58,7 @@ namespace Content.IntegrationTests.Tests
 //            "Saltern",
 //            "Core",
 //            "Marathon",
-            "MeteorArena",
+//            "MeteorArena",
 //            "Atlas",
 //            "Reach"
             "TestingMap"

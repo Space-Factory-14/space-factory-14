@@ -37,7 +37,7 @@
   id: Command
   description: department-Command-description
   color: "#334E6D"
-  # roles:
+  roles:
   # - Captain
   # - CentralCommandOfficial
   - ChiefEngineer
@@ -46,8 +46,8 @@
   # - HeadOfSecurity
   # - ResearchDirector
   # - Quartermaster
-   primary: false
-   weight: 100
+  primary: false
+  weight: 100
 
 - type: department
   id: Engineering

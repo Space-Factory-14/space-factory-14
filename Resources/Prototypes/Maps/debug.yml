@@ -11,9 +11,9 @@
           mapNameTemplate: "Empty"
         - type: StationJobs
           overflowJobs:
-            - Passenger
+            - StationEngineer # SpaceStastion
           availableJobs:
-            Passenger: [ -1, -1 ]
+            StationEngineer: [ -1, -1 ] # SpaceStastion
 
 - type: gameMap
   id: Dev
@@ -28,9 +28,9 @@
           mapNameTemplate: "Dev"
         - type: StationJobs
           overflowJobs:
-          - Captain
+          - ChiefEngineer # SpaceStastion
           availableJobs:
-            Captain: [ -1, -1 ]
+            ChiefEngineer: [ -1, -1 ] # SpaceStastion
 
 - type: gameMap
   id: TestTeg

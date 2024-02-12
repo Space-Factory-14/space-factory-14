@@ -46,8 +46,8 @@
   # - HeadOfSecurity
   # - ResearchDirector
   # - Quartermaster
-  # primary: false
-  # weight: 100
+   primary: false
+   weight: 100
 
 - type: department
   id: Engineering
@@ -60,8 +60,6 @@
 #  - TechnicalAssistant
 #  primary: true # SpaceFactory
 #  weight: 100 # SpaceFactory
-  primary: true
-  weight: 100
 
 - type: department
   id: Medical

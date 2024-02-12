@@ -1,6 +1,6 @@
 - type: antag
   id: SubvertedSilicon
   name: roles-antag-subverted-silicon-name
-  antagonist: true
+  antagonist: false # SpaceFactory
   setPreference: false
   objective: roles-antag-subverted-silicon-objective

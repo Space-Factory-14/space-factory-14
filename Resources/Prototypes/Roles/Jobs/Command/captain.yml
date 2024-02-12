@@ -7,15 +7,15 @@
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 54000 # 15 hours
-    - !type:DepartmentTimeRequirement
-      department: Medical
-      time: 54000 # 15 hours
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 54000 # 15 hours
-    - !type:DepartmentTimeRequirement
-      department: Command
-      time: 54000 # 15 hours
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Medical # SpaceFactory
+#      time: 54000 # 15 hours # SpaceFactory
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Security # SpaceFactory
+#      time: 54000 # 15 hours # SpaceFactory
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Command # SpaceFactory
+#      time: 54000 # 15 hours # SpaceFactory
   weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"
@@ -31,6 +31,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: CaptainGear

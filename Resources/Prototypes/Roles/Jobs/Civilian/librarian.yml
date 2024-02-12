@@ -9,6 +9,7 @@
   access:
   - Service
   - Maintenance
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: LibrarianGear

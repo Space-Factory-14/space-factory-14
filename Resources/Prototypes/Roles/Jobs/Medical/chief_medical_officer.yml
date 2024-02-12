@@ -12,9 +12,9 @@
     - !type:RoleTimeRequirement
       role: JobMedicalDoctor
       time: 21600 #6 hrs
-    - !type:DepartmentTimeRequirement
-      department: Medical
-      time: 36000 #10 hrs
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Medical # SpaceFactory
+#      time: 36000 #10 hrs # SpaceFactory
     - !type:OverallPlaytimeRequirement
       time: 144000 #40 hrs
   weight: 10
@@ -36,6 +36,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: CMOGear

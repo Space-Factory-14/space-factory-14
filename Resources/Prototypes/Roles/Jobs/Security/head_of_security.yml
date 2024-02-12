@@ -10,9 +10,9 @@
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 36000 #10 hrs
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 108000 # 30 hrs
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Security # SpaceFactory
+#      time: 108000 # 30 hrs # SpaceFactory
     - !type:OverallPlaytimeRequirement
       time: 144000 #40 hrs
   weight: 10
@@ -37,6 +37,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: HoSGear

@@ -13,6 +13,7 @@
   access:
   - Research
   - Maintenance
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: ScientistGear

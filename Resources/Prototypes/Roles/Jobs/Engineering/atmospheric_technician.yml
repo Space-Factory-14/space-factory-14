@@ -15,6 +15,7 @@
   - Engineering
   - External
   - Atmospherics
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: AtmosphericTechnicianGear

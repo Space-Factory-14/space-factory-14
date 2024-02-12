@@ -54,10 +54,12 @@
   description: department-Engineering-description
   color: "#EFB341"
   roles:
-  - AtmosphericTechnician
+  # - AtmosphericTechnician
   - ChiefEngineer
   - StationEngineer
   - TechnicalAssistant
+#  primary: true # SpaceFactory
+#  weight: 100 # SpaceFactory
 
 - type: department
   id: Medical

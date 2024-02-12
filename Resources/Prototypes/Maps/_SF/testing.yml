@@ -2,7 +2,7 @@
   id: TestingMap
   mapName: 'Testing Station'
   mapPath: /Maps/_SF/testingmap.yml
-  minPlayers: 50
+  minPlayers: 0
   stations:
     Boxstation:
       stationProto: StandardNanotrasenStation
@@ -16,7 +16,7 @@
           emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml
         - type: StationJobs
           overflowJobs:
-            - Passenger
+            - StationEngineer
           availableJobs:
             #engineering
             ChiefEngineer: [ 1, 1 ]

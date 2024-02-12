@@ -4,9 +4,9 @@
   description: job-description-salvagespec
   playTimeTracker: JobSalvageSpecialist
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: Cargo
-      time: 10800 # 3 hrs
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Cargo # SpaceFactory
+#      time: 10800 # 3 hrs # SpaceFactory
     - !type:OverallPlaytimeRequirement
       time: 36000 #10 hrs
   icon: "JobIconShaftMiner"
@@ -17,6 +17,7 @@
   - Salvage
   - Maintenance
   - External
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: SalvageSpecialistGear

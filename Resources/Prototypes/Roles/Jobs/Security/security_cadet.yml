@@ -6,10 +6,10 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 36000 #10 hrs
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 54000 #15 hrs
-      inverted: true # stop playing intern if you're good at security!
+#    - !type:DepartmentTimeRequirement # SpaceFactory
+#      department: Security # SpaceFactory
+#      time: 54000 #15 hrs # SpaceFactory
+#      inverted: true # stop playing intern if you're good at security! # SpaceFactory
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
@@ -21,6 +21,7 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: SecurityCadetGear

@@ -17,6 +17,7 @@
   extendedAccess:
   - Kitchen
   - Hydroponics
+  setPreference: false # SpaceFactory
 
 - type: startingGear
   id: BartenderGear

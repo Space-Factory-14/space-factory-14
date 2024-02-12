@@ -105,7 +105,7 @@ namespace Content.Shared.CCVar
         ///     Controls if the game should run station events
         /// </summary>
         public static readonly CVarDef<bool>
-            EventsEnabled = CVarDef.Create("events.enabled", true, CVar.ARCHIVE | CVar.SERVERONLY);
+            EventsEnabled = CVarDef.Create("events.enabled", false, CVar.ARCHIVE | CVar.SERVERONLY);
 
         /// <summary>
         ///     Average time (in minutes) for when the ramping event scheduler should stop increasing the chaos modifier.
@@ -153,13 +153,13 @@ namespace Content.Shared.CCVar
         ///     Controls the default game preset.
         /// </summary>
         public static readonly CVarDef<string>
-            GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "secret", CVar.ARCHIVE);
+            GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "Greenshift", CVar.ARCHIVE);
 
         /// <summary>
         ///     Controls if the game can force a different preset if the current preset's criteria are not met.
         /// </summary>
         public static readonly CVarDef<bool>
-            GameLobbyFallbackEnabled = CVarDef.Create("game.fallbackenabled", true, CVar.ARCHIVE);
+            GameLobbyFallbackEnabled = CVarDef.Create("game.fallbackenabled", false, CVar.ARCHIVE);
 
         /// <summary>
         ///     The preset for the game to fall back to if the selected preset could not be used, and fallback is enabled.
@@ -171,13 +171,13 @@ namespace Content.Shared.CCVar
         ///     Controls if people can win the game in Suspicion or Deathmatch.
         /// </summary>
         public static readonly CVarDef<bool>
-            GameLobbyEnableWin = CVarDef.Create("game.enablewin", true, CVar.ARCHIVE);
+            GameLobbyEnableWin = CVarDef.Create("game.enablewin", false, CVar.ARCHIVE);
 
         /// <summary>
         ///     Controls the maximum number of character slots a player is allowed to have.
         /// </summary>
         public static readonly CVarDef<int>
-            GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 10, CVar.ARCHIVE | CVar.SERVERONLY);
+            GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 2, CVar.ARCHIVE | CVar.SERVERONLY);
 
         /// <summary>
         ///     Controls the game map prototype to load. SS14 stores these prototypes in Prototypes/Maps.
@@ -227,13 +227,13 @@ namespace Content.Shared.CCVar
         /// Whether or not disconnecting inside of a cryopod should remove the character or just store them until they reconnect.
         /// </summary>
         public static readonly CVarDef<bool>
-            GameCryoSleepRejoining = CVarDef.Create("game.cryo_sleep_rejoining", false, CVar.SERVER | CVar.REPLICATED);
+            GameCryoSleepRejoining = CVarDef.Create("game.cryo_sleep_rejoining", true, CVar.SERVER | CVar.REPLICATED);
 
         /// <summary>
         ///     Whether a random position offset will be applied to the station on roundstart.
         /// </summary>
         public static readonly CVarDef<bool> StationOffset =
-            CVarDef.Create("game.station_offset", true);
+            CVarDef.Create("game.station_offset", false);
 
         /// <summary>
         /// When the default blueprint is loaded what is the maximum amount it can be offset from 0,0.
@@ -246,7 +246,7 @@ namespace Content.Shared.CCVar
         ///     Whether a random rotation will be applied to the station on roundstart.
         /// </summary>
         public static readonly CVarDef<bool> StationRotation =
-            CVarDef.Create("game.station_rotation", true);
+            CVarDef.Create("game.station_rotation", false);
 
         /// <summary>
         ///     When enabled, guests will be assigned permanent UIDs and will have their preferences stored.
@@ -264,19 +264,19 @@ namespace Content.Shared.CCVar
         /// Whether or not panic bunker is currently enabled.
         /// </summary>
         public static readonly CVarDef<bool> PanicBunkerEnabled =
-            CVarDef.Create("game.panic_bunker.enabled", false, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("game.panic_bunker.enabled", true, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
 
         /// <summary>
         /// Whether or not the panic bunker will disable when an admin comes online.
         /// </summary>
         public static readonly CVarDef<bool> PanicBunkerDisableWithAdmins =
-            CVarDef.Create("game.panic_bunker.disable_with_admins", false, CVar.SERVERONLY);
+            CVarDef.Create("game.panic_bunker.disable_with_admins", true, CVar.SERVERONLY);
 
         /// <summary>
         /// Whether or not the panic bunker will enable when no admins are online.
         /// </summary>
         public static readonly CVarDef<bool> PanicBunkerEnableWithoutAdmins =
-            CVarDef.Create("game.panic_bunker.enable_without_admins", false, CVar.SERVERONLY);
+            CVarDef.Create("game.panic_bunker.enable_without_admins", true, CVar.SERVERONLY);
 
         /// <summary>
         /// Whether or not the panic bunker will count deadminned admins for
@@ -290,7 +290,7 @@ namespace Content.Shared.CCVar
         /// Show reason of disconnect for user or not.
         /// </summary>
         public static readonly CVarDef<bool> PanicBunkerShowReason =
-            CVarDef.Create("game.panic_bunker.show_reason", false, CVar.SERVERONLY);
+            CVarDef.Create("game.panic_bunker.show_reason", true, CVar.SERVERONLY);
 
         /// <summary>
         /// Minimum age of the account (from server's PoV, so from first-seen date) in minutes.
@@ -302,7 +302,7 @@ namespace Content.Shared.CCVar
         /// Minimal overall played time.
         /// </summary>
         public static readonly CVarDef<int> PanicBunkerMinOverallHours =
-            CVarDef.Create("game.panic_bunker.min_overall_hours", 10, CVar.SERVERONLY);
+            CVarDef.Create("game.panic_bunker.min_overall_hours", 1, CVar.SERVERONLY);
 
         /// <summary>
         /// A custom message that will be used for connections denied to the panic bunker
@@ -361,7 +361,7 @@ namespace Content.Shared.CCVar
         /// Defaults to 2 minutes.
         /// </summary>
         public static readonly CVarDef<float> RoundRestartTime =
-            CVarDef.Create("game.round_restart_time", 120f, CVar.SERVERONLY);
+            CVarDef.Create("game.round_restart_time", 300f, CVar.SERVERONLY);
 
         /// <summary>
         /// The prototype to use for secret weights.
@@ -757,7 +757,7 @@ namespace Content.Shared.CCVar
         /// Should users be able to see their own notes? Admins will be able to see and set notes regardless
         /// </summary>
         public static readonly CVarDef<bool> SeeOwnNotes =
-            CVarDef.Create("admin.see_own_notes", false, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("admin.see_own_notes", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
 
         /// <summary>
         /// The amount of days before the note starts fading. It will slowly lose opacity until it reaches stale. Set to 0 to disable.

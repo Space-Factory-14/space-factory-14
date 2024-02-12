@@ -1,16 +1,17 @@
 - type: gameMapPool
   id: DefaultMapPool
   maps:
-  - Atlas
-  - Bagel
-  - Box
-  - Cluster
-  - Core
-  - Fland
-  - Marathon
-  - Meta
-  - Omega
-  - Origin
-  - Saltern
-  - Packed
-  - Reach
+  # - Atlas
+  # - Bagel
+  # - Box
+  # - Cluster
+  # - Core
+  # - Fland
+  # - Marathon
+  # - Meta
+  # - Omega
+  # - Origin
+  # - Saltern
+  # - Packed
+  # - Reach
+   - Testing

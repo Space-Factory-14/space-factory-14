@@ -6,3 +6,18 @@
 #
 # - /Prototypes/Guidebook
 # - /Prototypes/Catalog/uplink_catalog.yml
+ - /Prototypes/Maps/arenas.yml
+ - /Prototypes/Maps/atlas.yml
+ - /Prototypes/Maps/bagel.yml
+ - /Prototypes/Maps/box.yml
+ - /Prototypes/Maps/cluster.yml
+ - /Prototypes/Maps/core.yml
+ - /Prototypes/Maps/europa.yml
+ - /Prototypes/Maps/fland.yml
+ - /Prototypes/Maps/marathon.yml
+ - /Prototypes/Maps/meta.yml
+ - /Prototypes/Maps/omega.yml
+ - /Prototypes/Maps/origin.yml
+ - /Prototypes/Maps/packed.yml
+ - /Prototypes/Maps/reach.yml
+ - /Prototypes/Maps/saltern.yml

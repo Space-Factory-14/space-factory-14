@@ -17,7 +17,6 @@ entities:
   - uid: 31
     components:
     - type: MetaData
-      name: map 190
     - type: Transform
     - type: Map
     - type: PhysicsMap
@@ -29,7 +28,6 @@ entities:
   - uid: 603
     components:
     - type: MetaData
-      name: NT Evac Box
     - type: Transform
       pos: 2.2710133,-2.4148211
       parent: 31
@@ -60,6 +58,8 @@ entities:
       bodyType: Dynamic
     - type: Fixtures
       fixtures: {}
+    - type: BecomesStation
+      id: EmergencyPlanet
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg

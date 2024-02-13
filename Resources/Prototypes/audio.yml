@@ -26,14 +26,14 @@
   rules: NearMedical
   priority: 3
 
-- type: ambientMusic
-  id: Engineering
-  sound:
-    params:
-      volume: -12
-    collection: AmbienceEngineering
-  rules: NearEngineering
-  priority: 3
+#- type: ambientMusic # SpaceFactory
+#  id: Engineering
+#  sound:
+#    params:
+#      volume: -12
+#    collection: AmbienceEngineering
+#  rules: NearEngineering
+#  priority: 3
 
 # General areas
 - type: ambientMusic
@@ -217,13 +217,13 @@
       range: 3
 
 # TODO
-- type: rules
-  id: NearEngineering
-  rules:
-    - !type:NearbyAccessRule
-      access:
-        - Engineering
-      range: 3
+#- type: rules # SpaceFactory
+#  id: NearEngineering
+#  rules:
+#    - !type:NearbyAccessRule
+#      access:
+#        - Engineering
+#      range: 3
 
 - type: rules
   id: NearMaintenance

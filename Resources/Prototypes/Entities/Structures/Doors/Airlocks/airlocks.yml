@@ -14,7 +14,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/engineering.rsi
   - type: PaintableAirlock
-    department: Engineering
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: AirlockEngineering
@@ -32,7 +32,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/cargo.rsi
   - type: PaintableAirlock
-    department: Cargo
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -42,7 +42,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/medical.rsi
   - type: PaintableAirlock
-    department: Medical
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: AirlockMedical
@@ -65,7 +65,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/science.rsi
   - type: PaintableAirlock
-    department: Science
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -77,7 +77,7 @@
   - type: WiresPanelSecurity
     securityLevel: medSecurity
   - type: PaintableAirlock
-    department: Command
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -87,7 +87,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/security.rsi
   - type: PaintableAirlock
-    department: Security
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -214,7 +214,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/cargo.rsi
   - type: PaintableAirlock
-    department: Cargo
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -224,7 +224,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/medical.rsi
   - type: PaintableAirlock
-    department: Medical
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: AirlockMedicalGlass
@@ -247,7 +247,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/science.rsi
   - type: PaintableAirlock
-    department: Science
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -257,7 +257,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/command.rsi
   - type: PaintableAirlock
-    department: Command
+    department: Engineering # SpaceFactory
   - type: WiresPanelSecurity
     securityLevel: medSecurity
 
@@ -269,7 +269,7 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/security.rsi
   - type: PaintableAirlock
-    department: Security
+    department: Engineering # SpaceFactory
 
 - type: entity
   parent: AirlockSecurityGlass # see standard

@@ -134,7 +134,7 @@
     mode: NoSprite
   - type: PaintableAirlock
     group: Standard
-    department: Civilian
+    department: Engineering # SpaceFactory Civilian<Engineering
   - type: AccessReader
   - type: StaticPrice
     price: 150

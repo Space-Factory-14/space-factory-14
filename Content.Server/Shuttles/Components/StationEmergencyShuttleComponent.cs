@@ -1,4 +1,4 @@
-﻿using Content.Server.Shuttles.Systems;
+using Content.Server.Shuttles.Systems;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
 
@@ -21,4 +21,10 @@ public sealed partial class StationEmergencyShuttleComponent : Component
     /// </summary>
     [DataField("emergencyShuttlePath", customTypeSerializer: typeof(ResPathSerializer))]
     public ResPath EmergencyShuttlePath { get; set; } = new("/Maps/Shuttles/emergency.yml");
+
+    /// <summary>
+    /// SpaceFactory - Allow skiping the FTL dock test.
+    /// </summary>
+    [ViewVariables, Access(typeof(ShuttleSystem), typeof(EmergencyShuttleSystem), Friend = AccessPermissions.ReadWrite)]
+    public bool Enabled = true;
 }

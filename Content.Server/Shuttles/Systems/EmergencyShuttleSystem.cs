@@ -478,7 +478,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             return;
         }
 
-        if (!component.Enabled)
+        if (!component.Enabled) // SpaceFactory - Skip shuttle test
             return;
 
         // Load escape shuttle
@@ -491,7 +491,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             LoadMap = false,
         });
 
-        if (shuttle == null) // SpaceFactory - Skip shuttle test
+        if (shuttle == null)
         {
             _sawmill.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(uid)}");
             return;

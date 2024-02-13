@@ -35,6 +35,8 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  accessGroups:
+  - AllAccess
 
 - type: startingGear
   id: ChiefEngineerGear

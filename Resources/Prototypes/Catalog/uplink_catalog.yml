@@ -1138,10 +1138,10 @@
     Telecrystal: 4
   categories:
   - UplinkJob
-  conditions:
-    - !type:BuyerDepartmentCondition
-      whitelist:
-      - Science
+#  conditions: # SpaceFactory
+#    - !type:BuyerDepartmentCondition # SpaceFactory
+#      whitelist: # SpaceFactory
+#      - Science # SpaceFactory
 
 - type: listing
   id: uplinkProximityMine

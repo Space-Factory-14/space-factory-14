@@ -264,6 +264,9 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             return;
         }
 
+        if (!stationShuttle.Enabled) // SpaceFactory - Skip shuttle test
+            return;
+
         var targetGrid = _station.GetLargestGrid(Comp<StationDataComponent>(stationUid));
 
         // UHH GOOD LUCK
@@ -477,9 +480,6 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         {
             return;
         }
-
-        if (!component.Enabled) // SpaceFactory - Skip shuttle test
-            return;
 
         // Load escape shuttle
         var shuttlePath = component.EmergencyShuttlePath;

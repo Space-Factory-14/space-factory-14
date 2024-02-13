@@ -488,7 +488,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             LoadMap = false,
         });
 
-        if (shuttle == null)
+        if (shuttle == null && component.Enabled)
         {
             _sawmill.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(uid)}");
             return;

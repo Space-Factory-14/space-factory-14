@@ -52,7 +52,7 @@ namespace Content.IntegrationTests.Tests
 //            "Omega",
 //            "Bagel",
 //            "Origin",
-//            "CentComm",
+            "CentComm",
 //            "Box",
 //            "Europa",
 //            "Saltern",

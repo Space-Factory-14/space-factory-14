@@ -206,10 +206,8 @@ namespace Content.IntegrationTests.Tests
                 // Test shuttle can dock.
                 // This is done inside gamemap test because loading the map takes ages and we already have it.
                 var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
-                if ((entManager.TryGetComponent<StationEmergencyShuttleComponent>(station, out var stationEvac)) && stationEvac.Enabled) // SpaceFactory - Skip test.
+                if (entManager.TryGetComponent<StationEmergencyShuttleComponent>(station, out var stationEvac) && stationEvac.Enabled) // SpaceFactory - Skip test.
                 {
-                    if (!stationEvac.Enabled) // SpaceFactory - Skip shuttle test
-                    {
                         var shuttlePath = stationEvac.EmergencyShuttlePath;
 #pragma warning disable NUnit2045
                         Assert.That(mapLoader.TryLoad(shuttleMap, shuttlePath.ToString(), out var roots));

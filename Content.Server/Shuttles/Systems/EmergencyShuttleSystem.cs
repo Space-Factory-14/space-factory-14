@@ -488,7 +488,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             LoadMap = false,
         });
 
-        if (shuttle == null && component.Enabled)
+        if (shuttle == null && component.Enabled) // SpaceFactory - Skip shuttle test
         {
             _sawmill.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(uid)}");
             return;

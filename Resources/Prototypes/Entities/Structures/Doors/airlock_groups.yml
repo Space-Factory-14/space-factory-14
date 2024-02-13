@@ -64,13 +64,13 @@
   id: Departments
   departments:
     atmospherics: Engineering
-    basic: Engineering
-    cargo: Engineering
-    command: Engineering
+    basic: Engineering # SpaceFactory
+    cargo: Engineering # SpaceFactory
+    command: Engineering # SpaceFactory
     engineering: Engineering
-    freezer: Engineering
-    maintenance: Engineering
-    medical: Engineering
-    science: Engineering
-    security: Engineering
-    virology: Engineering
+    freezer: Engineering # SpaceFactory
+    maintenance: Engineering # SpaceFactory
+    medical: Engineering # SpaceFactory
+    science: Engineering # SpaceFactory
+    security: Engineering # SpaceFactory
+    virology: Engineering # SpaceFactory

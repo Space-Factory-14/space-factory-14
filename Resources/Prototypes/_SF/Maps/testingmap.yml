@@ -1,0 +1,23 @@
+- type: gameMap
+  id: TestingMap
+  mapName: 'Testing Station'
+  mapPath: /Maps/_SF/testingmap.yml
+  minPlayers: 0
+  stations:
+    Boxstation:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Testing Station {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TG'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml
+        - type: StationJobs
+          overflowJobs:
+            - StationEngineer
+          availableJobs:
+            #engineering
+            ChiefEngineer: [ 1, 1 ]
+            StationEngineer: [ -1, -1 ]

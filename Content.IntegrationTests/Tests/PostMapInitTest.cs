@@ -45,22 +45,23 @@ namespace Content.IntegrationTests.Tests
         {
             "Dev",
             "TestTeg",
-            "Fland",
-            "Meta",
-            "Packed",
-            "Cluster",
-            "Omega",
-            "Bagel",
-            "Origin",
+//            "Fland",
+//            "Meta",
+//            "Packed",
+//            "Cluster",
+//            "Omega",
+//            "Bagel",
+//            "Origin",
             "CentComm",
-            "Box",
-            "Europa",
-            "Saltern",
-            "Core",
-            "Marathon",
-            "MeteorArena",
-            "Atlas",
-            "Reach"    
+//            "Box",
+//            "Europa",
+//            "Saltern",
+//            "Core",
+//            "Marathon",
+//            "MeteorArena",
+//            "Atlas",
+//            "Reach"
+            "TestingMap"
         };
 
         /// <summary>

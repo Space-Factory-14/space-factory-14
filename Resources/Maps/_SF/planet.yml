@@ -30,6 +30,8 @@ entities:
     - type: SpreaderGrid
     - type: GridPathfinding
     - type: Gravity
+      enabledVV: true
+      enabled: true
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
     - type: DecalGrid

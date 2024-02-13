@@ -5,7 +5,7 @@
   suffix: Service, Locked
   components:
   - type: AccessReader
-    access: [["Service"]]
+#    [["Service"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -13,7 +13,7 @@
   suffix: Lawyer, Locked
   components:
   - type: AccessReader
-    access: [["Lawyer"]]
+#    [["Lawyer"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -21,7 +21,7 @@
   suffix: Theatre, Locked
   components:
   - type: AccessReader
-    access: [["Theatre"]]
+#    [["Theatre"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -29,7 +29,7 @@
   suffix: Chapel, Locked
   components:
   - type: AccessReader
-    access: [["Chapel"]]
+#    [["Chapel"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -37,7 +37,7 @@
   suffix: Janitor, Locked
   components:
   - type: AccessReader
-    access: [["Janitor"]]
+#    [["Janitor"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -45,7 +45,7 @@
   suffix: Kitchen, Locked
   components:
   - type: AccessReader
-    access: [["Kitchen"]]
+#    [["Kitchen"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -53,7 +53,7 @@
   suffix: Bar, Locked
   components:
   - type: AccessReader
-    access: [["Bar"]]
+#    [["Bar"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -61,7 +61,7 @@
   suffix: Hydroponics, Locked
   components:
   - type: AccessReader
-    access: [["Hydroponics"]]
+#    [["Hydroponics"]] # SpaceFactory
 
 - type: entity
   parent: Airlock
@@ -69,7 +69,7 @@
   suffix: Captain, Locked
   components:
   - type: AccessReader
-    access: [["Captain"]]
+#    [["Captain"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternal
@@ -77,7 +77,7 @@
   suffix: External, Locked
   components:
   - type: AccessReader
-    access: [["External"]]
+#    [["External"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternal
@@ -85,7 +85,7 @@
   suffix: External, Cargo, Locked
   components:
   - type: AccessReader
-    access: [["Cargo"]]
+#    [["Cargo"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternal
@@ -93,7 +93,7 @@
   suffix: External, Engineering, Locked
   components:
   - type: AccessReader
-    access: [["Engineering"]]
+#    [["Engineering"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternal
@@ -101,7 +101,7 @@
   suffix: External, Atmospherics, Locked
   components:
   - type: AccessReader
-    access: [["Atmospherics"]]
+#    [["Atmospherics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternal
@@ -109,7 +109,7 @@
   suffix: External, Syndicate, Locked
   components:
   - type: AccessReader
-    access: [["SyndicateAgent"]]
+#    [["SyndicateAgent"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternal
@@ -117,7 +117,7 @@
   suffix: External, Nukeop, Locked
   components:
   - type: AccessReader
-    access: [["NuclearOperative"]]
+#    [["NuclearOperative"]] # SpaceFactory
 
 - type: entity
   parent: AirlockFreezer
@@ -125,7 +125,7 @@
   suffix: Kitchen, Locked
   components:
   - type: AccessReader
-    access: [["Kitchen"]]
+#    [["Kitchen"]] # SpaceFactory
 
 - type: entity
   parent: AirlockFreezer
@@ -133,7 +133,7 @@
   suffix: Kitchen/Hydroponics, Locked
   components:
   - type: AccessReader
-    access: [["Kitchen"], ["Hydroponics"]]
+#    [["Kitchen"], ["Hydroponics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockFreezer
@@ -141,7 +141,7 @@
   suffix: Hydroponics, Locked
   components:
   - type: AccessReader
-    access: [["Hydroponics"]]
+#    [["Hydroponics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockEngineering
@@ -149,7 +149,7 @@
   suffix: Engineering, Locked
   components:
   - type: AccessReader
-    access: [["Engineering"]]
+#    [["Engineering"]] # SpaceFactory
 
 - type: entity
   parent: AirlockAtmospherics
@@ -157,7 +157,7 @@
   suffix: Atmospherics, Locked
   components:
   - type: AccessReader
-    access: [["Atmospherics"]]
+#    [["Atmospherics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCargo
@@ -165,7 +165,7 @@
   suffix: Cargo, Locked
   components:
   - type: AccessReader
-    access: [["Cargo"]]
+#    [["Cargo"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCargo
@@ -173,7 +173,7 @@
   suffix: Salvage, Locked
   components:
   - type: AccessReader
-    access: [["Salvage"]]
+#    [["Salvage"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMining
@@ -181,7 +181,7 @@
   suffix: Mining(Salvage), Locked
   components:
   - type: AccessReader
-    access: [["Salvage"]]
+#    [["Salvage"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMedical
@@ -189,7 +189,7 @@
   suffix: Medical, Locked
   components:
   - type: AccessReader
-    access: [["Medical"]]
+#    [["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockVirology
@@ -197,7 +197,7 @@
   suffix: Virology, Locked
   components:
   - type: AccessReader
-    access: [["Medical"]]
+#    [["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockChemistry
@@ -205,7 +205,7 @@
   suffix: Chemistry, Locked
   components:
   - type: AccessReader
-    access: [["Chemistry"]]
+#    [["Chemistry"]] # SpaceFactory
 
 - type: entity
   parent: AirlockScience
@@ -213,7 +213,7 @@
   suffix: Science, Locked
   components:
   - type: AccessReader
-    access: [["Research"]]
+#    [["Research"]] # SpaceFactory
 
 - type: entity
   parent: AirlockScience
@@ -221,7 +221,7 @@
   suffix: Medical/Science, Locked
   components:
   - type: AccessReader
-    access: [["Research"], ["Medical"]]
+#    [["Research"], ["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCentralCommand
@@ -229,7 +229,7 @@
   suffix: Central Command, Locked
   components:
   - type: AccessReader
-    access: [["CentralCommand"]]
+#    [["CentralCommand"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockCommand
 
@@ -239,7 +239,7 @@
   suffix: Command, Locked
   components:
   - type: AccessReader
-    access: [["Command"]]
+#    [["Command"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockCommand
 
@@ -249,7 +249,7 @@
   suffix: Captain, Locked
   components:
   - type: AccessReader
-    access: [["Captain"]]
+#    [["Captain"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommand
@@ -257,7 +257,7 @@
   suffix: ChiefMedicalOfficer, Locked
   components:
   - type: AccessReader
-    access: [["ChiefMedicalOfficer"]]
+#    [["ChiefMedicalOfficer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommand
@@ -265,7 +265,7 @@
   suffix: ChiefEngineer, Locked
   components:
   - type: AccessReader
-    access: [["ChiefEngineer"]]
+#    [["ChiefEngineer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommand
@@ -273,7 +273,7 @@
   suffix: HeadOfSecurity, Locked
   components:
   - type: AccessReader
-    access: [["HeadOfSecurity"]]
+#    [["HeadOfSecurity"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommand
@@ -281,7 +281,7 @@
   suffix: ResearchDirector, Locked
   components:
   - type: AccessReader
-    access: [["ResearchDirector"]]
+#    [["ResearchDirector"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommand
@@ -289,7 +289,7 @@
   suffix: HeadOfPersonnel, Locked
   components:
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+#    [["HeadOfPersonnel"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommand
@@ -297,7 +297,7 @@
   suffix: Quartermaster, Locked
   components:
   - type: AccessReader
-    access: [["Quartermaster"]]
+#    [["Quartermaster"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSecurity
@@ -305,7 +305,7 @@
   suffix: Security, Locked
   components:
   - type: AccessReader
-    access: [["Security"]]
+#    [["Security"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockSecurity
 
@@ -315,7 +315,7 @@
   suffix: Detective, Locked
   components:
   - type: AccessReader
-    access: [["Detective"]]
+#    [["Detective"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockSecurity
 
@@ -325,7 +325,7 @@
   suffix: Brig, Locked
   components:
   - type: AccessReader
-    access: [["Brig"]]
+#    [["Brig"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockSecurity
 
@@ -335,7 +335,7 @@
   suffix: Security/Lawyer, Locked
   components:
   - type: AccessReader
-    access: [["Security"], ["Lawyer"]]
+#    [["Security"], ["Lawyer"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockSecurity
 
@@ -345,7 +345,7 @@
   suffix: Armory, Locked
   components:
   - type: AccessReader
-    access: [["Armory"]]
+#    [["Armory"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockArmory
 
@@ -355,7 +355,7 @@
   suffix: Vault, Locked
   components:
   - type: AccessReader
-    access: [["Security", "Command"]]
+#    [["Security", "Command"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommand
@@ -363,7 +363,7 @@
   suffix: EVA, Locked
   components:
   - type: AccessReader
-    access: [["External"]]
+#    [["External"]] # SpaceFactory
 
 # Glass Airlocks
 - type: entity
@@ -372,7 +372,7 @@
   suffix: Service, Locked
   components:
   - type: AccessReader
-    access: [["Service"]]
+#    [["Service"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -380,7 +380,7 @@
   suffix: Lawyer, Locked
   components:
   - type: AccessReader
-    access: [["Lawyer"]]
+#    [["Lawyer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -388,7 +388,7 @@
   suffix: Bar, Locked
   components:
   - type: AccessReader
-    access: [["Bar"]]
+#    [["Bar"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternalGlass
@@ -396,7 +396,7 @@
   suffix: External, Glass, Locked
   components:
   - type: AccessReader
-    access: [["External"]]
+#    [["External"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternalGlass
@@ -404,7 +404,7 @@
   suffix: External, Glass, Cargo, Locked
   components:
   - type: AccessReader
-    access: [["Cargo"]]
+#    [["Cargo"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternalGlass
@@ -412,7 +412,7 @@
   suffix: External, Glass, Syndicate, Locked
   components:
   - type: AccessReader
-    access: [["SyndicateAgent"]]
+#    [["SyndicateAgent"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternalGlass
@@ -420,7 +420,7 @@
   suffix: External, Glass, Nukeop, Locked
   components:
   - type: AccessReader
-    access: [["NuclearOperative"]]
+#    [["NuclearOperative"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternalGlass
@@ -428,7 +428,7 @@
   suffix: External, Glass, Engineering, Locked
   components:
   - type: AccessReader
-    access: [["Engineering"]]
+#    [["Engineering"]] # SpaceFactory
 
 - type: entity
   parent: AirlockExternalGlass
@@ -436,7 +436,7 @@
   suffix: External, Glass, Atmospherics, Locked
   components:
   - type: AccessReader
-    access: [["Atmospherics"]]
+#    [["Atmospherics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -444,7 +444,7 @@
   suffix: Kitchen, Locked
   components:
   - type: AccessReader
-    access: [["Kitchen"]]
+#    [["Kitchen"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -452,7 +452,7 @@
   suffix: Hydroponics, Locked
   components:
   - type: AccessReader
-    access: [["Hydroponics"]]
+#    [["Hydroponics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -460,7 +460,7 @@
   suffix: Chapel, Locked
   components:
   - type: AccessReader
-    access: [["Chapel"]]
+#    [["Chapel"]] # SpaceFactory
 
 - type: entity
   parent: AirlockEngineeringGlass
@@ -468,7 +468,7 @@
   suffix: Engineering, Locked
   components:
   - type: AccessReader
-    access: [["Engineering"]]
+#    [["Engineering"]] # SpaceFactory
 
 - type: entity
   parent: AirlockAtmosphericsGlass
@@ -476,7 +476,7 @@
   suffix: Atmospherics, Locked
   components:
   - type: AccessReader
-    access: [["Atmospherics"]]
+#    [["Atmospherics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCargoGlass
@@ -484,7 +484,7 @@
   suffix: Cargo, Locked
   components:
   - type: AccessReader
-    access: [["Cargo"]]
+#    [["Cargo"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCargoGlass
@@ -492,7 +492,7 @@
   suffix: Salvage, Locked
   components:
   - type: AccessReader
-    access: [["Salvage"]]
+#    [["Salvage"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMiningGlass
@@ -500,7 +500,7 @@
   suffix: Mining(Salvage), Locked
   components:
   - type: AccessReader
-    access: [["Salvage"]]
+#    [["Salvage"]] # SpaceFactory
     
 - type: entity
   parent: AirlockChemistryGlass
@@ -508,7 +508,7 @@
   suffix: Chemistry, Locked
   components:
   - type: AccessReader
-    access: [["Chemistry"]]
+#    [["Chemistry"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMedicalGlass
@@ -516,7 +516,7 @@
   suffix: Medical, Locked
   components:
   - type: AccessReader
-    access: [["Medical"]]
+#    [["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockVirologyGlass
@@ -524,7 +524,7 @@
   suffix: Virology, Locked
   components:
   - type: AccessReader
-    access: [["Medical"]]
+#    [["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockScienceGlass
@@ -532,7 +532,7 @@
   suffix: Science, Locked
   components:
   - type: AccessReader
-    access: [["Research"]]
+#    [["Research"]] # SpaceFactory
 
 - type: entity
   parent: AirlockScienceGlass
@@ -540,7 +540,7 @@
   suffix: Medical/Science, Locked
   components:
   - type: AccessReader
-    access: [["Research"], ["Medical"]]
+#    [["Research"], ["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCentralCommandGlass
@@ -548,7 +548,7 @@
   suffix: Central Command, Locked
   components:
   - type: AccessReader
-    access: [["CentralCommand"]]
+#    [["CentralCommand"]] # SpaceFactory
   - type: Wires
     layoutId: AirlockCommand
 
@@ -558,7 +558,7 @@
   suffix: Command, Locked
   components:
   - type: AccessReader
-    access: [["Command"]]
+#    [["Command"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlass
@@ -566,7 +566,7 @@
   suffix: Captain, Locked
   components:
   - type: AccessReader
-    access: [["Captain"]]
+#    [["Captain"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlass
@@ -574,7 +574,7 @@
   suffix: ChiefMedicalOfficer, Locked
   components:
   - type: AccessReader
-    access: [["ChiefMedicalOfficer"]]
+#    [["ChiefMedicalOfficer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlass
@@ -582,7 +582,7 @@
   suffix: ChiefEngineer, Locked
   components:
   - type: AccessReader
-    access: [["ChiefEngineer"]]
+#    [["ChiefEngineer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlass
@@ -590,7 +590,7 @@
   suffix: HeadOfSecurity, Locked
   components:
   - type: AccessReader
-    access: [["HeadOfSecurity"]]
+#    [["HeadOfSecurity"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlass
@@ -598,7 +598,7 @@
   suffix: ResearchDirector, Locked
   components:
   - type: AccessReader
-    access: [["ResearchDirector"]]
+#    [["ResearchDirector"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlass
@@ -606,7 +606,7 @@
   suffix: HeadOfPersonnel, Locked
   components:
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+#    [["HeadOfPersonnel"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlass
@@ -614,7 +614,7 @@
   suffix: Quartermaster, Locked
   components:
   - type: AccessReader
-    access: [["Quartermaster"]]
+#    [["Quartermaster"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -622,7 +622,7 @@
   suffix: Security, Locked
   components:
   - type: AccessReader
-    access: [["Security"]]
+#    [["Security"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -630,7 +630,7 @@
   suffix: Detective, Locked
   components:
   - type: AccessReader
-    access: [["Detective"]]
+#    [["Detective"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -638,7 +638,7 @@
   suffix: Brig, Locked
   components:
   - type: AccessReader
-    access: [["Brig"]]
+#    [["Brig"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -646,7 +646,7 @@
   suffix: Security/Lawyer, Locked
   components:
   - type: AccessReader
-    access: [["Security"], ["Lawyer"]]
+#    [["Security"], ["Lawyer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -654,7 +654,7 @@
   suffix: Armory, Locked
   components:
   - type: AccessReader
-    access: [["Armory"]]
+#    [["Armory"]] # SpaceFactory
 
 - type: entity
   parent: AirlockCommandGlassLocked
@@ -662,7 +662,7 @@
   suffix: EVA, Locked
   components:
   - type: AccessReader
-    access: [["External"]]
+#    [["External"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSyndicateGlass
@@ -670,7 +670,7 @@
   suffix: Syndicate, Locked
   components:
   - type: AccessReader
-    access: [["SyndicateAgent"]]
+#    [["SyndicateAgent"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSyndicateGlass
@@ -678,7 +678,7 @@
   suffix: Nukeop, Locked
   components:
   - type: AccessReader
-    access: [["NuclearOperative"]]
+#    [["NuclearOperative"]] # SpaceFactory
 
 # Maintenance Hatches
 - type: entity
@@ -687,7 +687,7 @@
   suffix: Locked
   components:
   - type: AccessReader
-    access: [["Maintenance"]]
+#    [["Maintenance"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaintGlass
@@ -695,7 +695,7 @@
   suffix: Locked
   components:
   - type: AccessReader
-    access: [["Maintenance"]]
+#    [["Maintenance"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -703,7 +703,7 @@
   suffix: Salvage, Locked
   components:
   - type: AccessReader
-    access: [["Salvage"]]
+#    [["Salvage"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -711,7 +711,7 @@
   suffix: Cargo, Locked
   components:
   - type: AccessReader
-    access: [["Cargo"]]
+#    [["Cargo"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -719,7 +719,7 @@
   suffix: Command, Locked
   components:
   - type: AccessReader
-    access: [["Command"]]
+#    [["Command"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -727,7 +727,7 @@
   suffix: Common, Locked
   components:
   - type: AccessReader
-    access: [["Maintenance"]]
+#    [["Maintenance"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -735,7 +735,7 @@
   suffix: Engineering, Locked
   components:
   - type: AccessReader
-    access: [["Engineering"]]
+#    [["Engineering"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -743,7 +743,7 @@
   suffix: Atmospherics, Locked
   components:
   - type: AccessReader
-    access: [["Atmospherics"]]
+#    [["Atmospherics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -751,7 +751,7 @@
   suffix: Bar, Locked
   components:
   - type: AccessReader
-    access: [["Bar"]]
+#    [["Bar"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -759,7 +759,7 @@
   suffix: Chapel, Locked
   components:
   - type: AccessReader
-    access: [["Chapel"]]
+#    [["Chapel"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -767,7 +767,7 @@
   suffix: Hydroponics, Locked
   components:
   - type: AccessReader
-    access: [["Hydroponics"]]
+#    [["Hydroponics"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -775,7 +775,7 @@
   suffix: Janitor, Locked
   components:
   - type: AccessReader
-    access: [["Janitor"]]
+#    [["Janitor"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -783,7 +783,7 @@
   suffix: Lawyer, Locked
   components:
   - type: AccessReader
-    access: [["Lawyer"]]
+#    [["Lawyer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -791,7 +791,7 @@
   suffix: Service, Locked
   components:
   - type: AccessReader
-    access: [["Service"]]
+#    [["Service"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -799,7 +799,7 @@
   suffix: Theatre, Locked
   components:
   - type: AccessReader
-    access: [["Theatre"]]
+#    [["Theatre"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -807,7 +807,7 @@
   suffix: Kitchen, Locked
   components:
   - type: AccessReader
-    access: [["Kitchen"]]
+#    [["Kitchen"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -815,7 +815,7 @@
   suffix: Interior, Locked
   components:
   - type: AccessReader
-    access: [["Maintenance"]]
+#    [["Maintenance"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -823,7 +823,7 @@
   suffix: Medical, Locked
   components:
   - type: AccessReader
-    access: [["Medical"]]
+#    [["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -831,7 +831,7 @@
   suffix: Chemistry, Locked
   components:
   - type: AccessReader
-    access: [["Chemistry"]]
+#    [["Chemistry"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -839,7 +839,7 @@
   suffix: Science, Locked
   components:
   - type: AccessReader
-    access: [["Research"]]
+#    [["Research"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -847,7 +847,7 @@
   suffix: Medical/Science, Locked
   components:
   - type: AccessReader
-    access: [["Research"], ["Medical"]]
+#    [["Research"], ["Medical"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -855,7 +855,7 @@
   suffix: Security, Locked
   components:
   - type: AccessReader
-    access: [["Security"]]
+#    [["Security"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -863,7 +863,7 @@
   suffix: Detective, Locked
   components:
   - type: AccessReader
-    access: [["Detective"]]
+#    [["Detective"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -871,7 +871,7 @@
   suffix: HeadOfPersonnel, Locked
   components:
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+#    [["HeadOfPersonnel"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -879,7 +879,7 @@
   suffix: Captain, Locked
   components:
   - type: AccessReader
-    access: [["Captain"]]
+#    [["Captain"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -887,7 +887,7 @@
   suffix: ChiefEngineer, Locked
   components:
   - type: AccessReader
-    access: [["ChiefEngineer"]]
+#    [["ChiefEngineer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -895,7 +895,7 @@
   suffix: ChiefMedicalOfficer, Locked
   components:
   - type: AccessReader
-    access: [["ChiefMedicalOfficer"]]
+#    [["ChiefMedicalOfficer"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -903,7 +903,7 @@
   suffix: HeadOfSecurity, Locked
   components:
   - type: AccessReader
-    access: [["HeadOfSecurity"]]
+#    [["HeadOfSecurity"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -911,7 +911,7 @@
   suffix: ResearchDirector, Locked
   components:
   - type: AccessReader
-    access: [["ResearchDirector"]]
+#    [["ResearchDirector"]] # SpaceFactory
 
 - type: entity
   parent: AirlockMaint
@@ -919,7 +919,7 @@
   suffix: Armory, Locked
   components:
   - type: AccessReader
-    access: [["Armory"]]
+#    [["Armory"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSyndicate
@@ -927,7 +927,7 @@
   suffix: Syndicate, Locked
   components:
   - type: AccessReader
-    access: [["SyndicateAgent"]]
+#    [["SyndicateAgent"]] # SpaceFactory
 
 - type: entity
   parent: AirlockSyndicate
@@ -935,7 +935,7 @@
   suffix: Nukeop, Locked
   components:
   - type: AccessReader
-    access: [["NuclearOperative"]]
+#    [["NuclearOperative"]] # SpaceFactory
 
 # Shuttle airlocks
 - type: entity
@@ -944,7 +944,7 @@
   suffix: External, Docking, Locked
   components:
   - type: AccessReader
-    access: [["External"]]
+#    [["External"]] # SpaceFactory
 
 - type: entity
   parent: AirlockShuttleSyndicate
@@ -952,7 +952,7 @@
   suffix: External, Docking, Syndicate, Locked
   components:
   - type: AccessReader
-    access: [["SyndicateAgent"]]
+#    [["SyndicateAgent"]] # SpaceFactory
 
 - type: entity
   parent: AirlockShuttleSyndicate
@@ -960,7 +960,7 @@
   suffix: External, Docking, Nukeop, Locked
   components:
   - type: AccessReader
-    access: [["NuclearOperative"]]
+#    [["NuclearOperative"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlassShuttle
@@ -968,7 +968,7 @@
   suffix: External, Glass, Docking, Locked
   components:
   - type: AccessReader
-    access: [["External"]]
+#    [["External"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlassShuttleSyndicate
@@ -976,7 +976,7 @@
   suffix: Syndicate, Locked, Glass
   components:
   - type: AccessReader
-    access: [["SyndicateAgent"]]
+#    [["SyndicateAgent"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlassShuttleSyndicate
@@ -984,7 +984,7 @@
   suffix: Nukeop, Locked, Glass
   components:
   - type: AccessReader
-    access: [["NuclearOperative"]]
+#    [["NuclearOperative"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlassShuttle
@@ -994,7 +994,7 @@
     - type: PriorityDock
       tag: DockEmergency
     - type: AccessReader
-      access: [["External"]]
+  #    [["External"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlassShuttle
@@ -1018,7 +1018,7 @@
   suffix: Central Command, Locked
   components:
   - type: AccessReader
-    access: [["CentralCommand"]]
+#    [["CentralCommand"]] # SpaceFactory
 
 - type: entity
   parent: HighSecDoor
@@ -1026,7 +1026,7 @@
   suffix: Command, Locked
   components:
   - type: AccessReader
-    access: [["Command"]]
+#    [["Command"]] # SpaceFactory
 
 - type: entity
   parent: HighSecDoor
@@ -1034,7 +1034,7 @@
   suffix: Captain, Locked
   components:
   - type: AccessReader
-    access: [["Captain"]]
+#    [["Captain"]] # SpaceFactory
 
 - type: entity
   parent: HighSecDoor
@@ -1042,4 +1042,4 @@
   suffix: Armory, Locked
   components:
   - type: AccessReader
-    access: [["Armory"]]
+#    [["Armory"]] # SpaceFactory

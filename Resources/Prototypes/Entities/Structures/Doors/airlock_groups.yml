@@ -64,13 +64,13 @@
   id: Departments
   departments:
     atmospherics: Engineering
-    basic: Civilian
-    cargo: Cargo
-    command: Command
+#    basic: Civilian
+#    cargo: Cargo
+#    command: Command
     engineering: Engineering
-    freezer: Civilian
-    maintenance: Civilian
-    medical: Medical
-    science: Science
-    security: Security
-    virology: Medical
+#    freezer: Civilian
+#    maintenance: Civilian
+#    medical: Medical
+#    science: Science
+#    security: Security
+#    virology: Medical

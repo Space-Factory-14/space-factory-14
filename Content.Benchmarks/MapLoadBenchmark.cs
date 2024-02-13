@@ -46,7 +46,7 @@ public class MapLoadBenchmark
         PoolManager.Shutdown();
     }
 
-    public static readonly string[] MapsSource = { "Empty", "Dev", "CentComm", "TestTeg" }; // SpaceFactory
+    public static readonly string[] MapsSource = { "Empty", "Dev", "CentComm" }; // SpaceFactory
 
     [ParamsSource(nameof(MapsSource))]
     public string Map;

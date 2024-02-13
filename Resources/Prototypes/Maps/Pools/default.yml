@@ -1,6 +1,6 @@
-- type: gameMapPool
-  id: DefaultMapPool
-  maps:
+# - type: gameMapPool # SpaceFactory
+  # id: DefaultMapPool
+  # maps:
   # - Atlas
   # - Bagel
   # - Box
@@ -14,4 +14,3 @@
   # - Saltern
   # - Packed
   # - Reach
-   - TestingMap

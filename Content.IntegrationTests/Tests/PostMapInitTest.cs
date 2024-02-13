@@ -61,7 +61,7 @@ namespace Content.IntegrationTests.Tests
 //            "MeteorArena",
 //            "Atlas",
 //            "Reach"
-            "EmergencyPlanet"
+            "Planet"
         };
 
         /// <summary>

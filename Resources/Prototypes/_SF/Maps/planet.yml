@@ -1,10 +1,10 @@
 - type: gameMap
-  id: EmergencyPlanet
-  mapName: 'Testing Station'
-  mapPath: /Maps/_SF/emergency_planet.yml
+  id: Planet
+  mapName: 'Planet'
+  mapPath: /Maps/_SF/planet.yml
   minPlayers: 0
   stations:
-    Boxstation:
+    Planet:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup

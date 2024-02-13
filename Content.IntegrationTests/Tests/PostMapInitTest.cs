@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Content.Server.GameTicking;
@@ -208,20 +207,19 @@ namespace Content.IntegrationTests.Tests
                 var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
                 if (entManager.TryGetComponent<StationEmergencyShuttleComponent>(station, out var stationEvac) && stationEvac.Enabled) // SpaceFactory - Skip test.
                 {
-                        var shuttlePath = stationEvac.EmergencyShuttlePath;
+                    var shuttlePath = stationEvac.EmergencyShuttlePath;
 #pragma warning disable NUnit2045
-                        Assert.That(mapLoader.TryLoad(shuttleMap, shuttlePath.ToString(), out var roots));
-                        EntityUid shuttle = default!;
-                        Assert.DoesNotThrow(() =>
-                        {
-                            shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
-                        }, $"Failed to load {shuttlePath}");
-                        Assert.That(
-                            shuttleSystem.TryFTLDock(shuttle,
-                                entManager.GetComponent<ShuttleComponent>(shuttle), targetGrid.Value),
-                            $"Unable to dock {shuttlePath} to {mapProto}");
+                    Assert.That(mapLoader.TryLoad(shuttleMap, shuttlePath.ToString(), out var roots));
+                    EntityUid shuttle = default!;
+                    Assert.DoesNotThrow(() =>
+                    {
+                        shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
+                    }, $"Failed to load {shuttlePath}");
+                    Assert.That(
+                        shuttleSystem.TryFTLDock(shuttle,
+                            entManager.GetComponent<ShuttleComponent>(shuttle), targetGrid.Value),
+                        $"Unable to dock {shuttlePath} to {mapProto}");
 #pragma warning restore NUnit2045
-                    }
                 }
 
                 mapManager.DeleteMap(shuttleMap);

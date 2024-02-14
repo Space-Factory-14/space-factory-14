@@ -20,22 +20,6 @@ namespace Content.Server.Shipwrecked
         public readonly string BiomePrototype = default!;
 
         [ViewVariables]
-        [DataField("lightColor")]
-        public readonly Color? LightColor = null; //= MapLightComponent.DefaultColor;
-
-        [ViewVariables]
-        [DataField("structureDistance")]
-        public readonly int StructureDistance = 80;
-
-        [ViewVariables]
-        [DataField("structures", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<int, DungeonConfigPrototype>))]
-        public readonly Dictionary<string, int> Structures = new();
-
-        [ViewVariables]
-        [DataField("factions", customTypeSerializer: typeof(PrototypeIdListSerializer<ShipwreckFactionPrototype>))]
-        public readonly List<string> Factions = new();
-
-        [ViewVariables]
         [DataField("gravity")]
         public readonly bool Gravity = true;
 

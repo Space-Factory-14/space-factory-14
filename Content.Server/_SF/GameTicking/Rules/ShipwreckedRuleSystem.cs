@@ -265,14 +265,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
             _atmosphereSystem.SetMapAtmosphere(mapUid, false, mixture, atmos);
         }
 
-        // Lighting
-        if (destination.LightColor != null)
-        {
-            var lighting = EnsureComp<MapLightComponent>(mapUid);
-            lighting.AmbientLightColor = destination.LightColor.Value;
-            Dirty(lighting);
-        }
-
         _mapManager.DoMapInitialize(planetMapId);
         _mapManager.SetMapPaused(planetMapId, true);
 
@@ -281,62 +273,15 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         component.PlanetGrid = planetGrid;
     }
 
-    async private void SpawnPlanetaryStructures(EntityUid uid, ShipwreckedRuleComponent component)
-    {
-        if (component.Destination == null || component.PlanetMap == null || component.PlanetGrid == null)
-            return;
-
-        var origin = new EntityCoordinates(component.PlanetMap.Value, Vector2.Zero);
-        var directions = new Vector2i[] {
-            ( 0,  1),
-            ( 1,  1),
-            ( 1,  0),
-            ( 0, -1),
-            (-1, -1),
-            (-1,  0),
-            ( 1, -1),
-            (-1,  1),
-        };
-
-        var structuresToBuild = new List<DungeonConfigPrototype>();
-        foreach (var (dungeon, count) in component.Destination.Structures)
-        {
-            var dungeonProto = _prototypeManager.Index<DungeonConfigPrototype>(dungeon);
-
-            for (var i = 0; i < count; ++i)
-                structuresToBuild.Add(dungeonProto);
-        }
-
-        _random.Shuffle(structuresToBuild);
-        _random.Shuffle(directions);
-
-        foreach (var direction in directions)
-        {
-            var minDistance = component.Destination.StructureDistance;
-            var distance = _random.Next(minDistance, (int) (minDistance * 1.2));
-
-            var point = direction * distance;
-
-            var dungeonProto = structuresToBuild.Pop();
-            var dungeon = await _dungeonSystem.GenerateDungeonAsync(dungeonProto, component.PlanetMap.Value, component.PlanetGrid,
-                point, _random.Next());
-
-            component.Structures.Add(dungeon);
-        }
-    }
-
     private bool SpawnMap(EntityUid uid, ShipwreckedRuleComponent component)
     {
-        var spaceMapId = _mapManager.CreateMap();
-        var spaceMapUid = _mapManager.GetMapEntityId(spaceMapId);
+        var mapId = _mapManager.CreateMap();
+        var mapUid = _mapManager.GetMapEntityId(mapId);
+        _mapManager.AddUninitializedMap(mapId);
 
-        component.SpaceMapId = spaceMapId;
-
-        var shuttlePath = component.ShuttlePath.ToString();
-
-        if (!_mapLoaderSystem.TryLoad(spaceMapId, shuttlePath, out var roots))
+        if (!_mapLoaderSystem.TryLoad(mapId, "Maps/_SF/planet.yml", out var roots))
         {
-            _sawmill.Error($"Unable to load map {shuttlePath}");
+            _sawmill.Error($"Unable to load map");
             return false;
         }
 
@@ -345,58 +290,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         component.Shuttle = roots[0];
 
         return true;
-    }
-
-    private void SpawnHecate(ShipwreckedRuleComponent component)
-    {
-        if (component.Hecate != null)
-        {
-            _sawmill.Warning("Hecate was already spawned.");
-            return;
-        }
-
-        var query = EntityQueryEnumerator<SpawnPointComponent, MetaDataComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var meta, out var xform))
-        {
-            if (meta.EntityPrototype?.ID != component.SpawnPointHecate)
-                continue;
-
-            if (xform.GridUid != component.Shuttle)
-                continue;
-
-            component.Hecate = Spawn(component.HecatePrototype, xform.Coordinates);
-
-            //if (TryComp<ShipwreckedNPCHecateComponent>(component.Hecate, out var hecateComponent))
-            //    hecateComponent.Rule = component;
-
-            _audioSystem.PlayPvs(new SoundPathSpecifier("/Audio/Nyanotrasen/Mobs/Hologram/hologram_start.ogg"), component.Hecate.Value);
-
-            return;
-        }
-
-        throw new ArgumentException("Shipwrecked shuttle has no valid spawn points for Hecate.");
-    }
-
-    private List<EntityCoordinates> GetSpawnPoints(ShipwreckedRuleComponent component)
-    {
-        var spawns = new List<EntityCoordinates>();
-
-        var query = EntityQueryEnumerator<SpawnPointComponent, MetaDataComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var meta, out var xform))
-        {
-            if (meta.EntityPrototype?.ID != component.SpawnPointTraveller)
-                continue;
-
-            if (xform.GridUid != component.Shuttle)
-                continue;
-
-            spawns.Add(xform.Coordinates);
-        }
-
-        if (spawns.Count == 0)
-            throw new ArgumentException("Shipwrecked shuttle has no valid spawn points for travellers.");
-
-        return spawns;
     }
 
     private void DamageShuttleMidflight(ShipwreckedRuleComponent component)
@@ -422,9 +315,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                 // Don't blow up the gyroscope.
                 // It's the thruster that's inside.
                 continue;
-
-            // Keep track of how many thrusters we had.
-            ++component.OriginalThrusterCount;
 
             // If these get destroyed at any point during the round, escape becomes impossible.
             // So make them indestructible.
@@ -462,151 +352,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         {
             if (xform.GridUid != component.Shuttle)
                 continue;
-
-            // Hit it right away.
-            powerSupplier.MaxSupply *= (component.OriginalPowerDemand / totalPowerSupply) * 0.96f;
-        }
-    }
-
-    public void MakeCrater(MapGridComponent grid, EntityCoordinates coordinates)
-    {
-        // Clear the area with a bomb.
-        _explosionSystem.QueueExplosion(
-            coordinates.ToMap(EntityManager, _transformSystem),
-            "DemolitionCharge",
-            200f,
-            5f,
-            30f,
-            // Try not to break any tiles.
-            // It's weird on planets.
-            tileBreakScale: 0,
-            maxTileBreak: 0,
-            canCreateVacuum: false,
-            addLog: false);
-
-        // Put down a nice crater.
-        var center = grid.GetTileRef(coordinates);
-        var sand = (ContentTileDefinition) _tileDefinitionManager["FloorAsteroidCoarseSand0"];
-        var crater = (ContentTileDefinition) _tileDefinitionManager["FloorAsteroidCoarseSandDug"];
-
-        for (var y = -1; y <= 1; ++y)
-            for (var x = -1; x <= 1; ++x)
-                _tileSystem.ReplaceTile(grid.GetTileRef(center.GridIndices + new Vector2i(x, y)), sand);
-
-        _tileSystem.ReplaceTile(center, crater);
-    }
-
-    private bool TryGetRandomStructureSpot(ShipwreckedRuleComponent component,
-         out EntityCoordinates coordinates,
-         [NotNullWhen(true)] out Dungeon? structure)
-    {
-        coordinates = EntityCoordinates.Invalid;
-        structure = null;
-
-        if (component.PlanetMap == null)
-            throw new ArgumentException($"Shipwrecked failed to have a planet by the time a structure spot was needed.");
-
-        if (component.Structures.Count == 0)
-        {
-            _sawmill.Warning("Unable to get a structure spot. Making something up...");
-
-            var distance = component.Destination?.StructureDistance ?? 50;
-            coordinates = new EntityCoordinates(component.PlanetMap.Value, _random.NextVector2(-distance, distance));
-            return false;
-        }
-
-        // From a gameplay perspective, it would be most useful to place
-        // the vital pieces around the structures, that way players aren't
-        // wandering around the entire map looking for them.
-        //
-        // Some biomes also generate walls which could hide them.
-        // At least these structures are large enough to act as a beacon
-        // of sorts.
-
-        structure = _random.Pick(component.Structures);
-        var offset = _random.NextVector2(-13, 13);
-        var xy = _random.Pick(structure.Rooms).Center + offset;
-
-        coordinates = new EntityCoordinates(component.PlanetMap.Value, xy);
-
-        return true;
-    }
-
-    private void PrepareVitalShuttlePieces(ShipwreckedRuleComponent component)
-    {
-        if (component.PlanetMap == null || component.PlanetGrid == null)
-            return;
-
-        var thrusterQuery = EntityQueryEnumerator<ThrusterComponent, TransformComponent>();
-        while (thrusterQuery.MoveNext(out var uid, out var thruster, out var xform))
-        {
-            if (xform.GridUid != component.Shuttle)
-                continue;
-
-            if (thruster.Type == ThrusterType.Angular)
-                // Ignore the gyroscope.
-                continue;
-
-            if (TryGetRandomStructureSpot(component, out var spot, out var structure))
-            {
-                if (component.VitalPieceStructureSpots.TryGetValue(structure, out var spots))
-                    spots.Add(spot);
-                else
-                    component.VitalPieceStructureSpots.Add(structure, new() { spot });
-            }
-
-            _sawmill.Info($"Space debris! {ToPrettyString(uid)} will go to {spot}");
-
-            // We do this before moving the pieces,
-            // so they don't get affected by the explosion.
-            MakeCrater(component.PlanetGrid, spot);
-
-            component.VitalPieces.Add(uid, (spot, structure));
-        }
-
-        // Part of the escape objective requires the shuttle to have enough
-        // power for liftoff, but due to luck of the draw with dungeon generation,
-        // it's possible that not enough generators are spawned in.
-        var planetGeneratorCount = 0;
-        var planetGeneratorPower = 0f;
-        var generatorQuery = EntityQueryEnumerator<PowerSupplierComponent, TransformComponent>();
-        while (generatorQuery.MoveNext(out _, out var powerSupplier, out var xform))
-        {
-            if (xform.GridUid != component.PlanetMap)
-                continue;
-
-            planetGeneratorPower += powerSupplier.MaxSupply;
-            ++planetGeneratorCount;
-        }
-
-        _sawmill.Info($"Shipwreck destination has {planetGeneratorPower} W worth of {planetGeneratorCount} scavengeable generators.");
-
-        if (planetGeneratorPower < component.OriginalPowerDemand)
-        {
-            // It's impossible to find enough generators to supply the shuttle's
-            // original power demand, assuming the players let the generator
-            // completely fail, therefore, we must spawn some generators,
-            // Deus Ex Machina.
-
-            // This is all very cheesy that there would be generators just lying around,
-            // but I'd rather players be able to win than be hard-locked into losing.
-
-            // How many will we need?
-            const float UraniumPower = 15000f;
-            var generatorsNeeded = Math.Max(1, component.OriginalPowerDemand / UraniumPower);
-
-            for (int i = 0; i < generatorsNeeded; ++i)
-            {
-                // Just need a temporary spawn point away from everything.
-                var somewhere = new EntityCoordinates(component.PlanetMap.Value, 200f + i, 200f + i);
-                var uid = Spawn("GeneratorUranium", somewhere);
-
-                TryGetRandomStructureSpot(component, out var spot, out var structure);
-                _sawmill.Info($"Heaven generator! {ToPrettyString(uid)} will go to {spot}");
-
-                MakeCrater(component.PlanetGrid, spot);
-                component.VitalPieces.Add(uid, (spot, structure));
-            }
         }
     }
 
@@ -639,106 +384,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         {
             var scrap = Spawn("SheetSteel1", spot.Offset(_random.NextVector2(-4, 3)));
             Transform(scrap).LocalRotation = _random.NextAngle();
-        }
-    }
-
-    private void SpawnFactionMobs(ShipwreckedRuleComponent component, IEnumerable<EntitySpawnEntry> entries, DungeonRoom room)
-    {
-        if (component.PlanetGrid == null)
-            return;
-
-        // Some more code adapted from salvage missions.
-        var spawns = EntitySpawnCollection.GetSpawns(entries, _random);
-
-        foreach (var entry in spawns)
-        {
-            var spawnTile = room.Tiles.ElementAt(_random.Next(room.Tiles.Count));
-            var spawnPosition = component.PlanetGrid.GridTileToLocal(spawnTile);
-
-            var uid = EntityManager.CreateEntityUninitialized(entry, spawnPosition);
-            RemComp<GhostTakeoverAvailableComponent>(uid);
-            RemComp<GhostRoleComponent>(uid);
-            EntityManager.InitializeAndStartEntity(uid);
-        }
-    }
-
-    private void SpawnFaction(ShipwreckedRuleComponent component, string id, IEnumerable<Dungeon> structures)
-    {
-        if (!_prototypeManager.TryIndex<ShipwreckFactionPrototype>(id, out var faction) ||
-            component.PlanetGrid == null)
-        {
-            return;
-        }
-
-        // Some more pseudo-copied code from salvage missions, simplified.
-        foreach (var structure in structures)
-        {
-            // Spawn an objective defender if there's a vital piece here.
-            if (faction.ObjectiveDefender != null &&
-                component.VitalPieceStructureSpots.TryGetValue(structure, out var spots) &&
-                spots.Count > 0)
-            {
-                var spot = spots.Pop().Offset(_random.NextVector2(-2, 2));
-                Spawn(faction.ObjectiveDefender, spot);
-            }
-
-            foreach (var room in structure.Rooms)
-            {
-                SpawnFactionMobs(component, faction.Active, room);
-                SpawnFactionMobs(component, faction.Inactive, room);
-            }
-        }
-    }
-
-    private void SpawnFactions(ShipwreckedRuleComponent component)
-    {
-        if (component.PlanetMap == null ||
-            component.PlanetGrid == null ||
-            component.Destination == null)
-        {
-            return;
-        }
-
-        var availableFactions = component.Destination.Factions.ToList();
-        if (availableFactions.Count == 0)
-            return;
-
-        _random.Shuffle(availableFactions);
-
-        var availableStructures = component.Structures.ToList();
-        if (availableStructures.Count == 0)
-        {
-            _sawmill.Error("NYI: There are no structures for the factions to spawn around.");
-            return;
-        }
-
-        // For gameplay reasons, the factions will congregate around the vital shuttle pieces.
-        // We can throw a few around the structures and in the wilderness.
-        _random.Shuffle(availableStructures);
-
-        if (availableFactions.Count == 1)
-        {
-            SpawnFaction(component, availableFactions.First(), availableStructures);
-        }
-        else
-        {
-            var split = _random.Next((int) (availableStructures.Count * 0.75), availableStructures.Count - 1);
-
-            // Pick one faction to be the major power.
-            var majorPower = availableFactions.Pop();
-            var majorStructures = availableStructures.GetRange(0, split);
-
-            SpawnFaction(component, majorPower, majorStructures);
-
-            _sawmill.Info($"{majorPower} has taken control of {majorStructures.Count} structures.");
-
-            // Pick another, different faction to be the minor power.
-            var minorPower = availableFactions.Pop();
-            var minorStructures = availableStructures.GetRange(split, availableStructures.Count - majorStructures.Count);
-
-            SpawnFaction(component, minorPower, minorStructures);
-
-            _sawmill.Info($"{minorPower} has taken control of {minorStructures.Count} structures.");
         }
     }
 
@@ -876,16 +521,9 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                 case ShipwreckedEventId.AnnounceTransit:
                     {
                         // We have to wait for the dungeon atlases to be ready, so do this here.
-                        SpawnPlanetaryStructures(uid, component);
-
                         DispatchShuttleAnnouncement(Loc.GetString("shipwrecked-hecate-shuttle-in-transit"),
                             new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_shuttle_in_transit.ogg"),
                             component);
-                        break;
-                    }
-                case ShipwreckedEventId.ShowHecate:
-                    {
-                        SpawnHecate(component);
                         break;
                     }
                 case ShipwreckedEventId.EncounterTurbulence:
@@ -895,16 +533,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                             component);
                         break;
                     }
-                case ShipwreckedEventId.ShiftParallax:
-                    {
-                        if (component.SpaceMapId == null)
-                            break;
-
-                        var spaceMap = _mapManager.GetMapEntityId(component.SpaceMapId.Value);
-                        var parallax = EnsureComp<ParallaxComponent>(spaceMap);
-                        parallax.Parallax = "ShipwreckedTurbulence1";
-                        break;
-                    }
                 case ShipwreckedEventId.MidflightDamage:
                     {
                         DamageShuttleMidflight(component);
@@ -912,7 +540,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                     }
                 case ShipwreckedEventId.Alert:
                     {
-                        PrepareVitalShuttlePieces(component);
                         //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_alert.ogg"),
                         //    component);
                         break;
@@ -926,7 +553,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                     }
                 case ShipwreckedEventId.SendDistressSignal:
                     {
-                        SpawnFactions(component);
                         DispatchShuttleAnnouncement(Loc.GetString("shipwrecked-hecate-shuttle-distress-signal"),
                             new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_shuttle_distress_signal.ogg"),
                             component);
@@ -956,16 +582,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                             component);
                         break;
                     }
-                case ShipwreckedEventId.Sitrep:
-                    {
-                        //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_aftercrash_sitrep.ogg"),
-                        //    component);
-
-                        if (component.Hecate == null)
-                            break;
-
-                        break;
-                    }
                 case ShipwreckedEventId.Launch:
                     {
                         if (component.Shuttle == null || component.SpaceMapId == null)
@@ -984,8 +600,8 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                                 actorUid, actorUid, PopupType.Large);
                         }
 
-                            //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_launch.ogg"),
-                            //component);
+                        //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_launch.ogg"),
+                        //component);
 
                         _shuttleSystem.FTLTravel(shuttle,
                             Comp<ShuttleComponent>(shuttle),
@@ -1028,11 +644,7 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         {
             if (xform.GridUid != component.Shuttle)
                 continue;
-
-            component.OriginalPowerDemand += apcPowerReceiver.Load;
         }
-
-        _sawmill.Info($"The original power demand for the shuttle is {component.OriginalPowerDemand} W");
 
         var shuttle = component.Shuttle.Value;
 
@@ -1058,20 +670,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
             // The travellers are already in FTL by the time the gamemode starts.
             startupTime: 0,
             hyperspaceTime: (float) flightTime.TotalSeconds);
-    }
-
-    private EntityUid? SpawnManifest(EntityUid uid, ShipwreckedRuleComponent component)
-    {
-        var consoleQuery = EntityQueryEnumerator<TransformComponent, ShuttleConsoleComponent>();
-        while (consoleQuery.MoveNext(out var consoleUid, out var consoleXform, out _))
-        {
-            if (consoleXform.GridUid != component.Shuttle)
-                continue;
-
-            return Spawn("PaperManifestPassenger", consoleXform.Coordinates);
-        }
-
-        return null;
     }
 
     private void OnRoundEndText(RoundEndTextAppendEvent ev)
@@ -1107,114 +705,41 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
             //    }
             //}
 
-            ev.AddLine("");
-            ev.AddLine(Loc.GetString("shipwrecked-list-start-objectives"));
+            //ev.AddLine("");
+            //ev.AddLine(Loc.GetString("shipwrecked-list-start-objectives"));
 
-            if (GetLaunchConditionConsole(shipwrecked))
-                ev.AddLine(Loc.GetString("shipwrecked-list-objective-console-pass"));
-            else
-                ev.AddLine(Loc.GetString("shipwrecked-list-objective-console-fail"));
+            //if (GetLaunchConditionConsole(shipwrecked))
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-objective-console-pass"));
+            //else
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-objective-console-fail"));
 
-            if (GetLaunchConditionGenerator(shipwrecked))
-                ev.AddLine(Loc.GetString("shipwrecked-list-objective-generator-pass"));
-            else
-                ev.AddLine(Loc.GetString("shipwrecked-list-objective-generator-fail"));
+            //if (GetLaunchConditionGenerator(shipwrecked))
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-objective-generator-pass"));
+            //else
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-objective-generator-fail"));
 
-            if (GetLaunchConditionThrusters(shipwrecked, out var goodThrusters))
-            {
-                ev.AddLine(Loc.GetString("shipwrecked-list-objective-thrusters-pass",
-                        ("totalThrusterCount", shipwrecked.OriginalThrusterCount)));
-            }
-            else if (goodThrusters == 0)
-            {
-                ev.AddLine(Loc.GetString("shipwrecked-list-objective-thrusters-fail",
-                        ("totalThrusterCount", shipwrecked.OriginalThrusterCount)));
-            }
-            else
-            {
-                ev.AddLine(Loc.GetString("shipwrecked-list-objective-thrusters-partial",
-                        ("goodThrusterCount", shipwrecked.OriginalThrusterCount),
-                        ("totalThrusterCount", shipwrecked.OriginalThrusterCount)));
-            }
+            //if (GetLaunchConditionThrusters(shipwrecked, out var goodThrusters))
+            //{
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-objective-thrusters-pass",
+            //            ("totalThrusterCount", shipwrecked.OriginalThrusterCount)));
+            //}
+            //else if (goodThrusters == 0)
+            //{
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-objective-thrusters-fail",
+            //            ("totalThrusterCount", shipwrecked.OriginalThrusterCount)));
+            //}
+            //else
+            //{
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-objective-thrusters-partial",
+            //            ("goodThrusterCount", shipwrecked.OriginalThrusterCount),
+            //            ("totalThrusterCount", shipwrecked.OriginalThrusterCount)));
+            //}
 
-            if (shipwrecked.AllObjectivesComplete)
-            {
-                ev.AddLine("");
-                ev.AddLine(Loc.GetString("shipwrecked-list-all-objectives-complete"));
-            }
+            //if (shipwrecked.AllObjectivesComplete)
+            //{
+            //    ev.AddLine("");
+            //    ev.AddLine(Loc.GetString("shipwrecked-list-all-objectives-complete"));
+            //}
         }
     }
-
-    // This should probably be something general, but I'm not sure where to put it,
-    // and it's small enough to stay here for now. Feel free to move it.
-    public bool IsDead(EntityUid uid)
-    {
-        return (_mobStateSystem.IsDead(uid) ||
-            // Zombies are not dead-dead, so check for that.
-            HasComp<ZombieComponent>(uid) ||
-            Deleted(uid));
-    }
-
-    #region Hecate Dynamic Responses
-
-    private bool GetLaunchConditionConsole(ShipwreckedRuleComponent component)
-    {
-        var consoleQuery = EntityQueryEnumerator<TransformComponent, ShuttleConsoleComponent>();
-        while (consoleQuery.MoveNext(out var uid, out var xform, out _))
-        {
-            if (xform.GridUid != component.Shuttle)
-                continue;
-
-            // Just having it is good enough.
-            return true;
-        }
-
-        return false;
-    }
-
-    private bool GetLaunchConditionGenerator(ShipwreckedRuleComponent component)
-    {
-        var totalSupply = 0f;
-
-        var generatorQuery = EntityQueryEnumerator<PowerSupplierComponent, TransformComponent>();
-        while (generatorQuery.MoveNext(out var uid, out var powerSupplier, out var xform))
-        {
-            if (xform.GridUid != component.Shuttle)
-                continue;
-
-            if (!xform.Anchored || !powerSupplier.Enabled)
-                continue;
-
-            // It should be good enough that we have the generator here and anchored.
-            // There's not a significant need to see if it's wired in specifically to the engine.
-            totalSupply += powerSupplier.MaxSupply;
-        }
-
-        return totalSupply >= component.OriginalPowerDemand;
-    }
-
-    private bool GetLaunchConditionThrusters(ShipwreckedRuleComponent component, out int goodThrusters)
-    {
-        goodThrusters = 0;
-
-        var query = EntityQueryEnumerator<ThrusterComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var thruster, out var xform))
-        {
-            if (xform.GridUid != component.Shuttle)
-                continue;
-
-            if (thruster.Type == ThrusterType.Angular)
-                // Skip the gyroscope.
-                continue;
-
-            if (!_thrusterSystem.CanEnable(uid, thruster))
-                continue;
-
-            ++goodThrusters;
-        }
-
-        return goodThrusters >= component.OriginalThrusterCount;
-    }
-    #endregion
-
 }

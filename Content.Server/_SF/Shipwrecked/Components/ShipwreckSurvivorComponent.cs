@@ -4,7 +4,7 @@ namespace Content.Server.Shipwrecked
     /// This is for tracking events.
     /// </summary>
     [RegisterComponent]
-    public sealed class ShipwreckSurvivorComponent : Component
+    public sealed partial class ShipwreckSurvivorComponent : Component
     {
     }
 }

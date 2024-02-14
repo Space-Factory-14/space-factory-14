@@ -13,8 +13,8 @@
     - SpiderChargeObjective
     - TerrorObjective
     - NinjaSurviveObjective
-  - type: NinjaRule
-    threats: NinjaThreats
+#  - type: NinjaRule
+#    threats: NinjaThreats
 
 # stores configuration for dragon
 - type: entity

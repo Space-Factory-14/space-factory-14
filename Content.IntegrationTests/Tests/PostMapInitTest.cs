@@ -202,80 +202,89 @@ namespace Content.IntegrationTests.Tests
                     }
                 }
 
+                bool emergencyShuttleEnabled = cfg.GetCVar(CCVars.EmergencyShuttleEnabled);
+
                 // Test shuttle can dock.
                 // This is done inside gamemap test because loading the map takes ages and we already have it.
-                var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
-                if (entManager.TryGetComponent<StationEmergencyShuttleComponent>(station, out var stationEvac) && stationEvac.Enabled) // SpaceFactory - Skip test.
+                if (emergencyShuttleEnabled)
                 {
-                    var shuttlePath = stationEvac.EmergencyShuttlePath;
-#pragma warning disable NUnit2045
-                    Assert.That(mapLoader.TryLoad(shuttleMap, shuttlePath.ToString(), out var roots));
-                    EntityUid shuttle = default!;
-                    Assert.DoesNotThrow(() =>
+                    var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
+                    if (entManager.TryGetComponent<StationEmergencyShuttleComponent>(station, out var stationEvac))
                     {
-                        shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
-                    }, $"Failed to load {shuttlePath}");
-                    Assert.That(
-                        shuttleSystem.TryFTLDock(shuttle,
-                            entManager.GetComponent<ShuttleComponent>(shuttle), targetGrid.Value),
-                        $"Unable to dock {shuttlePath} to {mapProto}");
+                        var shuttlePath = stationEvac.EmergencyShuttlePath;
+#pragma warning disable NUnit2045
+                        Assert.That(mapLoader.TryLoad(shuttleMap, shuttlePath.ToString(), out var roots));
+                        EntityUid shuttle = default!;
+                        Assert.DoesNotThrow(() =>
+                        {
+                            shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
+                        }, $"Failed to load {shuttlePath}");
+                        Assert.That(
+                            shuttleSystem.TryFTLDock(shuttle,
+                                entManager.GetComponent<ShuttleComponent>(shuttle), targetGrid.Value),
+                            $"Unable to dock {shuttlePath} to {mapProto}");
 #pragma warning restore NUnit2045
+                    }
                 }
 
                 mapManager.DeleteMap(shuttleMap);
 
-                if (entManager.HasComponent<StationJobsComponent>(station))
+                if (emergencyShuttleEnabled)
                 {
-                    // Test that the map has valid latejoin spawn points
-                    if (!NoSpawnMaps.Contains(mapProto))
+                    var station = entManager.GetComponent<StationMemberComponent>(targetGrid!.Value).Station;
+                    if (entManager.HasComponent<StationJobsComponent>(station))
                     {
-                        var lateSpawns = 0;
-
-                        var query = entManager.AllEntityQueryEnumerator<SpawnPointComponent>();
-                        while (query.MoveNext(out var uid, out var comp))
+                        // Test that the map has valid latejoin spawn points
+                        if (!NoSpawnMaps.Contains(mapProto))
                         {
-                            if (comp.SpawnType != SpawnPointType.LateJoin
-                            || !xformQuery.TryGetComponent(uid, out var xform)
-                            || xform.GridUid == null
-                            || !gridUids.Contains(xform.GridUid.Value))
+                            var lateSpawns = 0;
+
+                            var query = entManager.AllEntityQueryEnumerator<SpawnPointComponent>();
+                            while (query.MoveNext(out var uid, out var comp))
                             {
-                                continue;
+                                if (comp.SpawnType != SpawnPointType.LateJoin
+                                || !xformQuery.TryGetComponent(uid, out var xform)
+                                || xform.GridUid == null
+                                || !gridUids.Contains(xform.GridUid.Value))
+                                {
+                                    continue;
+                                }
+
+                                lateSpawns++;
+                                break;
                             }
 
-                            lateSpawns++;
-                            break;
+                            Assert.That(lateSpawns, Is.GreaterThan(0), $"Found no latejoin spawn points on {mapProto}");
                         }
 
-                        Assert.That(lateSpawns, Is.GreaterThan(0), $"Found no latejoin spawn points on {mapProto}");
+                        // Test all availableJobs have spawnPoints
+                        // This is done inside gamemap test because loading the map takes ages and we already have it.
+                        var jobList = entManager.GetComponent<StationJobsComponent>(station).RoundStartJobList
+                            .Where(x => x.Value != 0)
+                            .Select(x => x.Key);
+                        var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
+                            .Where(spawnpoint => spawnpoint.SpawnType == SpawnPointType.Job)
+                            .Select(spawnpoint => spawnpoint.Job.ID)
+                            .Distinct();
+                        List<string> missingSpawnPoints = new();
+                        foreach (var spawnpoint in jobList.Except(spawnPoints))
+                        {
+                            if (protoManager.Index<JobPrototype>(spawnpoint).SetPreference)
+                                missingSpawnPoints.Add(spawnpoint);
+                        }
+
+                        Assert.That(missingSpawnPoints, Has.Count.EqualTo(0),
+                            $"There is no spawnpoint for {string.Join(", ", missingSpawnPoints)} on {mapProto}.");
                     }
 
-                    // Test all availableJobs have spawnPoints
-                    // This is done inside gamemap test because loading the map takes ages and we already have it.
-                    var jobList = entManager.GetComponent<StationJobsComponent>(station).RoundStartJobList
-                        .Where(x => x.Value != 0)
-                        .Select(x => x.Key);
-                    var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
-                        .Where(spawnpoint => spawnpoint.SpawnType == SpawnPointType.Job)
-                        .Select(spawnpoint => spawnpoint.Job.ID)
-                        .Distinct();
-                    List<string> missingSpawnPoints = new();
-                    foreach (var spawnpoint in jobList.Except(spawnPoints))
+                    try
                     {
-                        if (protoManager.Index<JobPrototype>(spawnpoint).SetPreference)
-                            missingSpawnPoints.Add(spawnpoint);
+                        mapManager.DeleteMap(mapId);
                     }
-
-                    Assert.That(missingSpawnPoints, Has.Count.EqualTo(0),
-                        $"There is no spawnpoint for {string.Join(", ", missingSpawnPoints)} on {mapProto}.");
-                }
-
-                try
-                {
-                    mapManager.DeleteMap(mapId);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Failed to delete map {mapProto}", ex);
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Failed to delete map {mapProto}", ex);
+                    }
                 }
             });
             await server.WaitRunTicks(1);

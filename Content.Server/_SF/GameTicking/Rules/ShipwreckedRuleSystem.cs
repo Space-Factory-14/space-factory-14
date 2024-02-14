@@ -91,6 +91,7 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly AccessSystem _accessSystem = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
@@ -136,12 +137,7 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         SubscribeLocalEvent<RoundStartAttemptEvent>(OnStartAttempt);
         SubscribeLocalEvent<LoadingMapsEvent>(OnLoadingMaps);
 
-        SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayersSpawning);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
-
-        SubscribeLocalEvent<ShipwreckSurvivorComponent, MobStateChangedEvent>(OnSurvivorMobStateChanged);
-        SubscribeLocalEvent<ShipwreckSurvivorComponent, BeingGibbedEvent>(OnSurvivorBeingGibbed);
-        SubscribeLocalEvent<EntityZombifiedEvent>(OnZombified);
     }
 
     private void OnFTLCompleted(ref FTLCompletedEvent ev)
@@ -220,37 +216,38 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         // Some of it has been modified to suit my needs.
 
         var planetMapId = _mapManager.CreateMap();
-        var planetMapUid = _mapManager.GetMapEntityId(planetMapId);
+        var mapUid = _mapManager.GetMapEntityId(planetMapId);
         _mapManager.AddUninitializedMap(planetMapId);
 
-        var ftl = _shuttleSystem.AddFTLDestination(planetMapUid, true);
+        var ftl = _shuttleSystem.AddFTLDestination(mapUid, true);
         ftl.Whitelist = new();
 
-        var planetGrid = EnsureComp<MapGridComponent>(planetMapUid);
+        var planetGrid = EnsureComp<MapGridComponent>(mapUid);
 
         var destination = component.Destination;
         if (destination == null)
             throw new ArgumentException("There is no destination for Shipwrecked.");
 
-        var biome = AddComp<BiomeComponent>(planetMapUid);
-        _biomeSystem.SetSeed(biome, _random.Next());
-        _biomeSystem.SetTemplate(biome, _prototypeManager.Index<BiomeTemplatePrototype>(destination.BiomePrototype));
-        Dirty(biome);
+        var biome = _entManager.AddComponent<BiomeComponent>(mapUid);
+        var biomeSystem = _entManager.System<BiomeSystem>();
+        biomeSystem.SetTemplate(mapUid, biome, _prototypeManager.Index<BiomeTemplatePrototype>(destination.BiomePrototype));
+        biomeSystem.SetSeed(mapUid, biome, _random.Next());
+        _entManager.Dirty(mapUid, biome);
 
         // Gravity
         if (destination.Gravity)
         {
-            var gravity = EnsureComp<GravityComponent>(planetMapUid);
+            var gravity = EnsureComp<GravityComponent>(mapUid);
             gravity.Enabled = true;
             Dirty(gravity);
         }
 
         // Atmos
-        var atmos = EnsureComp<MapAtmosphereComponent>(planetMapUid);
+        var atmos = EnsureComp<MapAtmosphereComponent>(mapUid);
 
         if (destination.Atmosphere != null)
         {
-            _atmosphereSystem.SetMapAtmosphere(planetMapUid, false, destination.Atmosphere, atmos);
+            _atmosphereSystem.SetMapAtmosphere(mapUid, false, destination.Atmosphere, atmos);
         }
         else
         {
@@ -265,13 +262,13 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                 Moles = moles,
             };
 
-            _atmosphereSystem.SetMapAtmosphere(planetMapUid, false, mixture, atmos);
+            _atmosphereSystem.SetMapAtmosphere(mapUid, false, mixture, atmos);
         }
 
         // Lighting
         if (destination.LightColor != null)
         {
-            var lighting = EnsureComp<MapLightComponent>(planetMapUid);
+            var lighting = EnsureComp<MapLightComponent>(mapUid);
             lighting.AmbientLightColor = destination.LightColor.Value;
             Dirty(lighting);
         }
@@ -280,7 +277,7 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         _mapManager.SetMapPaused(planetMapId, true);
 
         component.PlanetMapId = planetMapId;
-        component.PlanetMap = planetMapUid;
+        component.PlanetMap = mapUid;
         component.PlanetGrid = planetGrid;
     }
 
@@ -369,8 +366,8 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
 
             component.Hecate = Spawn(component.HecatePrototype, xform.Coordinates);
 
-            if (TryComp<ShipwreckedNPCHecateComponent>(component.Hecate, out var hecateComponent))
-                hecateComponent.Rule = component;
+            //if (TryComp<ShipwreckedNPCHecateComponent>(component.Hecate, out var hecateComponent))
+            //    hecateComponent.Rule = component;
 
             _audioSystem.PlayPvs(new SoundPathSpecifier("/Audio/Nyanotrasen/Mobs/Hologram/hologram_start.ogg"), component.Hecate.Value);
 
@@ -785,7 +782,7 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
 
             // Breathing smoke is not good for you.
             var toxin = new Solution("Toxin", FixedPoint2.New(2));
-            _smokeSystem.Start(smokeEnt, smoke, toxin, duration: 20f);
+            //_smokeSystem.Start(smokeEnt, smoke, toxin, duration: 20f);
         }
 
         // Fry the console.
@@ -799,7 +796,7 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
 
             // Here at Nyanotrasen, we have damage variance, so...
             //var damageVariance = _configurationManager.GetCVar(CCVars.DamageVariance);
-            limit *= 1f //+ damageVariance;
+            limit *= 1f; //+ damageVariance;
 
             var smash = new DamageSpecifier();
             smash.DamageDict.Add("Structural", limit);
@@ -823,25 +820,25 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         var xformQuery = GetEntityQuery<TransformComponent>();
         var filter = Filter.Empty();
 
-        foreach (var player in _playerManager.ServerSessions)
-        {
-            if (player.AttachedEntity is not { Valid: true } playerEntity)
-                continue;
+        //foreach (var player in _playerManager.ServerSessions)
+        //{
+        //    if (player.AttachedEntity is not { Valid: true } playerEntity)
+        //        continue;
 
-            if (ghostQuery.HasComponent(playerEntity))
-            {
-                // Add ghosts.
-                filter.AddPlayer(player);
-                continue;
-            }
+        //    if (ghostQuery.HasComponent(playerEntity))
+        //    {
+        //        // Add ghosts.
+        //        filter.AddPlayer(player);
+        //        continue;
+        //    }
 
-            var xform = xformQuery.GetComponent(playerEntity);
-            if (xform.GridUid != component.Shuttle)
-                continue;
+        //    var xform = xformQuery.GetComponent(playerEntity);
+        //    if (xform.GridUid != component.Shuttle)
+        //        continue;
 
-            // Add entities inside the shuttle.
-            filter.AddPlayer(player);
-        }
+        //    // Add entities inside the shuttle.
+        //    filter.AddPlayer(player);
+        //}
 
         _chatManager.ChatMessageToManyFiltered(filter,
             ChatChannel.Radio,
@@ -891,13 +888,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                         SpawnHecate(component);
                         break;
                     }
-                case ShipwreckedEventId.IntroduceHecate:
-                    {
-                        HecateSay(Loc.GetString("hecate-qa-user-interface"),
-                            new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/hecate_qa_user_interface.ogg"),
-                            component);
-                        break;
-                    }
                 case ShipwreckedEventId.EncounterTurbulence:
                     {
                         DispatchShuttleAnnouncement(Loc.GetString("shipwrecked-hecate-shuttle-turbulence-nebula"),
@@ -918,29 +908,20 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                 case ShipwreckedEventId.MidflightDamage:
                     {
                         DamageShuttleMidflight(component);
-
-                        if (component.Hecate != null)
-                        {
-                            _npcConversationSystem.EnableConversation(component.Hecate.Value, false);
-                            _npcConversationSystem.EnableIdleChat(component.Hecate.Value, false);
-                        }
-
                         break;
                     }
                 case ShipwreckedEventId.Alert:
                     {
                         PrepareVitalShuttlePieces(component);
-                        HecateSay(Loc.GetString("shipwrecked-hecate-report-alert"),
-                            new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_alert.ogg"),
-                            component);
+                        //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_alert.ogg"),
+                        //    component);
                         break;
                     }
                 case ShipwreckedEventId.DecoupleEngine:
                     {
                         DecoupleShuttleEngine(component);
-                        HecateSay(Loc.GetString("shipwrecked-hecate-report-decouple-engine"),
-                            new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_decouple_engine.ogg"),
-                            component);
+                        //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_decouple_engine.ogg"),
+                        //    component);
                         break;
                     }
                 case ShipwreckedEventId.SendDistressSignal:
@@ -953,16 +934,14 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                     }
                 case ShipwreckedEventId.InterstellarBody:
                     {
-                        HecateSay(Loc.GetString("shipwrecked-hecate-report-interstellar-body"),
-                            new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_interstellar_body.ogg"),
-                            component);
+                        //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_interstellar_body.ogg"),
+                        //    component);
                         break;
                     }
                 case ShipwreckedEventId.EnteringAtmosphere:
                     {
-                        HecateSay(Loc.GetString("shipwrecked-hecate-report-entering-atmosphere"),
-                            new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_entering_atmosphere.ogg"),
-                            component);
+                        //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_report_entering_atmosphere.ogg"),
+                        //    component);
                         break;
                     }
                 case ShipwreckedEventId.Crash:
@@ -979,22 +958,11 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                     }
                 case ShipwreckedEventId.Sitrep:
                     {
-                        HecateSay(Loc.GetString("shipwrecked-hecate-aftercrash-sitrep"),
-                            new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_aftercrash_sitrep.ogg"),
-                            component);
+                        //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_aftercrash_sitrep.ogg"),
+                        //    component);
 
                         if (component.Hecate == null)
                             break;
-
-                        _npcConversationSystem.EnableConversation(component.Hecate.Value);
-                        _npcConversationSystem.UnlockDialogue(component.Hecate.Value,
-                            new HashSet<string>() {
-                            "generator",
-                            "rescue",
-                            "scans",
-                            "status",
-                            "weapons"
-                            });
 
                         break;
                     }
@@ -1016,9 +984,8 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                                 actorUid, actorUid, PopupType.Large);
                         }
 
-                        HecateSay(Loc.GetString("shipwrecked-hecate-launch"),
-                            new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_launch.ogg"),
-                            component);
+                            //new SoundPathSpecifier("/Audio/Nyanotrasen/Dialogue/Hecate/shipwrecked_hecate_launch.ogg"),
+                            //component);
 
                         _shuttleSystem.FTLTravel(shuttle,
                             Comp<ShuttleComponent>(shuttle),
@@ -1178,42 +1145,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         }
     }
 
-    private void OnSurvivorMobStateChanged(EntityUid survivor, ShipwreckSurvivorComponent component, MobStateChangedEvent args)
-    {
-        var query = EntityQueryEnumerator<ShipwreckedRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var shipwrecked, out var gameRule))
-        {
-            if (!GameTicker.IsGameRuleActive(uid, gameRule))
-                continue;
-
-            CheckShouldRoundEnd(uid, shipwrecked);
-        }
-    }
-
-    private void OnSurvivorBeingGibbed(EntityUid survivor, ShipwreckSurvivorComponent component, BeingGibbedEvent args)
-    {
-        var query = EntityQueryEnumerator<ShipwreckedRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var shipwrecked, out var gameRule))
-        {
-            if (!GameTicker.IsGameRuleActive(uid, gameRule))
-                continue;
-
-            CheckShouldRoundEnd(uid, shipwrecked);
-        }
-    }
-
-    private void OnZombified(EntityZombifiedEvent args)
-    {
-        var query = EntityQueryEnumerator<ShipwreckedRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var shipwrecked, out var gameRule))
-        {
-            if (!GameTicker.IsGameRuleActive(uid, gameRule))
-                continue;
-
-            CheckShouldRoundEnd(uid, shipwrecked);
-        }
-    }
-
     // This should probably be something general, but I'm not sure where to put it,
     // and it's small enough to stay here for now. Feel free to move it.
     public bool IsDead(EntityUid uid)
@@ -1222,24 +1153,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
             // Zombies are not dead-dead, so check for that.
             HasComp<ZombieComponent>(uid) ||
             Deleted(uid));
-    }
-
-    private void CheckShouldRoundEnd(EntityUid uid, ShipwreckedRuleComponent component)
-    {
-        var totalSurvivors = component.Survivors.Count;
-        var deadSurvivors = 0;
-
-        var zombieQuery = GetEntityQuery<ZombieComponent>();
-
-        foreach (var (survivor, _) in component.Survivors)
-        {
-            // Check if everyone's dead.
-            if (IsDead(survivor))
-                ++deadSurvivors;
-        }
-
-        if (deadSurvivors == totalSurvivors)
-            _roundEndSystem.EndRound();
     }
 
     #region Hecate Dynamic Responses

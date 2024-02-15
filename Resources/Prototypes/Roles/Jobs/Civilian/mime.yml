@@ -16,6 +16,7 @@
   - !type:AddComponentSpecial
     components:
     - type: MimePowers
+    - type: FrenchAccent
   setPreference: false # SpaceFactory
 
 - type: startingGear

@@ -120,6 +120,9 @@
     molsPerSecondPerUnitMass: 0.0005
   - type: Speech
     speechVerb: LargeMob
+  - type: AutoImplant # SpaceFactory
+    implants:
+    - DeathAcidifierImplant
 
 - type: entity
   name: Praetorian

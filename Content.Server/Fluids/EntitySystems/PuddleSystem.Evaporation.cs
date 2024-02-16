@@ -13,8 +13,12 @@ public sealed partial class PuddleSystem
     [ValidatePrototypeId<ReagentPrototype>]
     private const string Water = "Water";
     private const string FluorosulfuricAcid = "FluorosulfuricAcid"; // SpaceFactory
+    private const string Vomit = "Vomit"; // SpaceFactory
+    private const string InsectBlood = "InsectBloodt"; // SpaceFactory
+    private const string AmmoniaBlood = "AmmoniaBlood"; // SpaceFactory
+    private const string ZombieBlood = "ZombieBlood"; // SpaceFactory
 
-    public static string[] EvaporationReagents = new[] { Water, Blood, Slime, CopperBlood, FluorosulfuricAcid }; // SpaceFactory
+    public static string[] EvaporationReagents = new[] { Water, Vomit, InsectBlood, AmmoniaBlood, ZombieBlood, Blood, Slime, CopperBlood, FluorosulfuricAcid }; // SpaceFactory
 
     private void OnEvaporationMapInit(Entity<EvaporationComponent> entity, ref MapInitEvent args)
     {

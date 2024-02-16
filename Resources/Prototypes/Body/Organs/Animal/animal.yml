@@ -22,6 +22,8 @@
   - type: Tag
     tags:
       - Meat
+  - type: TimedDespawn
+    lifetime: 30
 
 - type: entity
   id: BaseAnimalOrgan

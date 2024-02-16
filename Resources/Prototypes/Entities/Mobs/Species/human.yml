@@ -1,20 +1,20 @@
 # Anything human specific (e.g. UI, input) goes under MobHuman
 - type: entity
-  parent: BaseMobSpeciesOrganic
+  parent: [BaseMobStrongPassiveRegen, BaseMobSpeciesOrganic] # SpaceFactory - Regen
   id: BaseMobHuman
   name: Urist McHands
   abstract: true
   components:
-  - type: Hunger
+#  - type: Hunger # SpaceFactory - No hunger
   - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
     sprite: Mobs/Species/Human/parts.rsi
     state: full
-  - type: Thirst
-  - type: Butcherable
-    butcheringType: Spike
-    spawned:
-    - id: FoodMeatHuman
-      amount: 5
+#  - type: Thirst # SpaceFactory - No thirst
+#  - type: Butcherable # SpaceFactory - No butcherable
+#    butcheringType: Spike
+#    spawned:
+#    - id: FoodMeatHuman
+#      amount: 5
 
 - type: entity
   parent: BaseSpeciesDummy

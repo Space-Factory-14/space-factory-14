@@ -121,6 +121,10 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("alertLevels");
             _prototypeManager.RegisterIgnore("nukeopsRole");
 
+            // SpaceFactory
+            _prototypeManager.RegisterIgnore("shipwreckDestination");
+            // SpaceFactory
+
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
             _screenshotHook.Initialize();

@@ -1,0 +1,23 @@
+- type: entity
+  id: Shipwrecked
+  parent: BaseGameRule
+  components:
+    - type: ShipwreckedRule
+#      shuttlePath: /Maps/_NF/planet.yml
+      supportedMaps: PlanetMapPool
+      destinations:
+        - GrasslandsWastes
+#        - Shadow
+#        - Caves
+#        - Snow
+#        - Lava
+
+- type: shipwreckDestination
+  id: GrasslandsWastes
+  biome: Grasslands
+  atmosphere:
+    volume: 2500
+    temperature: 293.15
+    moles:
+      - 21.824879
+      - 82.10312

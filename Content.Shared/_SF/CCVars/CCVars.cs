@@ -9,6 +9,8 @@ public sealed class SF14CVars
     /// <summary>
     /// Whether the spawn should be on a planet map.
     /// </summary>
-    public static readonly CVarDef<bool> ArrivalsPlanet =
+    public static readonly CVarDef<bool> MapPlanet =
         CVarDef.Create("shuttle.spawn_planet", true, CVar.SERVERONLY);
+
+
 }

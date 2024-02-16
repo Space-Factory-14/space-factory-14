@@ -46,9 +46,7 @@ namespace Content.Server.GameTicking
 
         private readonly List<ProtoId<BiomeTemplatePrototype>> _biomeOptions = new()
     {
-        "Grasslands",
-        "LowDesert",
-        "Snow",
+        "Continental",
     };
 
 #if EXCEPTION_TOLERANCE

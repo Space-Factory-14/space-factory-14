@@ -1,82 +1,40 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
-using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 using Content.Server.Access.Systems;
-using Content.Server.Atmos;
-using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Body.Components;
 using Content.Server.Buckle.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
-using Content.Server.Chemistry.Components;
-using Content.Server.Construction.Components;
 using Content.Server.Destructible;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Server.Ghost.Components;
-using Content.Server.Ghost.Roles.Components;
 using Content.Server.Humanoid;
-using Content.Server.Maps;
 using Content.Server.Mind;
 using Content.Server.NPC.Systems;
 using Content.Server.Paper;
 using Content.Server.Parallax;
 using Content.Server.Popups;
-using Content.Server.Power.Components;
 using Content.Server.Preferences.Managers;
 using Content.Server.Procedural;
-using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Shipwrecked;
 using Content.Server.Shuttles.Components;
-using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
-using Content.Server.Storage.Components;
-using Content.Server.Warps;
-using Content.Shared.Access.Components;
-using Content.Shared.Atmos;
-using Content.Shared.Buckle.Components;
-using Content.Shared.CCVar;
-using Content.Shared.Chat;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
-using Content.Shared.Doors.Components;
-using Content.Shared.FixedPoint;
-using Content.Shared.Gravity;
 using Content.Shared.Inventory;
 using Content.Shared.Lock;
 using Content.Shared.Maps;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Parallax.Biomes;
-using Content.Shared.Parallax;
 using Content.Shared.Popups;
-using Content.Shared.Preferences;
-using Content.Shared.Procedural;
-using Content.Shared.Random.Helpers;
-using Content.Shared.Random;
-using Content.Shared.Roles;
-using Content.Shared.Shuttles.Components;
-using Content.Shared.Storage;
-using Content.Shared.Zombies;
 using Robust.Server.Audio;
-using Content.Shared.Ghost;
 using Content.Server.Station.Components;
 
 namespace Content.Server.GameTicking.Rules;
@@ -133,48 +91,8 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
 
         _sawmill = Logger.GetSawmill("shipwrecked");
 
-        SubscribeLocalEvent<FTLCompletedEvent>(OnFTLCompleted);
-        SubscribeLocalEvent<FTLStartedEvent>(OnFTLStarted);
-
         SubscribeLocalEvent<RoundStartAttemptEvent>(OnStartAttempt);
-
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
-    }
-
-    private void OnFTLCompleted(ref FTLCompletedEvent ev)
-    {
-        var query = EntityQueryEnumerator<ShipwreckedRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var shipwrecked, out var gameRule))
-        {
-            if (!GameTicker.IsGameRuleActive(uid, gameRule))
-                continue;
-
-            if (ev.Entity != shipwrecked.Shuttle)
-                continue;
-
-            if (shipwrecked.AllObjectivesComplete)
-                _roundEndSystem.EndRound();
-        }
-    }
-
-    private void OnFTLStarted(ref FTLStartedEvent ev)
-    {
-        var query = EntityQueryEnumerator<ShipwreckedRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var shipwrecked, out var gameRule))
-        {
-            if (!GameTicker.IsGameRuleActive(uid, gameRule))
-                continue;
-
-            if (ev.Entity != shipwrecked.Shuttle)
-                continue;
-
-            if (!shipwrecked.AllObjectivesComplete)
-                continue;
-
-            // You win!
-            _roundEndSystem.EndRound();
-
-        }
     }
 
     private void OnStartAttempt(RoundStartAttemptEvent ev)
@@ -185,268 +103,21 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
             if (!GameTicker.IsGameRuleAdded(uid, gameRule))
                 continue;
 
-            if (ev.Players.Length == 0)
+            var minPlayers = 1; // SpaceFactory - Move to Cvar
+            if (!ev.Forced && ev.Players.Length < minPlayers)
             {
-                _chatManager.DispatchServerAnnouncement(Loc.GetString("shipwrecked-no-one-ready"));
+                _chatManager.SendAdminAnnouncement(Loc.GetString("shipwrecked-not-enough-ready-players",
+                    ("readyPlayersCount", ev.Players.Length), ("minimumPlayers", minPlayers)));
                 ev.Cancel();
+                continue;
             }
-        }
-    }
 
-    private void SpawnPlanet(EntityUid uid, ShipwreckedRuleComponent component)
-    {
-        // Most of this code below comes from a protected function in SpawnSalvageMissionJob
-        // which really should be made more generic and public...
-        //
-        // Some of it has been modified to suit my needs.
-
-        var mapId = _mapManager.CreateMap();
-        var mapUid = _mapManager.GetMapEntityId(mapId);
-        _mapManager.AddUninitializedMap(mapId);
-        MetaDataComponent? metadata = null;
-        var grid = _entManager.EnsureComponent<MapGridComponent>(mapUid);
-
-        var destination = component.Destination;
-        if (destination == null)
-            throw new ArgumentException("There is no destination for Shipwrecked.");
-
-        var biome = _entManager.AddComponent<BiomeComponent>(mapUid);
-        var biomeSystem = _entManager.System<BiomeSystem>();
-        biomeSystem.SetTemplate(mapUid, biome, _prototypeManager.Index<BiomeTemplatePrototype>(destination.BiomePrototype));
-        biomeSystem.SetSeed(mapUid, biome, _random.Next());
-        _entManager.Dirty(mapUid, biome);
-
-        // Gravity
-        var gravity = _entManager.EnsureComponent<GravityComponent>(mapUid);
-        gravity.Enabled = true;
-        _entManager.Dirty(mapUid, gravity, metadata);
-
-        // Atmos
-        var moles = new float[Atmospherics.AdjustedNumberOfGases];
-        moles[(int) Gas.Oxygen] = 21.824779f;
-        moles[(int) Gas.Nitrogen] = 82.10312f;
-        var atmos = _entManager.EnsureComponent<MapAtmosphereComponent>(mapUid);
-        _entManager.System<AtmosphereSystem>().SetMapGasMixture(mapUid, new GasMixture(2500)
-        {
-            Temperature = 293.15f,
-            Moles = moles,
-        }, atmos);
-
-        var ftl = _shuttleSystem.AddFTLDestination(mapUid, true);
-        ftl.Whitelist = new();
-
-        _mapManager.DoMapInitialize(mapId);
-        _mapManager.SetMapPaused(mapId, true);
-
-        component.PlanetMapId = mapId;
-        component.PlanetMap = mapUid;
-        component.PlanetGrid = grid;
-    }
-
-    private void DamageShuttleMidflight(ShipwreckedRuleComponent component)
-    {
-        if (component.Shuttle == null)
-            return;
-
-        // Damage vital pieces of the shuttle.
-        //
-        // * Console can go crunch when the ship smashes.
-        // * Thrusters can be blown out safely.
-        // * Generator will need to be replaced anyway as it's dying.
-        //
-
-        // Blow the thrusters.
-        var query = EntityQueryEnumerator<ThrusterComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var thruster, out var xform))
-        {
-            if (xform.GridUid != component.Shuttle)
+            if (ev.Players.Length != 0)
                 continue;
 
-            if (thruster.Type == ThrusterType.Angular)
-                // Don't blow up the gyroscope.
-                // It's the thruster that's inside.
-                continue;
-
-            // If these get destroyed at any point during the round, escape becomes impossible.
-            // So make them indestructible.
-            RemComp<DestructibleComponent>(uid);
-
-            // Disallow them to be broken down, too.
-            RemComp<ConstructionComponent>(uid);
-
-            // These should be weak enough to rough up the walls but not destroy them.
-            _explosionSystem.QueueExplosion(uid, "DemolitionCharge",
-                2f,
-                2f,
-                2f,
-                // Try not to break any tiles.
-                tileBreakScale: 0,
-                maxTileBreak: 0,
-                canCreateVacuum: false,
-                addLog: false);
+            _chatManager.DispatchServerAnnouncement(Loc.GetString("shipwrecked-no-one-ready"));
+            ev.Cancel();
         }
-
-        // Ensure that all generators on the shuttle will decay.
-        // Get the total power supply so we know how much to damage the generators by.
-        var totalPowerSupply = 0f;
-        var generatorQuery = EntityQueryEnumerator<PowerSupplierComponent, TransformComponent>();
-        while (generatorQuery.MoveNext(out _, out var powerSupplier, out var xform))
-        {
-            if (xform.GridUid != component.Shuttle)
-                continue;
-
-            totalPowerSupply += powerSupplier.MaxSupply;
-        }
-
-        generatorQuery = EntityQueryEnumerator<PowerSupplierComponent, TransformComponent>();
-        while (generatorQuery.MoveNext(out var uid, out var powerSupplier, out var xform))
-        {
-            if (xform.GridUid != component.Shuttle)
-                continue;
-        }
-    }
-
-    private void DecoupleShuttleEngine(ShipwreckedRuleComponent component)
-    {
-        if (component.Shuttle == null)
-            return;
-
-        // Stop thrusters from burning anyone when re-anchored.
-        _thrusterSystem.DisableLinearThrusters(Comp<ShuttleComponent>(component.Shuttle.Value));
-
-        // Move the vital pieces of the shuttle down to the planet.
-        foreach (var (uid, (destination, _)) in component.VitalPieces)
-        {
-            var warpPoint = EnsureComp<WarpPointComponent>(uid);
-            warpPoint.Location = Loc.GetString("shipwrecked-warp-point-vital-piece");
-
-            _transformSystem.SetCoordinates(uid, destination);
-        }
-
-        if (component.Shuttle == null)
-            return;
-
-        // Spawn scrap in front of the shuttle's window.
-        // It'll look cool.
-        var shuttleXform = Transform(component.Shuttle.Value);
-        var spot = shuttleXform.MapPosition.Offset(-3, 60);
-
-        for (var i = 0; i < 9; ++i)
-        {
-            var scrap = Spawn("SheetSteel1", spot.Offset(_random.NextVector2(-4, 3)));
-            Transform(scrap).LocalRotation = _random.NextAngle();
-        }
-    }
-
-    private void CrashShuttle(EntityUid uid, ShipwreckedRuleComponent component)
-    {
-        if (component.Shuttle == null)
-            return;
-
-        if (!TryComp<MapGridComponent>(component.Shuttle, out var grid))
-            return;
-
-        // Slam the front window.
-        var aabb = grid.LocalAABB;
-        var topY = grid.LocalAABB.Top + 1;
-        var bottomY = grid.LocalAABB.Bottom - 1;
-        var centeredX = grid.LocalAABB.Width / 2 + aabb.Left;
-
-        var xform = Transform(component.Shuttle.Value);
-        var mapPos = xform.MapPosition;
-        var smokeSpots = new List<MapCoordinates>();
-        var front = mapPos.Offset(new Vector2(centeredX, topY));
-        smokeSpots.Add(front);
-        smokeSpots.Add(mapPos.Offset(new Vector2(centeredX, bottomY)));
-
-        _explosionSystem.QueueExplosion(front, "Minibomb",
-            200f,
-            1f,
-            100f,
-            // Try not to break any tiles.
-            tileBreakScale: 0,
-            maxTileBreak: 0,
-            canCreateVacuum: false,
-            addLog: false);
-
-        // Send up smoke and dust plumes.
-        foreach (var spot in smokeSpots)
-        {
-            var smokeEnt = Spawn("Smoke", spot);
-            var smoke = EnsureComp<SmokeComponent>(smokeEnt);
-            smoke.SpreadAmount = 70;
-
-            // Breathing smoke is not good for you.
-            var toxin = new Solution("Toxin", FixedPoint2.New(2));
-            //_smokeSystem.Start(smokeEnt, smoke, toxin, duration: 20f);
-        }
-
-        // Fry the console.
-        var consoleQuery = EntityQueryEnumerator<TransformComponent, ShuttleConsoleComponent>();
-        while (consoleQuery.MoveNext(out var consoleUid, out var consoleXform, out _))
-        {
-            if (consoleXform.GridUid != component.Shuttle)
-                continue;
-
-            var limit = _destructibleSystem.DestroyedAt(consoleUid);
-
-            // Here at Nyanotrasen, we have damage variance, so...
-            //var damageVariance = _configurationManager.GetCVar(CCVars.DamageVariance);
-            limit *= 1f; //+ damageVariance;
-
-            var smash = new DamageSpecifier();
-            smash.DamageDict.Add("Structural", limit);
-            _damageableSystem.TryChangeDamage(consoleUid, smash, ignoreResistances: true);
-
-            // Break, because we're technically modifying the enumeration by destroying the console.
-            break;
-        }
-
-        var crashSound = new SoundPathSpecifier("/Audio/Nyanotrasen/Effects/crash_impact_metal.ogg");
-        _audioSystem.PlayPvs(crashSound, component.Shuttle.Value);
-    }
-
-    private void DispatchShuttleAnnouncement(string message, SoundSpecifier audio, ShipwreckedRuleComponent component)
-    {
-        var wrappedMessage = Loc.GetString("shipwrecked-shuttle-announcement",
-            ("sender", "Hecate"),
-            ("message", FormattedMessage.EscapeText(message)));
-
-        var ghostQuery = GetEntityQuery<GhostComponent>();
-        var xformQuery = GetEntityQuery<TransformComponent>();
-        var filter = Filter.Empty();
-
-        //foreach (var player in _playerManager.ServerSessions)
-        //{
-        //    if (player.AttachedEntity is not { Valid: true } playerEntity)
-        //        continue;
-
-        //    if (ghostQuery.HasComponent(playerEntity))
-        //    {
-        //        // Add ghosts.
-        //        filter.AddPlayer(player);
-        //        continue;
-        //    }
-
-        //    var xform = xformQuery.GetComponent(playerEntity);
-        //    if (xform.GridUid != component.Shuttle)
-        //        continue;
-
-        //    // Add entities inside the shuttle.
-        //    filter.AddPlayer(player);
-        //}
-
-        _chatManager.ChatMessageToManyFiltered(filter,
-            ChatChannel.Radio,
-            message,
-            wrappedMessage,
-            component.Shuttle.GetValueOrDefault(),
-            false,
-            true,
-            Color.SeaGreen);
-
-        var audioPath = _audioSystem.GetSound(audio);
-        _audioSystem.PlayGlobal(audioPath, filter, true, AudioParams.Default.WithVolume(1f));
     }
 
     protected override void ActiveTick(EntityUid uid, ShipwreckedRuleComponent component, GameRuleComponent gameRule, float frameTime)
@@ -570,19 +241,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
             return;
 
         component.Shuttle = chosenStation;
-        var destination = _random.Pick(component.ShipwreckDestinationPrototypes);
-        component.Destination = _prototypeManager.Index<ShipwreckDestinationPrototype>(destination);
-
-        SpawnPlanet(uid, component);
-
-        if (component.Shuttle == null || component.PlanetMapId == null || component.PlanetMap == null)
-        {
-            throw new ArgumentException("Error!!!");
-            return;
-        }
-
-        _mapManager.SetMapPaused(component.PlanetMapId.Value, false);
-
         var shuttle = component.Shuttle.Value;
 
         // Do some quick math to figure out at which point the FTL should end.
@@ -600,16 +258,6 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
         flightTime -= TimeSpan.FromMilliseconds(10);
 
         //component.NextEventTick = _gameTiming.CurTime + component.EventSchedule[0].timeOffset;
-
-        _entManager.EnsureComponent<ShuttleComponent>(shuttle);
-        //_entManager.EnsureComponent<MapGridComponent>(shuttle);
-
-        _shuttleSystem.FTLTravel(shuttle,
-            Comp<ShuttleComponent>(shuttle),
-            Transform(component.PlanetMap.GetValueOrDefault()).Coordinates,
-            // The travellers are already in FTL by the time the gamemode starts.
-            startupTime: 0,
-            hyperspaceTime: (float) flightTime.TotalSeconds);
     }
 
     private void OnRoundEndText(RoundEndTextAppendEvent ev)

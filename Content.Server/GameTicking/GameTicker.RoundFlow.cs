@@ -19,6 +19,11 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server.Parallax; // SpaceFactory
+using Content.Shared.Parallax.Biomes; // SpaceFactory
+using Content.Shared.Salvage; // SpaceFactory
+using Robust.Shared.Prototypes; // SpaceFactory
+using Content.Shared.Gravity; // SpaceFactory
 
 namespace Content.Server.GameTicking
 {
@@ -26,6 +31,10 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly DiscordWebhook _discord = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
+        [Dependency] private readonly IPrototypeManager _protoManager = default!; // SpaceFactory
+        [Dependency] private readonly BiomeSystem _biomes = default!; // SpaceFactory
+        [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly IEntityManager _entManager = default!; // SpaceFactory
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -34,6 +43,13 @@ namespace Content.Server.GameTicking
         private static readonly Gauge RoundLengthMetric = Metrics.CreateGauge(
             "ss14_round_length",
             "Round length in seconds.");
+
+        private readonly List<ProtoId<BiomeTemplatePrototype>> _biomeOptions = new()
+    {
+        "Grasslands",
+        "LowDesert",
+        "Snow",
+    };
 
 #if EXCEPTION_TOLERANCE
         [ViewVariables]
@@ -174,83 +190,93 @@ namespace Content.Server.GameTicking
             try
             {
 #endif
-            // If this game ticker is a dummy or the round is already being started, do nothing!
-            if (DummyTicker || _startingRound)
-                return;
+                // If this game ticker is a dummy or the round is already being started, do nothing!
+                if (DummyTicker || _startingRound)
+                    return;
 
-            _startingRound = true;
+                _startingRound = true;
 
-            if (RoundId == 0)
-                IncrementRoundNumber();
+                if (RoundId == 0)
+                    IncrementRoundNumber();
 
-            ReplayStartRound();
+                ReplayStartRound();
 
-            DebugTools.Assert(RunLevel == GameRunLevel.PreRoundLobby);
-            _sawmill.Info("Starting round!");
+                DebugTools.Assert(RunLevel == GameRunLevel.PreRoundLobby);
+                _sawmill.Info("Starting round!");
 
-            SendServerMessage(Loc.GetString("game-ticker-start-round"));
+                SendServerMessage(Loc.GetString("game-ticker-start-round"));
 
-            // Just in case it hasn't been loaded previously we'll try loading it.
-            LoadMaps();
+                // Just in case it hasn't been loaded previously we'll try loading it.
+                LoadMaps();
 
-            // map has been selected so update the lobby info text
-            // applies to players who didn't ready up
-            UpdateInfoText();
+                // map has been selected so update the lobby info text
+                // applies to players who didn't ready up
+                UpdateInfoText();
 
-            StartGamePresetRules();
+                StartGamePresetRules();
 
-            RoundLengthMetric.Set(0);
+                RoundLengthMetric.Set(0);
 
-            var startingEvent = new RoundStartingEvent(RoundId);
-            RaiseLocalEvent(startingEvent);
-            var readyPlayers = new List<ICommonSession>();
-            var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
+                var startingEvent = new RoundStartingEvent(RoundId);
+                RaiseLocalEvent(startingEvent);
+                var readyPlayers = new List<ICommonSession>();
+                var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
 
-            foreach (var (userId, status) in _playerGameStatuses)
-            {
-                if (LobbyEnabled && status != PlayerGameStatus.ReadyToPlay) continue;
-                if (!_playerManager.TryGetSessionById(userId, out var session)) continue;
+                foreach (var (userId, status) in _playerGameStatuses)
+                {
+                    if (LobbyEnabled && status != PlayerGameStatus.ReadyToPlay) continue;
+                    if (!_playerManager.TryGetSessionById(userId, out var session)) continue;
 #if DEBUG
                 DebugTools.Assert(_userDb.IsLoadComplete(session), $"Player was readied up but didn't have user DB data loaded yet??");
 #endif
-                if (_banManager.GetRoleBans(userId) == null)
-                {
-                    Logger.ErrorS("RoleBans", $"Role bans for player {session} {userId} have not been loaded yet.");
-                    continue;
+                    if (_banManager.GetRoleBans(userId) == null)
+                    {
+                        Logger.ErrorS("RoleBans", $"Role bans for player {session} {userId} have not been loaded yet.");
+                        continue;
+                    }
+                    readyPlayers.Add(session);
+                    HumanoidCharacterProfile profile;
+                    if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
+                    {
+                        profile = (HumanoidCharacterProfile) preferences.GetProfile(preferences.SelectedCharacterIndex);
+                    }
+                    else
+                    {
+                        profile = HumanoidCharacterProfile.Random();
+                    }
+                    readyPlayerProfiles.Add(userId, profile);
                 }
-                readyPlayers.Add(session);
-                HumanoidCharacterProfile profile;
-                if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-                {
-                    profile = (HumanoidCharacterProfile) preferences.GetProfile(preferences.SelectedCharacterIndex);
-                }
-                else
-                {
-                    profile = HumanoidCharacterProfile.Random();
-                }
-                readyPlayerProfiles.Add(userId, profile);
-            }
 
-            var origReadyPlayers = readyPlayers.ToArray();
+                var origReadyPlayers = readyPlayers.ToArray();
 
-            if (!StartPreset(origReadyPlayers, force))
-                return;
+                if (!StartPreset(origReadyPlayers, force))
+                    return;
 
-            // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
-            _mapManager.DoMapInitialize(DefaultMap);
+                // SpaceFactory
+                var mapUid = _mapManager.GetMapEntityId(DefaultMap);
+                var template = _random.Pick(_biomeOptions);
+                _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
 
-            SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
+                // Gravity
+                var gravity = _entManager.EnsureComponent<GravityComponent>(mapUid);
+                gravity.Enabled = true;
+                // SpaceFactory
 
-            _roundStartDateTime = DateTime.UtcNow;
-            RunLevel = GameRunLevel.InRound;
+                // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
+                _mapManager.DoMapInitialize(DefaultMap);
 
-            RoundStartTimeSpan = _gameTiming.CurTime;
-            SendStatusToAll();
-            ReqWindowAttentionAll();
-            UpdateLateJoinStatus();
-            AnnounceRound();
-            UpdateInfoText();
-            SendRoundStartedDiscordMessage();
+                SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
+
+                _roundStartDateTime = DateTime.UtcNow;
+                RunLevel = GameRunLevel.InRound;
+
+                RoundStartTimeSpan = _gameTiming.CurTime;
+                SendStatusToAll();
+                ReqWindowAttentionAll();
+                UpdateLateJoinStatus();
+                AnnounceRound();
+                UpdateInfoText();
+                SendRoundStartedDiscordMessage();
 
 #if EXCEPTION_TOLERANCE
             }

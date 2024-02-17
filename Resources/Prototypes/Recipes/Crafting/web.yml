@@ -13,6 +13,7 @@
     sprite: Objects/Tiles/web.rsi
     state: icon
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: web winter coat
@@ -29,6 +30,7 @@
     sprite: Clothing/OuterClothing/WinterCoats/coatweb.rsi
     state: icon
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: web jumpsuit
@@ -45,6 +47,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/web.rsi
     state: icon
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: web jumpskirt
@@ -61,6 +64,7 @@
     sprite: Clothing/Uniforms/Jumpskirt/web.rsi
     state: icon
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: silk woven cloth
@@ -77,6 +81,7 @@
     sprite: Objects/Materials/materials.rsi
     state: cloth_3
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: web shield
@@ -93,6 +98,7 @@
     sprite: Objects/Weapons/Melee/web-shield.rsi
     state: icon
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: web winter boots
@@ -109,3 +115,4 @@
     sprite: Clothing/Shoes/Boots/winterbootsweb.rsi
     state: icon
   objectType: Item
+  hide: true # SpaceFactory

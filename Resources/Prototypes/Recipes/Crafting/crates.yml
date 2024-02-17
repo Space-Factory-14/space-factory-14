@@ -8,6 +8,7 @@
   description: A wooden crate for holding livestock.
   icon: { sprite: Structures/Storage/Crates/livestock.rsi, state: base }
   objectType: Structure
+  hide: true # SpaceFactory
 
 - type: construction
   name: steel crate
@@ -30,6 +31,7 @@
   description: A secure metal crate for storing things. Requires no special access, can be configured with an Access Configurator.
   icon: { sprite: Structures/Storage/Crates/secure.rsi, state: icon }
   objectType: Structure
+  hide: true # SpaceFactory
 
 - type: construction
   name: plastic crate
@@ -41,6 +43,7 @@
   description: A plastic crate for storing things.
   icon: { sprite: Structures/Storage/Crates/plastic.rsi, state: icon }
   objectType: Structure
+  hide: true # SpaceFactory
 
 - type: construction
   name: cardboard box
@@ -52,6 +55,7 @@
   description: A big box for storing things or hiding in.
   icon: { sprite: Structures/Storage/closet.rsi, state: cardboard }
   objectType: Structure
+  hide: true # SpaceFactory
 
 - type: construction
   name: cardboard box
@@ -63,6 +67,7 @@
   description: A small box for storing things.
   icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: coffin
@@ -74,3 +79,4 @@
   description: A coffin for storing corpses.
   icon: { sprite: Structures/Storage/Crates/coffin.rsi, state: base }
   objectType: Structure
+  hide: true # SpaceFactory

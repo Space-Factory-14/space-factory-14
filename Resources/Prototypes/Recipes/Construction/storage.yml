@@ -15,6 +15,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   id: TallCabinet
@@ -32,6 +33,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   id: ChestDrawer
@@ -49,3 +51,4 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory

@@ -12,6 +12,7 @@
     state: camera
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: telescreen
@@ -27,6 +28,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: station map
@@ -45,6 +47,7 @@
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition {}
+  hide: true # SpaceFactory
 
 # POWER
 - type: construction
@@ -61,6 +64,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: solar assembly
@@ -79,6 +83,7 @@
   conditions:
     - !type:TileNotBlocked
       failIfSpace: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: cable terminal
@@ -94,6 +99,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: wallmount substation
@@ -109,6 +115,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: wallmount generator
@@ -124,6 +131,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: wallmount APU
@@ -139,6 +147,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 # DISPOSALS
 - type: construction
@@ -154,6 +163,7 @@
   icon:
     sprite: Structures/Piping/disposal.rsi
     state: "disposal"
+  hide: true # SpaceFactory
 
 - type: construction
   name: mailing unit
@@ -168,6 +178,7 @@
   icon:
     sprite: Structures/Piping/disposal.rsi
     state: "mailing"
+  hide: true # SpaceFactory
 
 - type: construction
   name: disposal pipe
@@ -368,6 +379,7 @@
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition {}
+  hide: true # SpaceFactory
 
 - type: construction
   name: air sensor
@@ -805,6 +817,7 @@
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition {}
+  hide: true # SpaceFactory
 
 # TIMERS
 - type: construction
@@ -841,6 +854,7 @@
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition
+  hide: true # SpaceFactory
 
 - type: construction
   name: brig timer
@@ -859,3 +873,4 @@
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition
+  hide: true # SpaceFactory

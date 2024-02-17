@@ -10,6 +10,7 @@
   icon:
     sprite: Mobs/Silicon/Bots/cleanbot.rsi
     state: cleanbot
+  hide: true # SpaceFactory
 
 - type: construction
   name: honkbot
@@ -23,6 +24,7 @@
   icon:
     sprite: Mobs/Silicon/Bots/honkbot.rsi
     state: honkbot
+  hide: true # SpaceFactory
 
 - type: construction
   name: jonkbot
@@ -36,6 +38,7 @@
   icon:
     sprite: Mobs/Silicon/Bots/honkbot.rsi
     state: jonkbot
+  hide: true # SpaceFactory
 
 - type: construction
   name: medibot
@@ -49,6 +52,7 @@
   icon:
     sprite: Mobs/Silicon/Bots/medibot.rsi
     state: medibot
+  hide: true # SpaceFactory
 
 - type: construction
   name: mimebot
@@ -62,3 +66,4 @@
   icon:
     sprite: Mobs/Silicon/Bots/mimebot.rsi
     state: mimebot
+  hide: true # SpaceFactory

@@ -13,8 +13,8 @@
       sprite: Clothing/Shoes/Boots/magboots.rsi
     - type: Magboots
     - type: ClothingSpeedModifier
-      walkModifier: 0.85
-      sprintModifier: 0.8
+#      walkModifier: 0.85 # SpaceFactory
+#      sprintModifier: 0.8 # SpaceFactory
       enabled: false
     - type: Appearance
     - type: GenericVisualizer
@@ -94,8 +94,8 @@
   - type: Magboots
     toggleAction: ActionToggleMagbootsSyndie
   - type: ClothingSpeedModifier
-    walkModifier: 0.95
-    sprintModifier: 0.9
+#    walkModifier: 0.95 # SpaceFactory
+#    sprintModifier: 0.9 # SpaceFactory
     enabled: false
   - type: GasTank
     outputPressure: 42.6

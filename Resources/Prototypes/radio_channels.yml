@@ -1,9 +1,10 @@
 - type: radioChannel
   id: Common
-  name: chat-radio-common
+  name: chat-radio-engineering # SpaceFactory - chat-radio-common
   keycode: ";"
   frequency: 1459
-  color: "#32cd32"
+  color: "#f37746" # #32cd32
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: CentCom
@@ -19,6 +20,7 @@
   keycode: 'c'
   frequency: 1353
   color: "#fcdf03"
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: Engineering
@@ -26,6 +28,7 @@
   keycode: 'e'
   frequency: 1357
   color: "#f37746"
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: Medical
@@ -33,6 +36,7 @@
   keycode: 'm'
   frequency: 1355
   color: "#57b8f0"
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: Science
@@ -40,6 +44,7 @@
   keycode: 'n'
   frequency: 1351
   color: "#c68cfa"
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: Security
@@ -47,6 +52,7 @@
   keycode: 's'
   frequency: 1359
   color: "#dd3535"
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: Service
@@ -54,6 +60,7 @@
   keycode: 'v'
   frequency: 1349
   color: "#6ca729"
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: Supply
@@ -61,6 +68,7 @@
   keycode: 'u'
   frequency: 1347
   color: "#b88646"
+  longRange: true # SpaceFactory
 
 - type: radioChannel
   id: Syndicate

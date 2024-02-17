@@ -106,7 +106,7 @@ public sealed class ConveyorController : SharedConveyorController
         if (TryComp<PhysicsComponent>(uid, out var physics))
             _broadphase.RegenerateContacts(uid, physics);
 
-        _materialReclaimer.SetReclaimerEnabled(uid, component.State); // SpaceFactory
+        _materialReclaimer.SetReclaimerEnabled(uid, component.State != ConveyorState.Forward); // SpaceFactory
         //_materialReclaimer.SetReclaimerEnabled(uid, component.State != ConveyorState.Off);
 
         UpdateAppearance(uid, component);

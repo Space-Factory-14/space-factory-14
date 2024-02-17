@@ -33,7 +33,7 @@
   icon: { sprite: Objects/Consumable/Smokeables/Cigarettes/cigarette.rsi, state: unlit-icon }
   objectType: Item
 
-#I wanted to put a hand-grinder here but we need construction graphs that use non-consumed catalysts first.
+# I wanted to put a hand-grinder here but we need construction graphs that use non-consumed catalysts first.
 
 - type: construction
   name: ground cannabis

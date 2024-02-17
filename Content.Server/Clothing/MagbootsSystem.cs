@@ -2,6 +2,7 @@ using Content.Server.Atmos.Components;
 using Content.Shared.Alert;
 using Content.Shared.Clothing;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Conveyor; // SpaceFactory
 
 namespace Content.Server.Clothing;
 
@@ -31,10 +32,12 @@ public sealed class MagbootsSystem : SharedMagbootsSystem
         if (state)
         {
             _alerts.ShowAlert(parent, AlertType.Magboots);
+            EnsureComp<IgnoreConveyorComponent>(parent); // SpaceFactory
         }
         else
         {
             _alerts.ClearAlert(parent, AlertType.Magboots);
+            RemComp<IgnoreConveyorComponent>(parent); // SpaceFactory
         }
     }
 
@@ -43,7 +46,6 @@ public sealed class MagbootsSystem : SharedMagbootsSystem
         if (args.Slot == "shoes")
         {
             UpdateMagbootEffects(args.Equipee, uid, false, component);
-
         }
     }
 
@@ -52,7 +54,6 @@ public sealed class MagbootsSystem : SharedMagbootsSystem
         if (args.Slot == "shoes")
         {
             UpdateMagbootEffects(args.Equipee, uid, true, component);
-
         }
     }
 }

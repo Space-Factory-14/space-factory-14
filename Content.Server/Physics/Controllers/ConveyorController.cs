@@ -120,6 +120,7 @@ public sealed class ConveyorController : SharedConveyorController
     {
         var xformQuery = GetEntityQuery<TransformComponent>();
         var bodyQuery = GetEntityQuery<PhysicsComponent>();
+        var ignoreConveyorQuery = GetEntityQuery<IgnoreConveyorComponent>(); // SpaceFactory
 
         if (!xformQuery.TryGetComponent(uid, out var xform))
             return;
@@ -132,6 +133,9 @@ public sealed class ConveyorController : SharedConveyorController
 
             foreach (var entity in intersecting)
             {
+                if (ignoreConveyorQuery.TryGetComponent(uid, out var ignoreConveyor)) // SpaceFactory
+                    continue; // SpaceFactory
+
                 if (!bodyQuery.TryGetComponent(entity, out var physics))
                     continue;
 

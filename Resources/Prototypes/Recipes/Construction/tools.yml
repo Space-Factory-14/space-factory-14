@@ -8,6 +8,7 @@
   description: A torch fashioned from some wood.
   icon: { sprite: Objects/Misc/torch.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: logic gate

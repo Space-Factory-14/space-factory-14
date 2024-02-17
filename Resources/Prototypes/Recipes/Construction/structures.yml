@@ -15,6 +15,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced girder
@@ -33,6 +34,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: wall
@@ -69,6 +71,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 # here
 - type: construction
   name: wood wall
@@ -87,6 +90,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: uranium wall
@@ -105,6 +109,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: silver wall
@@ -123,6 +128,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: plastic wall
@@ -141,6 +147,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: plasma wall
@@ -159,6 +166,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: gold wall
@@ -177,6 +185,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: shuttle wall
@@ -195,6 +204,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: interior shuttle wall
@@ -213,6 +223,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal shuttle wall
@@ -231,6 +242,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: bananium wall
@@ -249,6 +261,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: meat wall
@@ -267,6 +280,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: grille
@@ -285,6 +299,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal grille
@@ -302,6 +317,7 @@
     state: grille_diagonal
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: window
@@ -321,6 +337,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal window
@@ -339,6 +356,7 @@
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced window
@@ -358,6 +376,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal reinforced window
@@ -376,6 +395,7 @@
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: tinted window
@@ -395,6 +415,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: plasma window
@@ -414,6 +435,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced plasma window
@@ -433,6 +455,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: shuttle window
@@ -452,6 +475,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal plasma window
@@ -470,6 +494,7 @@
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal reinforced plasma window
@@ -488,6 +513,7 @@
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: directional window
@@ -506,6 +532,7 @@
     state: window
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: directional reinforced window
@@ -524,6 +551,7 @@
     state: reinforced_window
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: directional plasma window
@@ -542,6 +570,7 @@
     state: plasma_window
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: directional reinforced plasma window
@@ -560,6 +589,7 @@
     state: plasma_reinforced_window
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: uranium window
@@ -579,6 +609,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced uranium window
@@ -598,6 +629,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal uranium window
@@ -616,6 +648,7 @@
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: diagonal reinforced uranium window
@@ -634,6 +667,7 @@
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
+  hide: true # SpaceFactory
 
 - type: construction
   name: firelock
@@ -651,6 +685,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: glass firelock
@@ -668,6 +703,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: shutter
@@ -683,6 +719,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: glass shutter
@@ -698,6 +735,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: radiation shutter
@@ -713,6 +751,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: blast door
@@ -728,6 +767,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
+  hide: true # SpaceFactory
 
 - type: construction
   name: catwalk
@@ -750,6 +790,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: bananium floor
@@ -771,6 +812,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
+  hide: true # SpaceFactory
 
 - type: construction
   name: wooden barricade
@@ -788,6 +830,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: wooden barricade
@@ -805,6 +848,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: railing
@@ -822,6 +866,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: railing corner
@@ -839,6 +884,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: railing corner small
@@ -856,6 +902,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: railing round
@@ -873,6 +920,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 # Chain link fencing
 - type: construction
@@ -891,6 +939,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: chain link fence corner
@@ -908,6 +957,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: chain link fence end-piece
@@ -925,6 +975,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: chain link fence gate
@@ -942,6 +993,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: airlock
@@ -959,6 +1011,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: glass airlock
@@ -976,6 +1029,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: shuttle airlock
@@ -994,6 +1048,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: glass shuttle airlock
@@ -1012,6 +1067,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: windoor
@@ -1029,6 +1085,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: secure windoor
@@ -1046,7 +1103,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
-
+  hide: true # SpaceFactory
 
 #lighting
 - type: construction
@@ -1087,6 +1144,7 @@
   conditions:
   # Same here. - 20kdc
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: ground light post
@@ -1140,6 +1198,7 @@
     state: closed
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: wooden door
@@ -1157,6 +1216,7 @@
     state: closed
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: plasma door
@@ -1174,6 +1234,7 @@
     state: closed
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: gold door
@@ -1191,6 +1252,7 @@
     state: closed
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: silver door
@@ -1208,6 +1270,7 @@
     state: closed
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: paper door
@@ -1223,6 +1286,7 @@
   icon:
     sprite: Structures/Doors/MineralDoors/paper_door.rsi
     state: closed
+  hide: true # SpaceFactory
 
 - type: construction
   name: plastic flaps
@@ -1240,6 +1304,7 @@
     state: plasticflaps
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: bananium clown statue
@@ -1257,6 +1322,7 @@
     state: bananium_clown
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: bananium door
@@ -1274,6 +1340,7 @@
     state: closed
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: bananium altar
@@ -1292,6 +1359,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: solid secret door
@@ -1309,3 +1377,4 @@
     state: closed
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory

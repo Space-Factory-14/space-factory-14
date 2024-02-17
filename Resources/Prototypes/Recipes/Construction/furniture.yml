@@ -15,6 +15,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: stool
@@ -32,6 +33,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: bar stool
@@ -49,6 +51,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: office chair
@@ -66,6 +69,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: dark office chair
@@ -83,6 +87,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: comfy chair
@@ -100,6 +105,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: pilots chair
@@ -117,6 +123,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: wooden chair
@@ -134,6 +141,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: meat chair
@@ -151,6 +159,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: ritual chair
@@ -168,6 +177,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: folding chair
@@ -185,6 +195,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: steel bench
@@ -202,6 +213,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: comfortable red bench
@@ -219,6 +231,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 #tables
 - type: construction
@@ -237,6 +250,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced steel table
@@ -254,6 +268,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: glass table
@@ -271,6 +286,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced glass table
@@ -288,6 +304,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: plasma glass table
@@ -305,6 +322,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: wood table
@@ -322,6 +340,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: poker table
@@ -339,6 +358,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: metal counter
@@ -356,6 +376,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: wood counter
@@ -373,6 +394,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 #bathroom
 - type: construction
@@ -391,6 +413,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 #bedroom
 - type: construction
@@ -409,6 +432,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   id: MedicalBed
@@ -426,6 +450,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   id: DogBed
@@ -443,6 +468,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   id: Dresser
@@ -460,6 +486,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 #racks
 - type: construction
@@ -478,6 +505,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 #misc
 - type: construction
@@ -496,6 +524,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   id: Curtains
@@ -513,6 +542,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   id: Bookshelf
@@ -530,3 +560,4 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory

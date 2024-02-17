@@ -10,6 +10,7 @@
   description: "Four steel station tiles."
   icon: { sprite: Objects/Tiles/tile.rsi, state: steel }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: wood floor
@@ -21,6 +22,7 @@
   description: "Four pieces of wooden station flooring."
   icon: { sprite: Objects/Tiles/tile.rsi, state: wood }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: white tile
@@ -32,6 +34,7 @@
   description: "Four white station tiles."
   icon: { sprite: Objects/Tiles/tile.rsi, state: white }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: dark tile
@@ -43,6 +46,7 @@
   description: "Four dark station tiles."
   icon: { sprite: Objects/Tiles/tile.rsi, state: dark }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: flesh tile
@@ -54,6 +58,7 @@
   description: "Four fleshy tiles."
   icon: { sprite: Objects/Tiles/tile.rsi, state: meat }
   objectType: Item
+  hide: true # SpaceFactory
 
 # - type: construction
 #   name: techmaint floor

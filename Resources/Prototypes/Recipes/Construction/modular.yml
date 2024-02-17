@@ -10,6 +10,7 @@
     sprite: Objects/Weapons/Grenades/modular.rsi
     state: complete
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: modular mine
@@ -23,3 +24,4 @@
     sprite: Objects/Misc/landmine.rsi
     state: landmine
   objectType: Item
+  hide: true # SpaceFactory

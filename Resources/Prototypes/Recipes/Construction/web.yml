@@ -18,6 +18,7 @@
     - SpiderCraft
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: web table
@@ -39,6 +40,7 @@
     - SpiderCraft
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: web bed
@@ -60,6 +62,7 @@
     - SpiderCraft
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory
 
 - type: construction
   name: web chair
@@ -78,6 +81,7 @@
   entityWhitelist:
     tags:
     - SpiderCraft
+  hide: true # SpaceFactory
 
 - type: construction
   name: web crate
@@ -97,6 +101,7 @@
   entityWhitelist:
     tags:
     - SpiderCraft
+  hide: true # SpaceFactory
 
 - type: construction
   name: web door
@@ -117,3 +122,4 @@
     - SpiderCraft
   conditions:
     - !type:TileNotBlocked
+  hide: true # SpaceFactory

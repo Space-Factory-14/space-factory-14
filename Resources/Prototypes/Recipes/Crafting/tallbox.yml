@@ -8,3 +8,4 @@
   description: A tall steel box that cannot be locked.
   icon: { sprite: Structures/Storage/closet.rsi, state: generic_icon }
   objectType: Structure
+  hide: true # SpaceFactory

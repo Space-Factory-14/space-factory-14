@@ -19,6 +19,7 @@
   category: construction-category-materials
   icon: { sprite: Objects/Materials/Sheets/glass.rsi, state: rglass }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: plasma glass
@@ -30,6 +31,7 @@
   category: construction-category-materials
   icon: { sprite: Objects/Materials/Sheets/glass.rsi, state: pglass }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced plasma glass
@@ -41,6 +43,7 @@
   category: construction-category-materials
   icon: { sprite: Objects/Materials/Sheets/glass.rsi, state: rpglass }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: durathread
@@ -52,6 +55,7 @@
   description: A high-quality thread used to make durable clothes.
   icon: { sprite: Objects/Materials/materials.rsi, state: durathread }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: uranium glass
@@ -63,6 +67,7 @@
   category: construction-category-materials
   icon: { sprite: Objects/Materials/Sheets/glass.rsi, state: uglass }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: reinforced uranium glass
@@ -74,3 +79,4 @@
   category: construction-category-materials
   icon: { sprite: Objects/Materials/Sheets/glass.rsi, state: ruglass }
   objectType: Item
+  hide: true # SpaceFactory

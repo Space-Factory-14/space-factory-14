@@ -10,3 +10,4 @@
   icon:
     sprite: Objects/Specific/Xenoarchaeology/item_artifacts.rsi
     state: ano01
+  hide: true # SpaceFactory

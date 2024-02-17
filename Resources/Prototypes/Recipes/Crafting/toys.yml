@@ -10,6 +10,7 @@
   icon:
     sprite: Mobs/Ghosts/revenant.rsi
     state: icon
+  hide: true # SpaceFactory
 
 - type: construction
   name: ian suit
@@ -23,3 +24,4 @@
   icon:
     sprite: Clothing/OuterClothing/Suits/iansuit.rsi
     state: icon
+  hide: true # SpaceFactory

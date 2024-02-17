@@ -8,3 +8,4 @@
   description: An air horn made from bananium.
   icon: { sprite: Objects/Fun/bananiumhorn.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory

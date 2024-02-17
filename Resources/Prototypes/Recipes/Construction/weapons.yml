@@ -8,6 +8,7 @@
   description: A crude spear for when you need to put holes in somebody.
   icon: { sprite: Objects/Weapons/Melee/spear.rsi, state: spear }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: crude reinforced spear
@@ -19,6 +20,7 @@
   description: A crude reinforced spear for when you need to put holes in somebody.
   icon: { sprite: Objects/Weapons/Melee/reinforced_spear.rsi, state: spear }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: crude plasma spear
@@ -30,6 +32,7 @@
   description: A crude plasma spear for when you need to put holes in somebody.
   icon: { sprite: Objects/Weapons/Melee/plasma_spear.rsi, state: spear }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: crude uranium spear
@@ -41,6 +44,7 @@
   description: A crude uranium spear for when you need to put holes in somebody.
   icon: { sprite: Objects/Weapons/Melee/uranium_spear.rsi, state: spear }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: makeshift bola
@@ -52,6 +56,7 @@
   description: A simple weapon for tripping someone at a distance.
   icon: { sprite: Objects/Weapons/Throwable/bola.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: wooden buckler
@@ -63,6 +68,7 @@
   description: A nicely carved wooden shield!
   icon: { sprite: Objects/Weapons/Melee/shields.rsi, state: buckler-icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: makeshift shield
@@ -74,6 +80,7 @@
   description: Crude and falling apart. Why would you make this?
   icon: { sprite: Objects/Weapons/Melee/shields.rsi, state: makeshift-icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: glass shard arrow
@@ -85,6 +92,7 @@
   description: An arrow tipped with pieces of a glass shard, for use with a bow.
   icon: { sprite: Objects/Weapons/Guns/Bow/bow.rsi, state: wielded-arrow }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: improvised bow
@@ -96,6 +104,7 @@
   description: A shoddily constructed bow made out of wood and cloth. It's not much, but it's gotten the job done for millennia.
   icon: { sprite: Objects/Weapons/Guns/Bow/bow.rsi, state: unwielded }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: bone spear
@@ -107,3 +116,4 @@
   description: Bones and silk combined together.
   icon: { sprite: Objects/Weapons/Melee/bone_spear.rsi, state: spear }
   objectType: Item
+  hide: true # SpaceFactory

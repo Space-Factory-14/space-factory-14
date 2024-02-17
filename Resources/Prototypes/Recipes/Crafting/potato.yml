@@ -8,6 +8,7 @@
   description: A truly ingenious source of power.
   icon: { sprite: Objects/Power/power_cells.rsi, state: potato }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: potato artificial intelligence
@@ -19,7 +20,8 @@
   description: The potato happens to be the perfect power source for this chip.
   icon: { sprite: Objects/Fun/pai.rsi, state: icon-potato-off }
   objectType: Item
-  
+  hide: true # SpaceFactory
+
 - type: construction
   name: supercompact AI chip
   id: PotatoAIChip
@@ -30,3 +32,4 @@
   description: A masterfully(?) crafted AI chip, requiring a similarly improvised power source.
   icon: { sprite: Objects/Misc/potatoai_chip.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory

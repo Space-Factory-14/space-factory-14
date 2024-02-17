@@ -8,6 +8,7 @@
   description: A modified hardsuit fit for a clown.
   icon: { sprite: Clothing/OuterClothing/Hardsuits/clown.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: mime hardsuit
@@ -19,6 +20,7 @@
   description: A modified hardsuit fit for a mime.
   icon: { sprite: Clothing/OuterClothing/Hardsuits/mime.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: bone armor
@@ -30,6 +32,7 @@
   description: Armor made of bones.
   icon: { sprite: Clothing/OuterClothing/Armor/bone_armor.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: bone helmet
@@ -41,6 +44,7 @@
   description: Helmet made of bones.
   icon: { sprite: Clothing/Head/Helmets/bone_helmet.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: banana clown mask
@@ -52,6 +56,7 @@
   description: A clown mask upgraded with banana peels.
   icon: { sprite: Clothing/Mask/clown_banana.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: banana clown suit
@@ -63,6 +68,7 @@
   description: A clown suit upgraded with banana peels.
   icon: { sprite: Clothing/Uniforms/Jumpsuit/clown_banana.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: banana clown shoes
@@ -74,6 +80,7 @@
   description: A pair of clown shoes upgraded with banana peels.
   icon: { sprite: Clothing/Shoes/Specific/clown_banana.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory
 
 - type: construction
   name: medsec hud
@@ -85,3 +92,4 @@
   description: Two huds joined by arms
   icon: { sprite: Clothing/Eyes/Hud/medsec.rsi, state: icon }
   objectType: Item
+  hide: true # SpaceFactory

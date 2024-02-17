@@ -43,6 +43,7 @@ public sealed class MagbootsSystem : SharedMagbootsSystem
         if (args.Slot == "shoes")
         {
             UpdateMagbootEffects(args.Equipee, uid, false, component);
+
         }
     }
 
@@ -51,6 +52,7 @@ public sealed class MagbootsSystem : SharedMagbootsSystem
         if (args.Slot == "shoes")
         {
             UpdateMagbootEffects(args.Equipee, uid, true, component);
+
         }
     }
 }

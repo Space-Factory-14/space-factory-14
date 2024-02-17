@@ -8,6 +8,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Controllers;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+//using Content.Server.Clothing;
 
 namespace Content.Shared.Physics.Controllers;
 
@@ -17,6 +18,7 @@ public abstract class SharedConveyorController : VirtualController
     [Dependency] protected readonly EntityLookupSystem Lookup = default!;
     [Dependency] protected readonly SharedPhysicsSystem Physics = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
+//    [Dependency] private readonly MagbootsSystem _magboots = default!;
 
     protected const string ConveyorFixture = "conveyor";
 

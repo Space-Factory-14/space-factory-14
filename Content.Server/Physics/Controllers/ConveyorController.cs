@@ -48,6 +48,9 @@ public sealed class ConveyorController : SharedConveyorController
                                        CollisionGroup.Impassable), hard: false, body: physics);
 
         }
+
+        AwakenEntities(uid, component); // SpaceFactory
+        SetState(uid, ConveyorState.Forward, component); // SpaceFactory
     }
 
     private void OnConveyorShutdown(EntityUid uid, ConveyorComponent component, ComponentShutdown args)

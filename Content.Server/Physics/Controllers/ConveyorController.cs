@@ -48,6 +48,9 @@ public sealed class ConveyorController : SharedConveyorController
                                        CollisionGroup.Impassable), hard: false, body: physics);
 
         }
+
+        AwakenEntities(uid, component); // SpaceFactory
+        SetState(uid, ConveyorState.Forward, component); // SpaceFactory
     }
 
     private void OnConveyorShutdown(EntityUid uid, ConveyorComponent component, ComponentShutdown args)
@@ -103,7 +106,8 @@ public sealed class ConveyorController : SharedConveyorController
         if (TryComp<PhysicsComponent>(uid, out var physics))
             _broadphase.RegenerateContacts(uid, physics);
 
-        _materialReclaimer.SetReclaimerEnabled(uid, component.State != ConveyorState.Off);
+        _materialReclaimer.SetReclaimerEnabled(uid, component.State != ConveyorState.Forward); // SpaceFactory
+        //_materialReclaimer.SetReclaimerEnabled(uid, component.State != ConveyorState.Off);
 
         UpdateAppearance(uid, component);
         Dirty(component);
@@ -117,6 +121,7 @@ public sealed class ConveyorController : SharedConveyorController
     {
         var xformQuery = GetEntityQuery<TransformComponent>();
         var bodyQuery = GetEntityQuery<PhysicsComponent>();
+        var ignoreConveyorQuery = GetEntityQuery<IgnoreConveyorComponent>(); // SpaceFactory
 
         if (!xformQuery.TryGetComponent(uid, out var xform))
             return;
@@ -129,6 +134,9 @@ public sealed class ConveyorController : SharedConveyorController
 
             foreach (var entity in intersecting)
             {
+                if (ignoreConveyorQuery.TryGetComponent(uid, out var ignoreConveyor)) // SpaceFactory
+                    continue; // SpaceFactory
+
                 if (!bodyQuery.TryGetComponent(entity, out var physics))
                     continue;
 

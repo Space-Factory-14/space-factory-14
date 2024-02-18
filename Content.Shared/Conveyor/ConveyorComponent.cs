@@ -28,7 +28,7 @@ public sealed partial class ConveyorComponent : Component
     [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public ConveyorState State;
 
-    [ViewVariables, AutoNetworkedField]
+    [DataField, ViewVariables, AutoNetworkedField] // SpaceFactory - DataField
     public bool Powered;
 
     [DataField]

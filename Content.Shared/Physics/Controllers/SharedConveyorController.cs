@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Content.Shared.Conveyor;
 using Content.Shared.Gravity;
 using Content.Shared.Movement.Systems;
@@ -60,14 +60,15 @@ public abstract class SharedConveyorController : VirtualController
         var xformQuery = GetEntityQuery<TransformComponent>();
         var bodyQuery = GetEntityQuery<PhysicsComponent>();
         var query = EntityQueryEnumerator<ActiveConveyorComponent, ConveyorComponent>();
+        var ignoreConveyorQuery = GetEntityQuery<IgnoreConveyorComponent>(); // SpaceFactory
 
         while (query.MoveNext(out var uid, out var _, out var comp))
         {
-            Convey(uid, comp, xformQuery, bodyQuery, conveyed, frameTime, prediction);
+            Convey(uid, comp, xformQuery, bodyQuery, ignoreConveyorQuery, conveyed, frameTime, prediction); // SpaceFactory - Added ignoreConveyorQuery
         }
     }
 
-    private void Convey(EntityUid uid, ConveyorComponent comp, EntityQuery<TransformComponent> xformQuery, EntityQuery<PhysicsComponent> bodyQuery, HashSet<EntityUid> conveyed, float frameTime, bool prediction)
+    private void Convey(EntityUid uid, ConveyorComponent comp, EntityQuery<TransformComponent> xformQuery, EntityQuery<PhysicsComponent> bodyQuery, EntityQuery<IgnoreConveyorComponent> ignoreConveyorQuery, HashSet<EntityUid> conveyed, float frameTime, bool prediction)
     {
         // Use an event for conveyors to know what needs to run
         if (!CanRun(comp))
@@ -88,7 +89,7 @@ public abstract class SharedConveyorController : VirtualController
 
         var direction = conveyorRot.ToWorldVec();
 
-        foreach (var (entity, transform, body) in GetEntitiesToMove(comp, xform, xformQuery, bodyQuery))
+        foreach (var (entity, transform, body) in GetEntitiesToMove(comp, xform, xformQuery, bodyQuery, ignoreConveyorQuery)) // SpaceFactory - Added ignoreConveyorQuery
         {
             if (!conveyed.Add(entity) || prediction && !body.Predict)
                 continue;
@@ -143,7 +144,8 @@ public abstract class SharedConveyorController : VirtualController
         ConveyorComponent comp,
         TransformComponent xform,
         EntityQuery<TransformComponent> xformQuery,
-        EntityQuery<PhysicsComponent> bodyQuery)
+        EntityQuery<PhysicsComponent> bodyQuery,
+        EntityQuery<IgnoreConveyorComponent> ignoreConveyorQuery)
     {
         // Check if the thing's centre overlaps the grid tile.
         var grid = MapManager.GetGrid(xform.GridUid!.Value);
@@ -152,6 +154,9 @@ public abstract class SharedConveyorController : VirtualController
 
         foreach (var entity in comp.Intersecting)
         {
+            if (ignoreConveyorQuery.TryGetComponent(entity, out var ignoreConveyor))
+                continue;
+
             if (!xformQuery.TryGetComponent(entity, out var entityXform) || entityXform.ParentUid != xform.GridUid!.Value)
                 continue;
 

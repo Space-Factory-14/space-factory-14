@@ -12,10 +12,10 @@
   - type: Transform
     anchored: true
   - type: Sprite
-    sprite: Structures/conveyor.rsi
+    sprite: _SF/Structures/conveyor.rsi # SpaceFactory
     state: conveyor_started_cw
     drawdepth: FloorObjects
-  - type: ApcPowerReceiver
+#  - type: ApcPowerReceiver # SpaceFactory
   - type: ExtensionCableReceiver
   - type: Physics
     bodyType: Static
@@ -35,6 +35,7 @@
         - DoorPassable
         hard: False
   - type: Conveyor
+    powered: true # SpaceFactory
   - type: DeviceLinkSink
     ports:
       - Reverse
@@ -75,7 +76,7 @@
     tags:
     - ConveyorAssembly
   - type: Sprite
-    sprite: Structures/conveyor.rsi
+    sprite: _SF/Structures/conveyor.rsi
     state: conveyor_loose
   - type: Construction
     graph: ConveyorGraph

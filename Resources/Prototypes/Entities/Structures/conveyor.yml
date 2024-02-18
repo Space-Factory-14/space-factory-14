@@ -76,7 +76,7 @@
     tags:
     - ConveyorAssembly
   - type: Sprite
-    sprite: Structures/conveyor.rsi
+    sprite: _SF/Structures/conveyor.rsi
     state: conveyor_loose
   - type: Construction
     graph: ConveyorGraph

@@ -1177,7 +1177,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   icon:
-    sprite: Structures/conveyor.rsi
+    sprite: _SF/Structures/conveyor.rsi
     state: conveyor_stopped_cw
   conditions:
     - !type:TileNotBlocked

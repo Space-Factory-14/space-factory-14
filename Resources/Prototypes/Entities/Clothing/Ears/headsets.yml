@@ -280,11 +280,11 @@
   name: freelancer headset
   description: This is used by a roaming group of freelancers
   components:
-    - type: ContainerFill
-      containers:
-        key_slots:
-          - EncryptionKeyFreelance
-    - type: Sprite
-      sprite: Clothing/Ears/Headsets/freelance.rsi
-    - type: Clothing
-      sprite: Clothing/Ears/Headsets/freelance.rsi
+  - type: ContainerFill
+    containers:
+      key_slots:
+        - EncryptionKeyFreelance
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/freelance.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/freelance.rsi

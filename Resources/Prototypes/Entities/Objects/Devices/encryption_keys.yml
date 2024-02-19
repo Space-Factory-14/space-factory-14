@@ -20,7 +20,7 @@
   # - type: EncryptionKey
     # channels:
     # - Common
-    defaultChannel: Common
+    # defaultChannel: Common
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -35,7 +35,7 @@
   # - type: EncryptionKey
     # channels:
     # - Supply
-    defaultChannel: Supply
+    # defaultChannel: Supply
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -50,7 +50,7 @@
   # - type: EncryptionKey
     # channels:
     # - CentCom
-    defaultChannel: CentCom
+    # defaultChannel: CentCom
   - type: Sprite
     layers:
     - state: crypt_blue
@@ -72,7 +72,7 @@
     # - Security
     # - Service
     # - Supply
-    defaultChannel: Command
+    # defaultChannel: Command
   - type: Sprite
     layers:
     - state: crypt_gold
@@ -117,7 +117,7 @@
   # - type: EncryptionKey
     # channels:
     # - Medical
-    defaultChannel: Medical
+    # defaultChannel: Medical
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -133,7 +133,7 @@
     # channels:
     # - Medical
     # - Science
-    defaultChannel: Science
+    # defaultChannel: Science
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -148,7 +148,7 @@
   # - type: EncryptionKey
     # channels:
     # - Science
-    defaultChannel: Science
+    # defaultChannel: Science
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -163,7 +163,7 @@
   # - type: EncryptionKey
     # channels:
     # - Science
-    defaultChannel: Science
+    # defaultChannel: Science
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -178,7 +178,7 @@
   # - type: EncryptionKey
     # channels:
     # - Security
-    defaultChannel: Security
+    # defaultChannel: Security
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -193,7 +193,7 @@
   # - type: EncryptionKey
     # channels:
     # - Service
-    defaultChannel: Service
+    # defaultChannel: Service
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -208,7 +208,7 @@
   # - type: EncryptionKey
     # channels:
     # - Syndicate
-    defaultChannel: Syndicate
+    # defaultChannel: Syndicate
   - type: Sprite
     layers:
     - state: crypt_red
@@ -223,7 +223,7 @@
   # - type: EncryptionKey
     # channels:
     # - Binary
-    defaultChannel: Binary
+    # defaultChannel: Binary
   - type: Sprite
     layers:
     - state: crypt_silver
@@ -238,7 +238,7 @@
     # - type: EncryptionKey
       # channels:
         # - Freelance
-      defaultChannel: Freelance
+      # defaultChannel: Freelance
     - type: Sprite
       layers:
         - state: crypt_rusted

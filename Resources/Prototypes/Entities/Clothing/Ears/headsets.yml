@@ -10,8 +10,8 @@
       key_slots: !type:Container
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyCommon
   - type: Headset
   - type: EncryptionKeyHolder
     keySlots: 4
@@ -43,9 +43,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyCargo
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyCargo
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/cargo.rsi
   - type: Clothing
@@ -70,10 +70,10 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyCargo
-      - EncryptionKeyCommand
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyCargo
+#      - EncryptionKeyCommand
+#      - EncryptionKeyCommon
 
 - type: entity
   parent: ClothingHeadset
@@ -83,9 +83,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyCentCom
-      - EncryptionKeyStationMaster
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyCentCom
+#      - EncryptionKeyStationMaster
   - type: Sprite
     sprite: Clothing/Ears/Headsets/centcom.rsi
   - type: Clothing
@@ -99,8 +99,8 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyStationMaster
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyStationMaster
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
@@ -116,7 +116,7 @@
     containers:
       key_slots:
       - EncryptionKeyEngineering
-      - EncryptionKeyCommon
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/engineering.rsi
   - type: Clothing
@@ -133,7 +133,7 @@
       key_slots:
       - EncryptionKeyEngineering
       - EncryptionKeyCommand
-      - EncryptionKeyCommon
+#      - EncryptionKeyCommon
 
 - type: entity
   parent: ClothingHeadset
@@ -143,9 +143,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyMedical
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyMedical
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/medical.rsi
   - type: Clothing
@@ -159,10 +159,10 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyMedical
-      - EncryptionKeyCommand
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyMedical
+#      - EncryptionKeyCommand
+#      - EncryptionKeyCommon
 
 - type: entity
   parent: ClothingHeadset
@@ -172,9 +172,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyScience
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyScience
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/science.rsi
   - type: Clothing
@@ -188,9 +188,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyMedicalScience
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyMedicalScience
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/medicalscience.rsi
   - type: Clothing
@@ -204,9 +204,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyRobo
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyRobo
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/robotics.rsi
   - type: Clothing
@@ -220,10 +220,10 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyScience
-      - EncryptionKeyCommand
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyScience
+#      - EncryptionKeyCommand
+#      - EncryptionKeyCommon
 
 - type: entity
   parent: ClothingHeadset
@@ -233,9 +233,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeySecurity
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeySecurity
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing
@@ -249,10 +249,10 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyMedical
-      - EncryptionKeySecurity
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyMedical
+#      - EncryptionKeySecurity
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/brigmedic.rsi
   - type: Clothing
@@ -266,9 +266,9 @@
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeyService
-      - EncryptionKeyCommon
+      key_slots: [] # SpaceFactory
+#      - EncryptionKeyService
+#      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/service.rsi
   - type: Clothing
@@ -280,11 +280,11 @@
   name: freelancer headset
   description: This is used by a roaming group of freelancers
   components:
-    - type: ContainerFill
-      containers:
-        key_slots:
-          - EncryptionKeyFreelance
-    - type: Sprite
-      sprite: Clothing/Ears/Headsets/freelance.rsi
-    - type: Clothing
-      sprite: Clothing/Ears/Headsets/freelance.rsi
+  - type: ContainerFill
+    containers:
+      key_slots: [] # SpaceFactory
+#        - EncryptionKeyFreelance
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/freelance.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/freelance.rsi

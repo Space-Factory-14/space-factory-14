@@ -22,10 +22,10 @@
   - type: IntrinsicRadioTransmitter
     channels:
     - Binary
-  - type: ActiveRadio
-    channels:
-    - Binary
-    - Common
+#  - type: ActiveRadio # SpaceFactory
+#    channels: # SpaceFactory
+#    - Binary # SpaceFactory
+#    - Common # SpaceFactory
   - type: NameIdentifier
     group: MMI
   - type: DoAfter
@@ -91,13 +91,13 @@
     - type: Examiner
     - type: BorgBrain
     - type: IntrinsicRadioReceiver
-    - type: IntrinsicRadioTransmitter
-      channels:
-      - Binary
-    - type: ActiveRadio
-      channels:
-      - Binary
-      - Common
+#    - type: IntrinsicRadioTransmitter # SpaceFactory
+#      channels: # SpaceFactory
+#      - Binary # SpaceFactory
+#    - type: ActiveRadio # SpaceFactory
+#      channels: # SpaceFactory
+#      - Binary # SpaceFactory
+#      - Common # SpaceFactory
     - type: NameIdentifier
       group: PositronicBrain
     - type: DoAfter

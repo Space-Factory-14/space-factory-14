@@ -59,18 +59,18 @@
     noMindState: miner_e_r
   - type: Construction
     node: mining
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Supply
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Supply
-    - Binary
-    - Common
-    - Science
+  # - type: IntrinsicRadioTransmitter # SpaceFactory
+    # channels: # SpaceFactory
+    # - Supply # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
+  # - type: ActiveRadio # SpaceFactory
+    # channels: # SpaceFactory
+    # - Supply # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
   - type: AccessReader
     access: [["Cargo"], ["Salvage"], ["Command"], ["Research"]]
   - type: Inventory
@@ -102,18 +102,18 @@
     noMindState: engineer_e_r
   - type: Construction
     node: engineer
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Engineering
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Engineering
-    - Binary
-    - Common
-    - Science
+  # - type: IntrinsicRadioTransmitter # SpaceFactory
+    # channels: # SpaceFactory
+    # - Engineering # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
+  # - type: ActiveRadio # SpaceFactory
+    # channels: # SpaceFactory
+    # - Engineering # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
   - type: AccessReader
     access: [["Engineering"], ["Command"], ["Research"]]
   - type: Inventory
@@ -153,18 +153,18 @@
     noMindState: janitor_e_r
   - type: Construction
     node: janitor
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Service
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Service
-    - Binary
-    - Common
-    - Science
+  # - type: IntrinsicRadioTransmitter # SpaceFactory
+    # channels: # SpaceFactory
+    # - Service # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
+  # - type: ActiveRadio # SpaceFactory
+    # channels: # SpaceFactory
+    # - Service # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
   - type: AccessReader
     access: [["Service"], ["Command"], ["Research"]]
   - type: Inventory
@@ -204,18 +204,18 @@
     noMindState: medical_e_r
   - type: Construction
     node: medical
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Medical
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Medical
-    - Binary
-    - Common
-    - Science
+  # - type: IntrinsicRadioTransmitter # SpaceFactory
+    # channels: # SpaceFactory
+    # - Medical # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
+  # - type: ActiveRadio # SpaceFactory
+    # channels: # SpaceFactory
+    # - Medical # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
   - type: AccessReader
     access: [["Medical"], ["Command"], ["Research"]]
   - type: Inventory
@@ -247,18 +247,18 @@
     noMindState: service_e_r
   - type: Construction
     node: service
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Service
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Service
-    - Binary
-    - Common
-    - Science
+  # - type: IntrinsicRadioTransmitter # SpaceFactory
+    # channels: # SpaceFactory
+    # - Service # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
+  # - type: ActiveRadio # SpaceFactory
+    # channels: # SpaceFactory
+    # - Service # SpaceFactory
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
   - type: AccessReader
     access: [["Service"], ["Command"], ["Research"]]
   - type: Inventory

@@ -71,17 +71,17 @@
   - type: IntrinsicRadioReceiver
   - type: ActiveRadio
     channels:
-    - Binary
-    - Common
+    # - Binary # SpaceFactory
+    # - Common # SpaceFactory
     - Command
-    - CentCom
+    # - CentCom # SpaceFactory
     - Engineering
-    - Medical
-    - Science
-    - Security
-    - Service
-    - Supply
-    - Syndicate
+    # - Medical # SpaceFactory
+    # - Science # SpaceFactory
+    # - Security # SpaceFactory
+    # - Service # SpaceFactory
+    # - Supply # SpaceFactory
+    # - Syndicate # SpaceFactory
     globalReceive: true
   - type: Physics
     bodyType: Dynamic

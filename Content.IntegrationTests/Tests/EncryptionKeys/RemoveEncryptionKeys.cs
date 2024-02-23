@@ -16,9 +16,9 @@ public sealed class RemoveEncryptionKeys : InteractionTest
         Assert.Multiple(() =>
         {
             Assert.That(comp.KeyContainer.ContainedEntities, Has.Count.EqualTo(1));
-            Assert.That(comp.DefaultChannel, Is.EqualTo("Common"));
+            Assert.That(comp.DefaultChannel, Is.EqualTo("Engineering")); // SpaceFactory - Common to Engineering
             Assert.That(comp.Channels, Has.Count.EqualTo(1));
-            Assert.That(comp.Channels.First(), Is.EqualTo("Common"));
+            Assert.That(comp.Channels.First(), Is.EqualTo("Engineering")); // SpaceFactory - Common to Engineering
         });
 
         // Remove the key
@@ -31,16 +31,16 @@ public sealed class RemoveEncryptionKeys : InteractionTest
         });
 
         // Check that the key was ejected and not just deleted or something.
-        await AssertEntityLookup(("EncryptionKeyCommon", 1));
+        await AssertEntityLookup(("EncryptionKeyEngineering", 1)); // SpaceFactory - Common to Engineering
 
         // Re-insert a key.
-        await Interact("EncryptionKeyCentCom");
+        await Interact("EncryptionKeyEngineering"); // SpaceFactory - CentCom to Engineering
         Assert.Multiple(() =>
         {
             Assert.That(comp.KeyContainer.ContainedEntities, Has.Count.EqualTo(1));
-            Assert.That(comp.DefaultChannel, Is.EqualTo("CentCom"));
+            Assert.That(comp.DefaultChannel, Is.EqualTo("Engineering")); // SpaceFactory - CentCom to Engineering
             Assert.That(comp.Channels, Has.Count.EqualTo(1));
-            Assert.That(comp.Channels.First(), Is.EqualTo("CentCom"));
+            Assert.That(comp.Channels.First(), Is.EqualTo("Engineering")); // SpaceFactory - CentCom to Engineering
         });
     }
 
@@ -87,13 +87,13 @@ public sealed class RemoveEncryptionKeys : InteractionTest
         });
 
         // Reinsert a key
-        await Interact("EncryptionKeyCentCom");
+        await Interact("EncryptionKeyEngineering"); // SpaceFactory - CentCom to Engineering
         Assert.Multiple(() =>
         {
             Assert.That(comp.KeyContainer.ContainedEntities, Has.Count.EqualTo(1));
-            Assert.That(comp.DefaultChannel, Is.EqualTo("CentCom"));
+            Assert.That(comp.DefaultChannel, Is.EqualTo("Engineering")); // SpaceFactory - CentCom to Engineering
             Assert.That(comp.Channels, Has.Count.EqualTo(1));
-            Assert.That(comp.Channels.First(), Is.EqualTo("CentCom"));
+            Assert.That(comp.Channels.First(), Is.EqualTo("Engineering")); // SpaceFactory - CentCom to Engineering
         });
 
         // Remove it again

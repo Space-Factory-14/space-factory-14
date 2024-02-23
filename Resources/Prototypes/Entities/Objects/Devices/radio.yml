@@ -8,7 +8,7 @@
     broadcastChannel: Handheld
   - type: RadioSpeaker
     channels:
-    - Handheld
+    - Engineering # SpaceFactory - Handheld<Engineering
   - type: Speech
     speechVerb: Robotic
   - type: Sprite

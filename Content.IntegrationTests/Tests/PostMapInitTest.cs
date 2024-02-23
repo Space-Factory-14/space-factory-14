@@ -53,7 +53,6 @@ namespace Content.IntegrationTests.Tests
 //            "Bagel",
 //            "Origin",
             "CentComm",
-<<<<<<< HEAD
 //            "Box",
 //            "Europa",
 //            "Saltern",
@@ -62,18 +61,8 @@ namespace Content.IntegrationTests.Tests
 //            "MeteorArena",
 //            "Atlas",
 //            "Reach"
+//            "Train"
             "Planet"
-=======
-            "Box",
-            "Europa",
-            "Saltern",
-            "Core",
-            "Marathon",
-            "MeteorArena",
-            "Atlas",
-            "Reach",
-            "Train"
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
         };
 
         /// <summary>

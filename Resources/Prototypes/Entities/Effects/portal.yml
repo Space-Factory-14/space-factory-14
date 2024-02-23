@@ -70,8 +70,6 @@
     canTeleportToOtherMaps: true
 
 - type: entity
-<<<<<<< HEAD
-=======
   id: PortalGatewayBlue
   parent: BasePortal
   components:
@@ -104,7 +102,6 @@
     netsync: false
 
 - type: entity
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
   id: ShadowPortal
   name: shadow rift
   description: Looks unstable.
@@ -125,8 +122,4 @@
     range: 6
     volume: -3
     sound:
-<<<<<<< HEAD
       path: /Audio/Ambience/anomaly_scary.ogg
-=======
-      path: /Audio/Ambience/anomaly_scary.ogg
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c

@@ -271,15 +271,10 @@
     - type: Sprite
       drawdepth: Effects
       sprite: Effects/spookysmoke.rsi
-<<<<<<< HEAD
-      state: spookysmoke
-      color: "#793a80dd"
-=======
       layers:
       - state: spookysmoke
         color: "#793a80dd"
         map: [base]
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
     - type: Kudzu
       growthTickChance: 0.2
       spreadChance: 0.99
@@ -297,8 +292,6 @@
       tags:
         - HideContextMenu
         - SpookyFog
-<<<<<<< HEAD
-=======
     - type: OptionsVisualizer
       visuals:
         base:
@@ -306,7 +299,6 @@
           data: { state: spookysmoke }
         - options: ReducedMotion
           data: { state: spookysmoke_static }
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 - type: entity
   name: Haze
@@ -314,8 +306,4 @@
   parent: ShadowKudzu
   components:
     - type: Kudzu
-<<<<<<< HEAD
       spreadChance: 0 #appears during pulsation. It shouldnt spreading.
-=======
-      spreadChance: 0 #appears during pulsation. It shouldnt spreading.
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c

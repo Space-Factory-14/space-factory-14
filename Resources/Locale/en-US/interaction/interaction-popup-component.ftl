@@ -52,10 +52,7 @@ petting-failure-dragon = You raise your hand, but as {THE($target)} roars, you d
 petting-failure-hamster = You reach out to pet {THE($target)}, but {SUBJECT($target)} attempts to bite your finger and only your quick reflexes save you from an almost fatal injury.
 petting-failure-bear = You reach out to pet {THE($target)}, but {SUBJECT($target)} growls, making you think twice.
 petting-failure-monkey = You reach out to pet {THE($target)}, but {SUBJECT($target)} almost bites your fingers!
-<<<<<<< HEAD
-=======
 petting-failure-nymph = You reach out to pet {THE($target)}, but {POSS-ADJ($target)} moves their branches away.
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 petting-failure-shadow = You're trying to pet {THE($target)}, but your hand passes through the cold darkness of his body.
 
 ## Petting silicons

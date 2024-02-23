@@ -222,10 +222,7 @@
   - type: MeleeChemicalInjector
     transferAmount: 2
     solution: food
-<<<<<<< HEAD
-=======
     pierceArmor: false
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
   - type: Extractable
     grindableSolutionName: food
 

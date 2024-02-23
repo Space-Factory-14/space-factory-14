@@ -388,7 +388,7 @@
   suffix: Theatre, Locked
   components:
   - type: AccessReader
-    access: [["Theatre"]]
+#    access: [["Theatre"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -460,7 +460,7 @@
   suffix: Janitor, Locked
   components:
   - type: AccessReader
-    access: [["Janitor"]]
+#    access: [["Janitor"]] # SpaceFactory
 
 - type: entity
   parent: AirlockGlass
@@ -516,13 +516,8 @@
   suffix: Mining(Salvage), Locked
   components:
   - type: AccessReader
-<<<<<<< HEAD
 #    access: [["Salvage"]] # SpaceFactory
-    
-=======
-    access: [["Salvage"]]
 
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 - type: entity
   parent: AirlockChemistryGlass
   id: AirlockChemistryGlassLocked

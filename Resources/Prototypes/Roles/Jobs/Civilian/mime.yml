@@ -17,10 +17,7 @@
     components:
     - type: MimePowers
     - type: FrenchAccent
-<<<<<<< HEAD
   setPreference: false # SpaceFactory
-=======
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 - type: startingGear
   id: MimeGear

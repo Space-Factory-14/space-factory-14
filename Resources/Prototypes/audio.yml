@@ -215,8 +215,6 @@
     - /Audio/Ambience/ambiruin7.ogg
 
 - type: soundCollection
-<<<<<<< HEAD
-=======
   id: AmbienceTrain
   files:
     - /Audio/Ambience/ambitrain1.ogg
@@ -227,7 +225,6 @@
     - /Audio/Ambience/ambiruin6.ogg
 
 - type: soundCollection
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
   id: AmbienceSpookyFog
   files:
     - /Audio/Ambience/spookyspace1.ogg

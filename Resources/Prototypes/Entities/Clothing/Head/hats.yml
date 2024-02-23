@@ -1060,8 +1060,4 @@
   - type: Sprite
     sprite: Clothing/Head/Hats/beret_medic.rsi
   - type: Clothing
-<<<<<<< HEAD
     sprite: Clothing/Head/Hats/beret_medic.rsi
-=======
-    sprite: Clothing/Head/Hats/beret_medic.rsi
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c

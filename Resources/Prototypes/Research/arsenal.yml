@@ -35,29 +35,6 @@
   - MagazineBoxRifleIncendiary
 
 - type: technology
-<<<<<<< HEAD
-  id: ExplosiveTechnology
-  name: research-technology-explosive-technology
-  icon:
-    sprite: Objects/Devices/payload.rsi
-    state: payload-explosive-armed
-  discipline: Arsenal
-  tier: 1
-  cost: 7500
-  recipeUnlocks:
-  - Signaller  
-  - SignallerAdvanced
-  - SignalTrigger
-  - VoiceTrigger
-  - TimerTrigger
-  - FlashPayload
-  - ExplosivePayload
-  - ChemicalPayload
-  - Igniter
-
-- type: technology
-=======
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
   id: WeaponizedLaserManipulation
   name: research-technology-weaponized-laser-manipulation
   icon:

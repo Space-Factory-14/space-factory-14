@@ -51,8 +51,4 @@
 - type: damageContainer
   id: ShadowHaze
   supportedTypes:
-<<<<<<< HEAD
     - Heat
-=======
-    - Heat
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c

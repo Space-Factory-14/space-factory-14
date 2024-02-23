@@ -53,13 +53,13 @@
   - type: Body
     prototype: Drone
   - type: IntrinsicRadioReceiver
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Binary
-  - type: ActiveRadio
-    channels:
-    - Binary
-    - Common
+#  - type: IntrinsicRadioTransmitter #SpaceFactory
+#    channels: #SpaceFactory
+#    - Binary #SpaceFactory
+#  - type: ActiveRadio #SpaceFactory
+#    channels: #SpaceFactory
+#    - Binary #SpaceFactory
+#    - Common #SpaceFactory
   - type: DoAfter
   - type: Pullable
   - type: Examiner

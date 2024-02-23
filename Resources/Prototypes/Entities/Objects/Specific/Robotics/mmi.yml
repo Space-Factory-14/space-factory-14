@@ -19,9 +19,9 @@
   - type: BlockMovement
   - type: Examiner
   - type: IntrinsicRadioReceiver
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Binary
+#  - type: IntrinsicRadioTransmitter # SpaceFactory
+#    channels: # SpaceFactory
+#    - Binary # SpaceFactory
 #  - type: ActiveRadio # SpaceFactory
 #    channels: # SpaceFactory
 #    - Binary # SpaceFactory

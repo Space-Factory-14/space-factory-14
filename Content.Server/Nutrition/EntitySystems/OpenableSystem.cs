@@ -1,4 +1,5 @@
 using Content.Server.Chemistry.EntitySystems;
+<<<<<<< HEAD
 using Content.Server.Fluids.EntitySystems;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Server.Nutrition.Components;
@@ -11,6 +12,10 @@ using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Utility;
+=======
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Nutrition.Components;
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 namespace Content.Server.Nutrition.EntitySystems;
 
@@ -19,18 +24,12 @@ namespace Content.Server.Nutrition.EntitySystems;
 /// </summary>
 public sealed class OpenableSystem : SharedOpenableSystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<OpenableComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<OpenableComponent, UseInHandEvent>(OnUse);
-        SubscribeLocalEvent<OpenableComponent, ExaminedEvent>(OnExamined, after: new[] { typeof(PuddleSystem) });
         SubscribeLocalEvent<OpenableComponent, SolutionTransferAttemptEvent>(OnTransferAttempt);
+<<<<<<< HEAD
         SubscribeLocalEvent<OpenableComponent, MeleeHitEvent>(HandleIfClosed);
         SubscribeLocalEvent<OpenableComponent, AfterInteractEvent>(HandleIfClosed);
         SubscribeLocalEvent<OpenableComponent, GetVerbsEvent<Verb>>(AddOpenCloseVerbs);
@@ -56,6 +55,8 @@ public sealed class OpenableSystem : SharedOpenableSystem
 
         var text = Loc.GetString(comp.ExamineText);
         args.PushMarkup(text);
+=======
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
     }
 
     private void OnTransferAttempt(EntityUid uid, OpenableComponent comp, SolutionTransferAttemptEvent args)
@@ -66,6 +67,7 @@ public sealed class OpenableSystem : SharedOpenableSystem
             args.Cancel(Loc.GetString("drink-component-try-use-drink-not-open", ("owner", uid)));
         }
     }
+<<<<<<< HEAD
 
     private void HandleIfClosed(EntityUid uid, OpenableComponent comp, HandledEntityEventArgs args)
     {
@@ -197,4 +199,6 @@ public sealed class OpenableSystem : SharedOpenableSystem
             _audio.PlayPvs(comp.CloseSound, uid);
         return true;
     }
+=======
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 }

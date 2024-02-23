@@ -454,6 +454,7 @@
     # minimumPlayers: 20
   # - type: ImmovableRodRule
 
+<<<<<<< HEAD
 # - type: entity
   # noSpawn: true
   # parent: BaseGameRule
@@ -465,6 +466,19 @@
     # reoccurrenceDelay: 20
     # duration: 1
   # - type: IonStormRule
+=======
+- type: entity
+  noSpawn: true
+  parent: BaseGameRule
+  id: IonStorm
+  components:
+  - type: StationEvent
+    weight: 10
+    earliestStart: 20
+    reoccurrenceDelay: 20
+    duration: 1
+  - type: IonStormRule
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 # - type: entity
   # id: MimicVendorRule

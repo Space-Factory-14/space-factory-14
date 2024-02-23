@@ -384,6 +384,14 @@
 
 - type: entity
   parent: AirlockGlass
+  id: AirlockTheatreGlassLocked
+  suffix: Theatre, Locked
+  components:
+  - type: AccessReader
+    access: [["Theatre"]]
+
+- type: entity
+  parent: AirlockGlass
   id: AirlockBarGlassLocked
   suffix: Bar, Locked
   components:
@@ -448,6 +456,14 @@
 
 - type: entity
   parent: AirlockGlass
+  id: AirlockJanitorGlassLocked
+  suffix: Janitor, Locked
+  components:
+  - type: AccessReader
+    access: [["Janitor"]]
+
+- type: entity
+  parent: AirlockGlass
   id: AirlockHydroGlassLocked
   suffix: Hydroponics, Locked
   components:
@@ -500,8 +516,13 @@
   suffix: Mining(Salvage), Locked
   components:
   - type: AccessReader
+<<<<<<< HEAD
 #    access: [["Salvage"]] # SpaceFactory
     
+=======
+    access: [["Salvage"]]
+
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 - type: entity
   parent: AirlockChemistryGlass
   id: AirlockChemistryGlassLocked

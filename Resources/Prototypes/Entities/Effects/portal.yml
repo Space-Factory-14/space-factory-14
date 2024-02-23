@@ -70,6 +70,41 @@
     canTeleportToOtherMaps: true
 
 - type: entity
+<<<<<<< HEAD
+=======
+  id: PortalGatewayBlue
+  parent: BasePortal
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Structures/Machines/gateway.rsi
+    color: SkyBlue
+    layers:
+    - state: portal
+  - type: PointLight
+    color: SkyBlue
+    radius: 3
+    energy: 1
+    netsync: false
+
+- type: entity
+  id: PortalGatewayOrange
+  parent: BasePortal
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Structures/Machines/gateway.rsi
+    color: OrangeRed
+    layers:
+    - state: portal
+  - type: PointLight
+    color: OrangeRed
+    radius: 3
+    energy: 1
+    netsync: false
+
+- type: entity
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
   id: ShadowPortal
   name: shadow rift
   description: Looks unstable.
@@ -90,4 +125,8 @@
     range: 6
     volume: -3
     sound:
+<<<<<<< HEAD
       path: /Audio/Ambience/anomaly_scary.ogg
+=======
+      path: /Audio/Ambience/anomaly_scary.ogg
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c

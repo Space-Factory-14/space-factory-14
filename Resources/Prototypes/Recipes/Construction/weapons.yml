@@ -8,7 +8,10 @@
   description: A glass shard with a piece of cloth wrapped around it.
   icon: { sprite: Objects/Weapons/Melee/shiv.rsi, state: icon }
   objectType: Item
+<<<<<<< HEAD
   hide: true # SpaceFactory
+=======
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 - type: construction
   name: reinforced shiv
@@ -20,7 +23,10 @@
   description: A reinforced glass shard with a piece of cloth wrapped around it.
   icon: { sprite: Objects/Weapons/Melee/reinforced_shiv.rsi, state: icon }
   objectType: Item
+<<<<<<< HEAD
   hide: true # SpaceFactory
+=======
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 - type: construction
   name: plasma shiv
@@ -32,7 +38,10 @@
   description: A plasma shard with a piece of cloth wrapped around it.
   icon: { sprite: Objects/Weapons/Melee/plasma_shiv.rsi, state: icon }
   objectType: Item
+<<<<<<< HEAD
   hide: true # SpaceFactory
+=======
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 - type: construction
   name: uranium shiv
@@ -44,7 +53,10 @@
   description: A uranium shard with a piece of cloth wrapped around it.
   icon: { sprite: Objects/Weapons/Melee/uranium_shiv.rsi, state: icon }
   objectType: Item
+<<<<<<< HEAD
   hide: true # SpaceFactory
+=======
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 
 - type: construction
   name: crude spear

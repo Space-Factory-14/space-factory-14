@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # - type: gameMapPool # SpaceFactory
   # id: DefaultMapPool
   # maps:
@@ -14,3 +15,22 @@
   # - Saltern
   # - Packed
   # - Reach
+=======
+- type: gameMapPool
+  id: DefaultMapPool
+  maps:
+  - Atlas
+  - Bagel
+  - Box
+  - Cluster
+  - Core
+  - Fland
+  - Marathon
+  - Meta
+  - Omega
+  - Origin
+  - Saltern
+  - Packed
+  - Reach
+  #- Train <- return after station anchoring PR is finished and merged
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c

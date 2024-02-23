@@ -35,6 +35,7 @@
   - MagazineBoxRifleIncendiary
 
 - type: technology
+<<<<<<< HEAD
   id: ExplosiveTechnology
   name: research-technology-explosive-technology
   icon:
@@ -55,6 +56,8 @@
   - Igniter
 
 - type: technology
+=======
+>>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
   id: WeaponizedLaserManipulation
   name: research-technology-weaponized-laser-manipulation
   icon:
@@ -106,7 +109,41 @@
   - MagazineBoxLightRifleUranium
   - MagazineBoxRifleUranium
 
+- type: technology
+  id: AdvancedRiotControl
+  name: research-technology-advanced-riot-control
+  icon:
+    sprite: Objects/Weapons/Melee/truncheon.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 1
+  cost: 8000
+  recipeUnlocks:
+  - ClothingEyesGlassesSecurity
+  - Truncheon
+  - TelescopicShield
+  - HoloprojectorSecurity
+  - WeaponDisablerSMG
+
 # Tier 2
+
+- type: technology
+  id: ExplosiveTechnology
+  name: research-technology-explosive-technology
+  icon:
+    sprite: Objects/Devices/payload.rsi
+    state: payload-explosive-armed
+  discipline: Arsenal
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - SignallerAdvanced
+  - SignalTrigger
+  - VoiceTrigger
+  - TimerTrigger
+  - FlashPayload
+  - ExplosivePayload
+  - ChemicalPayload
 
 - type: technology
   id: ConcentratedLaserWeaponry
@@ -131,22 +168,6 @@
   cost: 10000
   recipeUnlocks:
   - WeaponXrayCannon
-
-- type: technology
-  id: AdvancedRiotControl
-  name: research-technology-advanced-riot-control
-  icon:
-    sprite: Objects/Weapons/Melee/truncheon.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 2
-  cost: 8000
-  recipeUnlocks:
-  - ClothingEyesGlassesSecurity
-  - Truncheon
-  - TelescopicShield
-  - HoloprojectorSecurity
-  - WeaponDisablerSMG
 
 - type: technology
   id: BasicShuttleArmament

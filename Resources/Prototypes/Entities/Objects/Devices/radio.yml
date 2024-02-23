@@ -5,7 +5,7 @@
   id: RadioHandheld
   components:
   - type: RadioMicrophone
-    broadcastChannel: Handheld
+    broadcastChannel: Engineering # SpaceFactory - Handheld<Engineering
   - type: RadioSpeaker
     channels:
     - Engineering # SpaceFactory - Handheld<Engineering

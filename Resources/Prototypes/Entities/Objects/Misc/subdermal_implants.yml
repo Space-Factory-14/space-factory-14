@@ -99,9 +99,9 @@
       range: 500
     - type: TriggerOnMobstateChange
       mobState:
-      - Critical
+      - Dead # SpaceFactory - Critical<Dead
     - type: Rattle
-      radioChannel: "Security"
+      radioChannel: "Engineering" # SpaceFactory - Security<Engineering
 
 #Traitor implants
 

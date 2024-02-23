@@ -305,7 +305,8 @@
   - type: Appearance
   - type: ActiveRadio
     channels:
-    - Science
+#    - Science
+     - Engineering # SpaceFactory
   - type: GenericVisualizer
     visuals:
       enum.PowerDeviceVisuals.Powered:

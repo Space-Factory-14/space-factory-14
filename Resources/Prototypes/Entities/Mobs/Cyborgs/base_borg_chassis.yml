@@ -84,16 +84,16 @@
   - type: Hands
     showInHands: false
   - type: IntrinsicRadioReceiver
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Binary
-    - Common
-    - Science
+#  - type: IntrinsicRadioTransmitter # SpaceFactory
+#    channels: # SpaceFactory
+#    - Binary # SpaceFactory
+#    - Common # SpaceFactory
+#    - Science # SpaceFactory
+#  - type: ActiveRadio # SpaceFactory
+#    channels: # SpaceFactory
+#    - Binary # SpaceFactory
+#    - Common # SpaceFactory
+#    - Science # SpaceFactory
   - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
@@ -242,12 +242,12 @@
       access: [["SyndicateAgent"], ["NuclearOperative"]]
     - type: SiliconLawProvider
       laws: SyndicateStatic
-    - type: IntrinsicRadioTransmitter
-      channels:
-        - Binary
-        - Syndicate
-    - type: ActiveRadio
-      channels:
-        - Syndicate
+#    - type: IntrinsicRadioTransmitter # SpaceFactory
+#      channels: # SpaceFactory
+#        - Binary # SpaceFactory
+#        - Syndicate # SpaceFactory
+#    - type: ActiveRadio # SpaceFactory
+#      channels: # SpaceFactory
+#        - Syndicate # SpaceFactory
     - type: ShowSyndicateIcons
     - type: MovementAlwaysTouching

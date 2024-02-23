@@ -24,7 +24,7 @@ public abstract class SharedChatSystem : EntitySystem
     public const char DefaultChannelKey = 'h';
 
     [ValidatePrototypeId<RadioChannelPrototype>]
-    public const string CommonChannel = "Common";
+    public const string CommonChannel = "Engineering"; // SpaceFactory - Common to Engineering
 
     public static string DefaultChannelPrefix = $"{RadioChannelPrefix}{DefaultChannelKey}";
 

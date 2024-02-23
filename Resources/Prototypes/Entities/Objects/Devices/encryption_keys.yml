@@ -19,8 +19,8 @@
   components:
   - type: EncryptionKey
     channels:
-    - Common
-    defaultChannel: Common
+    - Engineering # SpaceFactory - Common<Engineering
+    defaultChannel: Engineering # SpaceFactory - Common<Engineering
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -32,10 +32,10 @@
   name: cargo encryption key
   description: An encryption key used by supply employees.
   components:
-  - type: EncryptionKey
-    channels:
-    - Supply
-    defaultChannel: Supply
+  # - type: EncryptionKey
+    # channels:
+    # - Supply
+    # defaultChannel: Supply
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -47,10 +47,10 @@
   name: central command encryption key
   description: An encryption key used by captain's bosses.
   components:
-  - type: EncryptionKey
-    channels:
-    - CentCom
-    defaultChannel: CentCom
+  # - type: EncryptionKey
+    # channels:
+    # - CentCom
+    # defaultChannel: CentCom
   - type: Sprite
     layers:
     - state: crypt_blue
@@ -62,17 +62,17 @@
   name: station master encryption key
   description: An encryption key used by station's bosses.
   components:
-  - type: EncryptionKey
-    channels:
-    - Common
-    - Command
-    - Engineering
-    - Medical
-    - Science
-    - Security
-    - Service
-    - Supply
-    defaultChannel: Command
+  # - type: EncryptionKey
+    # channels:
+    # - Common
+    # - Command
+    # - Engineering
+    # - Medical
+    # - Science
+    # - Security
+    # - Service
+    # - Supply
+    # defaultChannel: Command
   - type: Sprite
     layers:
     - state: crypt_gold
@@ -114,10 +114,10 @@
   name: medical encryption key
   description: An encryption key used by those who save lives.
   components:
-  - type: EncryptionKey
-    channels:
-    - Medical
-    defaultChannel: Medical
+  # - type: EncryptionKey
+    # channels:
+    # - Medical
+    # defaultChannel: Medical
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -129,11 +129,11 @@
   name: med-sci encryption key
   description: An encryption key used by someone who hasn't decided which side to take.
   components:
-  - type: EncryptionKey
-    channels:
-    - Medical
-    - Science
-    defaultChannel: Science
+  # - type: EncryptionKey
+    # channels:
+    # - Medical
+    # - Science
+    # defaultChannel: Science
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -145,10 +145,10 @@
   name: science encryption key
   description: An encryption key used by scientists. Maybe it is plasmaproof?
   components:
-  - type: EncryptionKey
-    channels:
-    - Science
-    defaultChannel: Science
+  # - type: EncryptionKey
+    # channels:
+    # - Science
+    # defaultChannel: Science
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -160,10 +160,10 @@
   name: robotech encryption key
   description: An encryption key used by robototech engineers. Maybe it has a LAH-6000 on it?
   components:
-  - type: EncryptionKey
-    channels:
-    - Science
-    defaultChannel: Science
+  # - type: EncryptionKey
+    # channels:
+    # - Science
+    # defaultChannel: Science
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -175,10 +175,10 @@
   name: security encryption key
   description: An encryption key used by security.
   components:
-  - type: EncryptionKey
-    channels:
-    - Security
-    defaultChannel: Security
+  # - type: EncryptionKey
+    # channels:
+    # - Security
+    # defaultChannel: Security
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -190,10 +190,10 @@
   name: service encryption key
   description: An encryption key used by the service staff, tasked with keeping the station full, happy and clean.
   components:
-  - type: EncryptionKey
-    channels:
-    - Service
-    defaultChannel: Service
+  # - type: EncryptionKey
+    # channels:
+    # - Service
+    # defaultChannel: Service
   - type: Sprite
     layers:
     - state: crypt_gray
@@ -205,10 +205,10 @@
   name: blood-red encryption key
   description: An encryption key used by... wait... Who is the owner of this chip?
   components:
-  - type: EncryptionKey
-    channels:
-    - Syndicate
-    defaultChannel: Syndicate
+  # - type: EncryptionKey
+    # channels:
+    # - Syndicate
+    # defaultChannel: Syndicate
   - type: Sprite
     layers:
     - state: crypt_red
@@ -220,10 +220,10 @@
   name: binary translator key
   description: An encryption key that translates binary signals used by silicons.
   components:
-  - type: EncryptionKey
-    channels:
-    - Binary
-    defaultChannel: Binary
+  # - type: EncryptionKey
+    # channels:
+    # - Binary
+    # defaultChannel: Binary
   - type: Sprite
     layers:
     - state: crypt_silver
@@ -235,10 +235,10 @@
   name: freelancer encryption key
   description: An encryption key used by freelancers, who may or may not have an affiliation. It looks like its worn out.
   components:
-    - type: EncryptionKey
-      channels:
-        - Freelance
-      defaultChannel: Freelance
+    # - type: EncryptionKey
+      # channels:
+        # - Freelance
+      # defaultChannel: Freelance
     - type: Sprite
       layers:
         - state: crypt_rusted

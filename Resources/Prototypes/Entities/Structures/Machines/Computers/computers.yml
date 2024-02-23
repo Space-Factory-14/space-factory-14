@@ -394,7 +394,7 @@
   - type: ResearchConsole
   - type: ActiveRadio
     channels:
-    - Science
+    - Engineering # SpaceFactory - Science<Engineering
   - type: TechnologyDatabase
   - type: ActivatableUI
     key: enum.ResearchConsoleUiKey.Key

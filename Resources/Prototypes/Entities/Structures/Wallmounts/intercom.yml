@@ -141,93 +141,93 @@
   id: IntercomCommon
   parent: Intercom
   suffix: Common
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
 
 - type: entity
   id: IntercomCommand
   parent: Intercom
   suffix: Command
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Command
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Command # SpaceFactory
 
 - type: entity
   id: IntercomEngineering
   parent: Intercom
   suffix: Engineering
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Engineering
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Engineering # SpaceFactory
 
 - type: entity
   id: IntercomMedical
   parent: Intercom
   suffix: Medical
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Medical
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Medical # SpaceFactory
 
 - type: entity
   id: IntercomScience
   parent: Intercom
   suffix: Science
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Science
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Science # SpaceFactory
 
 - type: entity
   id: IntercomSecurity
   parent: Intercom
   suffix: Security
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Security
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Security # SpaceFactory
 
 - type: entity
   id: IntercomService
   parent: Intercom
   suffix: Service
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Service
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Service # SpaceFactory
 
 - type: entity
   id: IntercomSupply
   parent: Intercom
   suffix: Supply
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Supply
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Supply # SpaceFactory
 
 - type: entity
   id: IntercomAll
   parent: Intercom
   suffix: All
-  components:
-  - type: Intercom
-    supportedChannels:
-    - Common
-    - Command
-    - Engineering
-    - Medical
-    - Science
-    - Security
-    - Service
-    - Supply
+  # components: # SpaceFactory
+  # - type: Intercom # SpaceFactory
+    # supportedChannels: # SpaceFactory
+    # - Common # SpaceFactory
+    # - Command # SpaceFactory
+    # - Engineering # SpaceFactory
+    # - Medical # SpaceFactory
+    # - Science # SpaceFactory
+    # - Security # SpaceFactory
+    # - Service # SpaceFactory
+    # - Supply # SpaceFactory

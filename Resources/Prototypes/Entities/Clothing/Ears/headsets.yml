@@ -11,7 +11,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyEngineering
+      - EncryptionKeyCommon # SpaceFactory - Common<Engineering
   - type: Headset
   - type: EncryptionKeyHolder
     keySlots: 4

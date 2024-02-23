@@ -9,7 +9,7 @@ public sealed partial class RattleComponent : Component
 {
     // The radio channel the message will be sent to
     [DataField]
-    public ProtoId<RadioChannelPrototype> RadioChannel = "Syndicate";
+    public ProtoId<RadioChannelPrototype> RadioChannel = "Engineering"; // SpaceFactory - Syndicate to Engineering
 
     // The message that the implant will send when crit
     [DataField]

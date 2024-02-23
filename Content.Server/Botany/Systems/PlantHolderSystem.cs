@@ -281,16 +281,6 @@ public sealed class PlantHolderSystem : EntitySystem
                 return;
             }
 
-<<<<<<< HEAD
-            component.Health -= (_random.Next(3, 5) * 10);
-
-            if (!component.Harvest)
-            {
-                _popup.PopupCursor(Loc.GetString("plant-holder-component-early-sample"), args.User);
-                return;
-            }
-
-=======
             if (GetCurrentGrowthStage(entity) <= 1)
             {
                 _popup.PopupCursor(Loc.GetString("plant-holder-component-early-sample-message"), args.User);
@@ -298,7 +288,6 @@ public sealed class PlantHolderSystem : EntitySystem
             }
 
             component.Health -= (_random.Next(3, 5) * 10);
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
             component.Seed.Unique = false;
             var seed = _botany.SpawnSeedPacket(component.Seed, Transform(args.User).Coordinates, args.User, component.Health);
             _randomHelper.RandomOffset(seed, 0.25f);

@@ -87,23 +87,10 @@ namespace Content.Client.Decals.Overlays
             {
                 if (!_cachedTextures.TryGetValue(decal.Id, out var cache))
                 {
-<<<<<<< HEAD
-                    if (!_cachedTextures.TryGetValue(decal.Id, out var cache))
-                    {
-                        // Nothing to cache someone messed up
-                        if (!_prototypeManager.TryIndex<DecalPrototype>(decal.Id, out var decalProto))
-                        {
-                            continue;
-                        }
-
-                        cache = (_sprites.Frame0(decalProto.Sprite), decalProto.SnapCardinals);
-                        _cachedTextures[decal.Id] = cache;
-=======
                     // Nothing to cache someone messed up
                     if (!_prototypeManager.TryIndex<DecalPrototype>(decal.Id, out var decalProto))
                     {
                         continue;
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
                     }
 
                     cache = (_sprites.Frame0(decalProto.Sprite), decalProto.SnapCardinals);

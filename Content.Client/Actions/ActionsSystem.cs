@@ -103,12 +103,7 @@ namespace Content.Client.Actions
             component.ItemIconStyle = state.ItemIconStyle;
             component.Sound = state.Sound;
 
-<<<<<<< HEAD
-            if (_playerManager.LocalEntity == component.AttachedEntity)
-                ActionsUpdated?.Invoke();
-=======
             UpdateAction(uid, component);
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
         }
 
         protected override void UpdateAction(EntityUid? actionId, BaseActionComponent? action = null)
@@ -222,13 +217,13 @@ namespace Content.Client.Actions
 
         public void LinkAllActions(ActionsComponent? actions = null)
         {
-             if (_playerManager.LocalEntity is not { } user ||
-                 !Resolve(user, ref actions, false))
-             {
-                 return;
-             }
+            if (_playerManager.LocalEntity is not { } user ||
+                !Resolve(user, ref actions, false))
+            {
+                return;
+            }
 
-             LinkActions?.Invoke(actions);
+            LinkActions?.Invoke(actions);
         }
 
         public override void Shutdown()

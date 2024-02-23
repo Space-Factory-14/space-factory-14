@@ -16,22 +16,14 @@ public sealed partial class OpenableComponent : Component
     /// Whether this drink or food is opened or not.
     /// Drinks can only be drunk or poured from/into when open, and food can only be eaten when open.
     /// </summary>
-<<<<<<< HEAD:Content.Server/Nutrition/Components/OpenableComponent.cs
-    [DataField]
-=======
     [DataField, AutoNetworkedField]
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c:Content.Shared/Nutrition/Components/OpenableComponent.cs
     public bool Opened;
 
     /// <summary>
     /// If this is false you cant press Z to open it.
     /// Requires an OpenBehavior damage threshold or other logic to open.
     /// </summary>
-<<<<<<< HEAD:Content.Server/Nutrition/Components/OpenableComponent.cs
-    [DataField]
-=======
     [DataField, AutoNetworkedField]
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c:Content.Shared/Nutrition/Components/OpenableComponent.cs
     public bool OpenableByHand = true;
 
     /// <summary>
@@ -71,11 +63,7 @@ public sealed partial class OpenableComponent : Component
     /// <summary>
     /// Can this item be closed again after opening?
     /// </summary>
-<<<<<<< HEAD:Content.Server/Nutrition/Components/OpenableComponent.cs
-    [DataField]
-=======
     [DataField, AutoNetworkedField]
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c:Content.Shared/Nutrition/Components/OpenableComponent.cs
     public bool Closeable;
 
     /// <summary>

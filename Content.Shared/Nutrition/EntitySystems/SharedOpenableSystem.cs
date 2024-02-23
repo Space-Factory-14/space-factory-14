@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-namespace Content.Shared.Nutrition.EntitySystems;
-
-public abstract partial class SharedOpenableSystem : EntitySystem
-{
-=======
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -190,7 +184,6 @@ public abstract partial class SharedOpenableSystem : EntitySystem
             Audio.PlayPredicted(comp.CloseSound, uid, user);
         return true;
     }
->>>>>>> 2a5eb86e2270629752799e04f945a5ebabef460c
 }
 
 /// <summary>

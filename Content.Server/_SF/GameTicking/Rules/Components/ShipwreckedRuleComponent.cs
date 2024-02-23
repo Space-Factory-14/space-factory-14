@@ -18,6 +18,12 @@ namespace Content.Server.GameTicking.Rules.Components;
 public sealed partial class ShipwreckedRuleComponent : Component
 {
     #region Config
+    // TODO Replace with GameRuleComponent.minPlayers
+    /// <summary>
+    /// The minimum needed amount of players
+    /// </summary>
+    [DataField]
+    public int MinPlayers = 1;
 
     /// <summary>
     /// The shuttle that the game will start on.

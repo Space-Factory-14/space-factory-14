@@ -98,25 +98,25 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
     private void OnStartAttempt(RoundStartAttemptEvent ev)
     {
         var query = EntityQueryEnumerator<ShipwreckedRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out _, out var gameRule))
+        while (query.MoveNext(out var uid, out var shipwrecked, out var gameRule))
         {
             if (!GameTicker.IsGameRuleAdded(uid, gameRule))
                 continue;
 
-            var minPlayers = 1; // SpaceFactory - Move to Cvar
-            if (!ev.Forced && ev.Players.Length < minPlayers)
-            {
-                _chatManager.SendAdminAnnouncement(Loc.GetString("shipwrecked-not-enough-ready-players",
-                    ("readyPlayersCount", ev.Players.Length), ("minimumPlayers", minPlayers)));
-                ev.Cancel();
-                continue;
-            }
+            //var minPlayers = shipwrecked.MinPlayers;
+            //if (!ev.Forced && ev.Players.Length < minPlayers)
+            //{
+            //    _chatManager.SendAdminAnnouncement(Loc.GetString("shipwrecked-not-enough-ready-players",
+            //        ("readyPlayersCount", ev.Players.Length), ("minimumPlayers", minPlayers)));
+            //    ev.Cancel();
+            //    continue;
+            //}
 
-            if (ev.Players.Length != 0)
-                continue;
+            //if (ev.Players.Length != 0)
+            //    continue;
 
-            _chatManager.DispatchServerAnnouncement(Loc.GetString("shipwrecked-no-one-ready"));
-            ev.Cancel();
+            //_chatManager.DispatchServerAnnouncement(Loc.GetString("shipwrecked-no-one-ready"));
+            //ev.Cancel();
         }
     }
 

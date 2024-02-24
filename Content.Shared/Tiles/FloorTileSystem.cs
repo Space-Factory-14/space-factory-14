@@ -79,8 +79,8 @@ public sealed class FloorTileSystem : EntitySystem
                 if (tuple.EntityId == entityUid)
                     return true;
 
-                tuple.weh = false;
-                return false;
+                tuple.weh = true; // SpaceFactory - false to true
+                return true; // SpaceFactory - false to true
             });
 
         if (!state.inRange)

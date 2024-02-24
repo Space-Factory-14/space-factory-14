@@ -22,8 +22,6 @@
   - type: Tag
     tags:
       - Meat
-  - type: TimedDespawn # SpaceFactory
-    lifetime: 10 # SpaceFactory
 
 - type: entity
   id: BaseAnimalOrgan

@@ -143,7 +143,9 @@
   components:
   - type: StorageFill
     contents:
-      - id: BoxSurvivalEngineering
+#      - id: BoxSurvivalEngineering
+      - id: Welder
+      - id: Multitool
 
 - type: entity
   noSpawn: true

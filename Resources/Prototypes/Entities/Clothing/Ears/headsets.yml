@@ -121,6 +121,7 @@
     sprite: Clothing/Ears/Headsets/engineering.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/engineering.rsi
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingHeadsetEngineering
@@ -134,6 +135,7 @@
       - EncryptionKeyEngineering
       - EncryptionKeyCommand
 #      - EncryptionKeyCommon
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingHeadset

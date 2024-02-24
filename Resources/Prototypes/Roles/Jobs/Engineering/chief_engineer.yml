@@ -19,7 +19,7 @@
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true
-  supervisors: job-supervisors-captain
+  supervisors: job-supervisors-centcom # SpaceFactory
   canBeAntag: false
   access:
   - Maintenance
@@ -31,7 +31,7 @@
   - Brig
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+    implants: [ MindShieldImplant, TrackingImplant, DeathAcidifierImplantSF ] # SpaceFactory
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
@@ -43,12 +43,12 @@
   equipment:
     head: ClothingHeadHatHardhatWhite
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
-    back: ClothingBackpackChiefEngineerFilled
-    shoes: ClothingShoesColorBrown
+    back: ClothingBackpackEngineeringFilled # ClothingBackpackChiefEngineerFilled
+    shoes: ClothingShoesBootsMagAdv # ClothingShoesColorBrown
     id: CEPDA
-    eyes: ClothingEyesGlassesMeson
+#    eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetCE
-    belt: ClothingBeltUtilityEngineering
+#    belt: ClothingBeltUtilityEngineering
   innerClothingSkirt: ClothingUniformJumpskirtChiefEngineer
-  satchel: ClothingBackpackSatchelChiefEngineerFilled
-  duffelbag: ClothingBackpackDuffelChiefEngineerFilled
+  satchel: ClothingBackpackEngineeringFilled # ClothingBackpackSatchelChiefEngineerFilled
+  duffelbag: ClothingBackpackEngineeringFilled # ClothingBackpackDuffelChiefEngineerFilled

@@ -15,6 +15,7 @@
 #    spawned:
 #    - id: FoodMeatHuman
 #      amount: 5
+  - type: Insulated # SpaceFactory - No need for gloves
 
 - type: entity
   parent: BaseSpeciesDummy

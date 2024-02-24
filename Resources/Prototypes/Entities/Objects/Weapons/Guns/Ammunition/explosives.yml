@@ -61,6 +61,7 @@
   parent: BaseGrenade
   components:
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletGrenadeBaton
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
@@ -78,6 +79,7 @@
   parent: BaseGrenade
   components:
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletGrenadeBlast
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
@@ -95,6 +97,7 @@
   parent: BaseGrenade
   components:
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletGrenadeFlash
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
@@ -112,6 +115,7 @@
   parent: BaseGrenade
   components:
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletGrenadeFrag
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
@@ -129,6 +133,7 @@
   parent: BaseGrenade
   components:
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletGrenadeEMP
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi

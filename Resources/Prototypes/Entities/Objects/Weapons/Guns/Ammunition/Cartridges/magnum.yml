@@ -9,6 +9,7 @@
       - Cartridge
       - CartridgeMagnum
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletMagnum
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi

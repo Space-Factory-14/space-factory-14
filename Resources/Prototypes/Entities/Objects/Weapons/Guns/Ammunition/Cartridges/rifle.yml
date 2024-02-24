@@ -9,6 +9,7 @@
       - Cartridge
       - CartridgeRifle
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletRifle
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi

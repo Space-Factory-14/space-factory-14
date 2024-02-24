@@ -9,6 +9,7 @@
       - Cartridge
       - CartridgePistol
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     proto: BulletPistol
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi

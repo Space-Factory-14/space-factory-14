@@ -30,11 +30,17 @@
   - type: Item
     size: Normal
     shape:
-    - 0,0,2,0
-    - 1,1,1,2
+    - 0,0,1,1 # SpaceFactory
+#    - 0,0,2,0
+#    - 1,1,1,2
     sprite: Objects/Weapons/Melee/pickaxe.rsi
     storedRotation: -45
   - type: UseDelay
+  - type: Clothing # SpaceFactory
+    quickEquip: true # SpaceFactory
+    slots: # SpaceFactory
+    - suitStorage # SpaceFactory
+    - Belt # SpaceFactory
 
 - type: entity
   name: mining drill

@@ -143,9 +143,10 @@
   components:
   - type: StorageFill
     contents:
-#      - id: BoxSurvivalEngineering
-      - id: Welder
-      - id: Multitool
+#      - id: BoxSurvivalEngineering # SpaceFactory
+      - id: Welder # SpaceFactory
+      - id: Multitool # SpaceFactory
+      - id: Pickaxe # SpaceFactory
 
 - type: entity
   noSpawn: true

@@ -30,8 +30,6 @@
     delay: 0.5
   - type: ExplosionResistance
     damageCoefficient: 1 # SpaceFactory 0.9<1
-  - type: Unremoveable # SpaceFactory
-    deleteOnDrop: false # SpaceFactory
 
 - type: entity
   parent: ClothingBackpack
@@ -83,6 +81,8 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/engineering.rsi
+  - type: Unremoveable # SpaceFactory
+    deleteOnDrop: false # SpaceFactory
 
 - type: entity
   parent: ClothingBackpack

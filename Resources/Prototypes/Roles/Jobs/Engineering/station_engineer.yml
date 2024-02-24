@@ -14,9 +14,13 @@
   - Maintenance
   - Engineering
   - External
-  extendedAccess:
+#  extendedAccess: # SpaceFactory
   - Atmospherics
   canBeAntag: false # SpaceFactory
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant, DeathAcidifierImplantSF ] # SpaceFactory
+  - !type:AddComponentSpecial
 
 - type: startingGear
   id: StationEngineerGear
@@ -24,12 +28,12 @@
     head: ClothingHeadHatHardhatYellow
     jumpsuit: ClothingUniformJumpsuitEngineering
     back: ClothingBackpackEngineeringFilled
-    shoes: ClothingShoesBootsWork
+    shoes: ClothingShoesBootsMag #ClothingShoesBootsWork
     outerClothing: ClothingOuterVestHazard
     id: EngineerPDA
     eyes: ClothingEyesGlassesMeson
-    belt: ClothingBeltUtilityEngineering
+#    belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering
   innerClothingSkirt: ClothingUniformJumpskirtEngineering
-  satchel: ClothingBackpackSatchelEngineeringFilled
-  duffelbag: ClothingBackpackDuffelEngineeringFilled
+  satchel: ClothingBackpackEngineeringFilled # ClothingBackpackSatchelEngineeringFilled
+  duffelbag: ClothingBackpackEngineeringFilled # ClothingBackpackDuffelEngineeringFilled

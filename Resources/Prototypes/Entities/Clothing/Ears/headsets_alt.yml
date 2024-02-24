@@ -80,6 +80,7 @@
     sprite: Clothing/Ears/Headsets/engineering.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/engineering.rsi
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingHeadsetAlt

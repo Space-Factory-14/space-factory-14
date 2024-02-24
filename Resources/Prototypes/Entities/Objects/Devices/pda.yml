@@ -29,7 +29,7 @@
         components:
         - PAI
     penSlot:
-      startingItem: Pen
+#      startingItem: Pen
       priority: -1
       whitelist:
         tags:
@@ -480,6 +480,7 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-ce
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: BasePDA
@@ -495,6 +496,7 @@
     accentVColor: "#A32D26"
   - type: Icon
     state: pda-engineer
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: BaseMedicalPDA

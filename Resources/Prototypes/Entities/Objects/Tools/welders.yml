@@ -77,8 +77,8 @@
       Welder:
         reagents:
         - ReagentId: WeldingFuel
-          Quantity: 100
-        maxVol: 100
+          Quantity: 10 # SpaceFactory - 100<10
+        maxVol: 10 # SpaceFactory - 100<10
   - type: Tool
     useSound:
       collection: Welder
@@ -98,6 +98,12 @@
     price: 40
   - type: IgnitionSource
     temperature: 700
+  - type: SolutionRegeneration # SpaceFactory
+    solution: Welder
+    generated:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 10
 
 - type: entity
   name: industrial welding tool

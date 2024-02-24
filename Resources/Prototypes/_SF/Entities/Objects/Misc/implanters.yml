@@ -1,0 +1,10 @@
+#Special implanters
+
+- type: entity
+  id: DeathAcidifierImplanterSF
+  name: death acidifier implanter
+  sufix: SF
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+  - type: Implanter
+    implant: DeathAcidifierImplantSF

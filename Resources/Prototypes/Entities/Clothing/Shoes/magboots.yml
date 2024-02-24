@@ -28,6 +28,7 @@
     - type: Tag
       tags:
       - WhitelistChameleon
+    - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingShoesBootsMag

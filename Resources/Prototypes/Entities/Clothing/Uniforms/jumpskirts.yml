@@ -41,6 +41,7 @@
     sprite: Clothing/Uniforms/Jumpskirt/ce.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/ce.rsi
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -52,6 +53,7 @@
     sprite: Clothing/Uniforms/Jumpskirt/ce_turtle.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/ce_turtle.rsi
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -151,6 +153,7 @@
     sprite: Clothing/Uniforms/Jumpskirt/engineering.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/engineering.rsi
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -760,6 +763,7 @@
     sprite: Clothing/Uniforms/Jumpskirt/senior_engineer.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/senior_engineer.rsi
+  - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingUniformSkirtBase

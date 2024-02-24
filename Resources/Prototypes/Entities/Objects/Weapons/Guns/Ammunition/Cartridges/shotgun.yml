@@ -9,6 +9,7 @@
     - Cartridge
     - ShellShotgun
   - type: CartridgeAmmo
+    deleteOnSpawn: true # SpaceFactory
     count: 6
     spread: 15
     soundEject:

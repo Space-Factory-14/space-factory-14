@@ -3,7 +3,7 @@
 - type: entity
   id: DeathAcidifierImplanterSF
   name: death acidifier implanter
-  sufix: SF
+  suffix: SF
   parent: BaseImplantOnlyImplanterSyndi
   components:
   - type: Implanter

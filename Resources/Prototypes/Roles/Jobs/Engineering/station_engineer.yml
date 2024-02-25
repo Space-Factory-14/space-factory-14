@@ -31,8 +31,8 @@
     shoes: ClothingShoesBootsMag #ClothingShoesBootsWork
     outerClothing: ClothingOuterVestHazard
     id: EngineerPDA
-    eyes: ClothingEyesGlassesMeson
-#    belt: ClothingBeltUtilityEngineering
+#    eyes: ClothingEyesGlassesMeson # SpaceFactory
+#    belt: ClothingBeltUtilityEngineering # SpaceFactory
     ears: ClothingHeadsetEngineering
   innerClothingSkirt: ClothingUniformJumpskirtEngineering
   satchel: ClothingBackpackEngineeringFilled # ClothingBackpackSatchelEngineeringFilled

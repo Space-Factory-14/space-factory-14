@@ -481,6 +481,10 @@
   - type: Icon
     state: pda-ce
   - type: Unremoveable # SpaceFactory
+  - type: Instrument # SpaceFactory
+    allowPercussion: true
+    allowProgramChange: true
+    handheld: true
 
 - type: entity
   parent: BasePDA
@@ -673,6 +677,11 @@
       - NotekeeperCartridge
       - NewsReadCartridge
       - LogProbeCartridge
+  - type: Instrument # SpaceFactory
+    allowPercussion: true
+    allowProgramChange: true
+    respectMidiLimits: false
+    handheld: true
 
 - type: entity
   parent: CentcomPDA

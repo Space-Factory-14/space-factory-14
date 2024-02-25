@@ -45,6 +45,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
     back: ClothingBackpackEngineeringFilled # ClothingBackpackChiefEngineerFilled
     shoes: ClothingShoesBootsMagAdv # ClothingShoesColorBrown
+    outerClothing: ClothingOuterVestHazard # SpaceFactory
     id: CEPDA
 #    eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetCE

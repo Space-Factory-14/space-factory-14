@@ -88,9 +88,9 @@
         acts: [ "Destruction" ]
       - !type:SpawnEntitiesBehavior
         spawn:
-          Log:
-            min: 2
-            max: 8
+          MaterialWoodPlank1: # Log
+            min: 1
+#            max: 8
 
 - type: entity
   parent: BaseTree

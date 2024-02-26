@@ -326,7 +326,7 @@
   id: MobAghostGear
   equipment:
     back: ClothingBackpackSatchelHoldingAdmin
-    id: AdminPDA
+    id: AdminPDASF # SpaceFactory - AdminPDA
 
 #Head Rev Gear
 - type: startingGear

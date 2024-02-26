@@ -1,0 +1,11 @@
+#Hazard vest
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingOuterBase]
+  id: ClothingOuterVestHazardSF
+  name: hi-viz vest
+  description: A high-visibility vest used in work zones.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/hazard.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/hazard.rsi

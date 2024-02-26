@@ -1,0 +1,6 @@
+- type: entity
+  abstract: true
+  id: UnremoveableClothingBase
+  suffix: SF
+  components:
+  - type: Unremoveable # SpaceFactory

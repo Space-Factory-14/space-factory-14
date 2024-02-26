@@ -54,7 +54,7 @@
 
 #Hazard vest
 - type: entity
-  parent: ClothingOuterBase # SpaceFactory - ClothingOuterStorageBase
+  parent: ClothingOuterStorageBase
   id: ClothingOuterVestHazard
   name: hi-viz vest
   description: A high-visibility vest used in work zones.
@@ -63,7 +63,6 @@
     sprite: Clothing/OuterClothing/Vests/hazard.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/hazard.rsi
-  - type: Unremoveable # SpaceFactory
 
 #(Bartender) vest
 - type: entity

@@ -134,7 +134,7 @@ public sealed class ConveyorController : SharedConveyorController
 
             foreach (var entity in intersecting)
             {
-                if (ignoreConveyorQuery.TryGetComponent(uid, out var ignoreConveyor)) // SpaceFactory
+                if (ignoreConveyorQuery.TryGetComponent(entity, out var ignoreConveyor)) // SpaceFactory
                     continue; // SpaceFactory
 
                 if (!bodyQuery.TryGetComponent(entity, out var physics))

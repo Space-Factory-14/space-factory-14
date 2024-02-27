@@ -1,0 +1,18 @@
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingHeadsetEngineering]
+  id: ClothingHeadsetEngineeringSF
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineering
+
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingHeadsetCE]
+  id: ClothingHeadsetCESF
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineering
+      - EncryptionKeyCommand

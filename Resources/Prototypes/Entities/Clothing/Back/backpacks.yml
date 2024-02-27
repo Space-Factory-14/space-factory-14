@@ -8,14 +8,14 @@
     sprite: Clothing/Back/Backpacks/backpack.rsi
     state: icon
   - type: Item
-    size: Ginormous # SpaceFactory - Updated Huge
+    size: Huge
   - type: Clothing
     quickEquip: false
     slots:
     - back
   - type: Storage
     grid:
-    - 0,0,13,7 # SpaceFactory - Updated 0,0,6,3
+    - 0,0,6,3
     maxItemSize: Huge
   - type: ContainerContainer
     containers:
@@ -29,7 +29,7 @@
   - type: UseDelay
     delay: 0.5
   - type: ExplosionResistance
-    damageCoefficient: 1 # SpaceFactory 0.9<1
+    damageCoefficient: 0.9
 
 - type: entity
   parent: ClothingBackpack
@@ -81,8 +81,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/engineering.rsi
-  - type: Unremoveable # SpaceFactory
-    deleteOnDrop: false # SpaceFactory
 
 - type: entity
   parent: ClothingBackpack

@@ -1,0 +1,15 @@
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingUniformJumpskirtChiefEngineer]
+  id: ClothingUniformJumpskirtChiefEngineerSF
+
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingUniformJumpskirtChiefEngineerTurtle]
+  id: ClothingUniformJumpskirtChiefEngineerTurtleSF
+
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingUniformJumpskirtEngineering]
+  id: ClothingUniformJumpskirtEngineeringSF
+
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingUniformJumpskirtSeniorEngineer]
+  id: ClothingUniformJumpskirtSeniorEngineerSF

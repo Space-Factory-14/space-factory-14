@@ -1,0 +1,30 @@
+- type: entity
+  parent: [UnremoveableClothingBase, PointLightClothingBase, CEPDA]
+  id: CEPDASF
+  components:
+  - type: Instrument
+    allowPercussion: true
+    allowProgramChange: true
+    handheld: true
+  - type: Pda
+    penSlot:
+      startingItem: null
+
+- type: entity
+  parent: [UnremoveableClothingBase, PointLightClothingBase, EngineerPDA]
+  id: EngineerPDASF
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: null
+
+- type: entity
+  parent: AdminPDA
+  id: AdminPDASF
+  suffix: SF
+  components:
+  - type: Instrument
+    allowPercussion: true
+    allowProgramChange: true
+    respectMidiLimits: false
+    handheld: true

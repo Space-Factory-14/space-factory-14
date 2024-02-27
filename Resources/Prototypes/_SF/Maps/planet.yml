@@ -8,7 +8,7 @@
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Emergency Shuttle {1}'
+          mapNameTemplate: 'Spawn'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: 'SF'
@@ -17,5 +17,5 @@
             - StationEngineer
           availableJobs:
             #engineering
-            ChiefEngineer: [ 1, 1 ]
+            ChiefEngineer: [ -1, -1 ]
             StationEngineer: [ -1, -1 ]

@@ -13,8 +13,8 @@
       sprite: Clothing/Shoes/Boots/magboots.rsi
     - type: Magboots
     - type: ClothingSpeedModifier
-      walkModifier: 1 # SpaceFactory 0.85<1
-      sprintModifier: 1 # SpaceFactory 0.8<1
+      walkModifier: 0.85
+      sprintModifier: 0.8
       enabled: false
     - type: Appearance
     - type: GenericVisualizer
@@ -28,7 +28,6 @@
     - type: Tag
       tags:
       - WhitelistChameleon
-    - type: Unremoveable # SpaceFactory
 
 - type: entity
   parent: ClothingShoesBootsMag
@@ -95,8 +94,8 @@
   - type: Magboots
     toggleAction: ActionToggleMagbootsSyndie
   - type: ClothingSpeedModifier
-    walkModifier: 1 # SpaceFactory 0.95<1
-    sprintModifier: 1 # SpaceFactory 0.9<1
+    walkModifier: 0.95
+    sprintModifier: 0.9
     enabled: false
   - type: GasTank
     outputPressure: 42.6

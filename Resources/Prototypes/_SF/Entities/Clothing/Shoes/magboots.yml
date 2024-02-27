@@ -1,0 +1,11 @@
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingShoesBootsMag]
+  id: ClothingShoesBootsMagSF
+  components:
+  - type: ClothingSpeedModifier
+    walkModifier: 1 # SpaceFactory 0.85<1
+    sprintModifier: 1 # SpaceFactory 0.8<1
+
+- type: entity
+  parent: [UnremoveableClothingBase, ClothingShoesBootsMagAdv]
+  id: ClothingShoesBootsMagAdvSF

@@ -25,15 +25,15 @@
 - type: startingGear
   id: StationEngineerGear
   equipment:
-    head: ClothingHeadHatHardhatYellowSF
+#    head: ClothingHeadHatHardhatYellowSF
     jumpsuit: ClothingUniformJumpsuitEngineeringSF
     back: ClothingBackpackEngineeringFilledSF
-    shoes: ClothingShoesBootsMag #ClothingShoesBootsWork
+    shoes: ClothingShoesBootsMagSF #ClothingShoesBootsWork
     outerClothing: ClothingOuterVestHazardSF
     id: EngineerPDASF
 #    eyes: ClothingEyesGlassesMeson # SpaceFactory
 #    belt: ClothingBeltUtilityEngineering # SpaceFactory
-    ears: ClothingHeadsetEngineering
+    ears: ClothingHeadsetEngineeringSF
   innerClothingSkirt: ClothingUniformJumpskirtEngineeringSF
   satchel: ClothingBackpackEngineeringFilledSF # ClothingBackpackSatchelEngineeringFilled
   duffelbag: ClothingBackpackEngineeringFilledSF # ClothingBackpackDuffelEngineeringFilled

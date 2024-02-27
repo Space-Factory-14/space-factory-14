@@ -3,4 +3,14 @@
   id: UnremoveableClothingBase
   suffix: SF
   components:
-  - type: Unremoveable # SpaceFactory
+  - type: Unremoveable
+
+- type: entity
+  abstract: true
+  id: PointLightClothingBase
+  components:
+  - type: PointLight
+    enabled: false
+    radius: 7
+    softness: 0
+    autoRot: true

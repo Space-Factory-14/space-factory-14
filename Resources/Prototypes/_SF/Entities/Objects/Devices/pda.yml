@@ -1,5 +1,5 @@
 - type: entity
-  parent: [UnremoveableClothingBase, CEPDA]
+  parent: [UnremoveableClothingBase, PointLightClothingBase, CEPDA]
   id: CEPDASF
   components:
   - type: Instrument
@@ -11,7 +11,7 @@
       startingItem: null
 
 - type: entity
-  parent: [UnremoveableClothingBase, EngineerPDA]
+  parent: [UnremoveableClothingBase, PointLightClothingBase, EngineerPDA]
   id: EngineerPDASF
   components:
   - type: Pda

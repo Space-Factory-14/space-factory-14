@@ -41,14 +41,14 @@
 - type: startingGear
   id: ChiefEngineerGear
   equipment:
-    head: ClothingHeadHatHardhatWhiteSF
+#    head: ClothingHeadHatHardhatWhiteSF
     jumpsuit: ClothingUniformJumpsuitChiefEngineerSF
     back: ClothingBackpackEngineeringFilledSF # ClothingBackpackChiefEngineerFilled
-    shoes: ClothingShoesBootsMagAdv # ClothingShoesColorBrown
+    shoes: ClothingShoesBootsMagAdvSF # ClothingShoesColorBrown
     outerClothing: ClothingOuterVestHazardSF # SpaceFactory
     id: CEPDASF
 #    eyes: ClothingEyesGlassesMeson
-    ears: ClothingHeadsetCE
+    ears: ClothingHeadsetCESF
 #    belt: ClothingBeltUtilityEngineering
   innerClothingSkirt: ClothingUniformJumpskirtChiefEngineerSF
   satchel: ClothingBackpackEngineeringFilledSF # ClothingBackpackSatchelChiefEngineerFilled

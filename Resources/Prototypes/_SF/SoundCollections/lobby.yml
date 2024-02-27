@@ -1,0 +1,4 @@
+- type: soundCollection
+  id: LobbyMusicSF
+  files:
+    - /Audio/_SF/Lobby/factorio_main_menu.ogg
